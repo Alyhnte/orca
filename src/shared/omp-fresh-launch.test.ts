@@ -27,9 +27,16 @@ describe('OMP fresh launch intent', () => {
     'omp --model',
     'omp -- hello',
     'echo omp',
-    'omp && echo hi'
+    'omp && echo hi',
+    'omp --model foo;',
+    'omp --model $(preferred-model)',
+    'omp --model `preferred-model`'
   ])('preserves %s', (command) => {
-    expect(withFreshOmpLaunch(command, 'posix')).toContain(command)
+    expect(withFreshOmpLaunch(command, 'posix')).toBe(command)
+  })
+  it.each(['cmd', 'powershell'] as const)('preserves compound values in %s', (shell) => {
+    const command = 'omp --model foo&'
+    expect(withFreshOmpLaunch(command, shell)).toBe(command)
   })
   it('quotes the host config path for each Windows shell', () => {
     expect(withFreshOmpLaunch('omp', 'powershell')).toContain(

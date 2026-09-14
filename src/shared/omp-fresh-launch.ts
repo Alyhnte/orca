@@ -25,7 +25,7 @@ const SWITCH_FLAGS = new Set(['--no-extensions', '--no-skills', '--no-prompt-tem
 /** Apply fresh intent to one launch command, never the saved resume configuration. */
 export function withFreshOmpLaunch(command: string, shell: AgentStartupShell, suffix = ''): string {
   const parsed = tokenizeStartupCommand(command, shell)
-  if (!parsed.ok) {
+  if (!parsed.ok || parsed.spans.some((span) => span.divergesFromShell)) {
     return command + suffix
   }
   const executable = parsed.tokens[0]?.split(/[\\/]/).at(-1)?.toLowerCase()
