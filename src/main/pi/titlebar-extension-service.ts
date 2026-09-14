@@ -58,8 +58,9 @@ const AGENT_HOME_DIR_NAME: Record<PiAgentKind, string> = {
   'prime-agent': '.prime'
 }
 
-function getDefaultPiAgentDir(kind: PiAgentKind): string {
-  return join(homedir(), AGENT_HOME_DIR_NAME[kind], PI_AGENT_SUBDIR)
+function getDefaultPiAgentDir(kind: PiAgentKind, configDirName: string | undefined): string {
+  const root = kind === 'omp' ? configDirName || AGENT_HOME_DIR_NAME.omp : AGENT_HOME_DIR_NAME[kind]
+  return join(homedir(), root, PI_AGENT_SUBDIR)
 }
 
 function toSafeOverlayDirName(ptyId: string): string {
@@ -177,9 +178,11 @@ export class PiTitlebarExtensionService {
     ptyId: string,
     existingAgentDir: string | undefined,
     kind: PiAgentKind,
-    options?: { materializeDefaultHome?: boolean }
+    options?: { materializeDefaultHome?: boolean; configDirName?: string }
   ): Record<string, string> {
-    const sourceAgentDir = existingAgentDir || getDefaultPiAgentDir(kind)
+    const sourceAgentDir =
+      existingAgentDir ||
+      getDefaultPiAgentDir(kind, options?.configDirName ?? process.env.PI_CONFIG_DIR)
     if (kind !== 'prime-agent') {
       try {
         this.safeRemoveOverlay(this.getPtyOverlayDir(ptyId, kind), kind)

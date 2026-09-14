@@ -98,6 +98,59 @@ describe('PiTitlebarExtensionService', () => {
     rmSync(join(userDataDir, 'omp-managed-status-extension'), { recursive: true, force: true })
   })
 
+  it.each([
+    ['pi', '.pi', 'ORCA_PI_SOURCE_AGENT_DIR'],
+    ['omp', '.omp', 'ORCA_OMP_SOURCE_AGENT_DIR'],
+    ['prime-agent', '.prime', 'ORCA_PRIME_AGENT_SOURCE_AGENT_DIR']
+  ] as const)('does not reinterpret XDG data as %s configuration', (kind, root, sourceKey) => {
+    const fakeHome = mkdtempSync(join(tmpdir(), 'orca-agent-xdg-'))
+    const dataHome = join(fakeHome, 'data')
+    const dataAgentDir = join(dataHome, root.slice(1), 'agent')
+    mkdirSync(dataAgentDir, { recursive: true })
+    homedirOverride.current = fakeHome
+    vi.stubEnv('XDG_DATA_HOME', dataHome)
+    try {
+      const env = new PiTitlebarExtensionService().buildPtyEnv('pty-xdg', undefined, kind)
+      expect(env[sourceKey]).toBe(join(fakeHome, root, 'agent'))
+      expect(readdirSync(dataAgentDir)).toEqual([])
+      expect(env.PI_CODING_AGENT_DIR).toBeUndefined()
+    } finally {
+      vi.unstubAllEnvs()
+      homedirOverride.current = ''
+      rmSync(fakeHome, { recursive: true, force: true })
+    }
+  })
+
+  it('materializes OMP extensions under the launch config root without overriding data routing', () => {
+    const fakeHome = mkdtempSync(join(tmpdir(), 'orca-omp-config-'))
+    homedirOverride.current = fakeHome
+    try {
+      const service = new PiTitlebarExtensionService()
+      const environment = { PI_CONFIG_DIR: '.config/omp', XDG_DATA_HOME: join(fakeHome, 'data') }
+      const env = service.buildPtyEnv('pty-config', undefined, 'omp', {
+        configDirName: environment.PI_CONFIG_DIR
+      })
+      const agentDir = join(fakeHome, '.config', 'omp', 'agent')
+      expect(env.ORCA_OMP_SOURCE_AGENT_DIR).toBe(agentDir)
+      expect(existsSync(join(agentDir, 'extensions', 'orca-agent-status.ts'))).toBe(true)
+      expect(env.PI_CODING_AGENT_DIR).toBeUndefined()
+      expect(existsSync(join(fakeHome, '.omp'))).toBe(false)
+      expect(existsSync(environment.XDG_DATA_HOME)).toBe(false)
+      expect(
+        service.buildPtyEnv('pty-explicit', piHome, 'omp', {
+          configDirName: environment.PI_CONFIG_DIR
+        }).ORCA_OMP_SOURCE_AGENT_DIR
+      ).toBe(piHome)
+      expect(
+        service.buildPtyEnv('pty-pi', undefined, 'pi', { configDirName: environment.PI_CONFIG_DIR })
+          .ORCA_PI_SOURCE_AGENT_DIR
+      ).toBe(join(fakeHome, '.pi', 'agent'))
+    } finally {
+      homedirOverride.current = ''
+      rmSync(fakeHome, { recursive: true, force: true })
+    }
+  })
+
   function expectPiHomeIntact(): void {
     expect(readFileSync(join(piHome, 'auth.json'), 'utf-8')).toBe('secret token')
     expect(readFileSync(join(piHome, 'skills', 'my-skill', 'SKILL.md'), 'utf-8')).toBe(

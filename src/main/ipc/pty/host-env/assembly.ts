@@ -160,7 +160,10 @@ export function buildPtyHostEnv(
 
     if (shouldPrepareOmpShadow) {
       const ompEnv = piTitlebarExtensionService.buildPtyEnv(id, preexistingOmpAgentDir, 'omp', {
-        materializeDefaultHome: explicitPiAgentKind === 'omp'
+        materializeDefaultHome: explicitPiAgentKind === 'omp',
+        ...(baseEnv.PI_CONFIG_DIR !== undefined && !opts.isWsl
+          ? { configDirName: baseEnv.PI_CONFIG_DIR }
+          : {})
       })
       Object.assign(baseEnv, ompEnv)
       exposePiManagedExtensionEnv(baseEnv, 'omp', ompEnv)
