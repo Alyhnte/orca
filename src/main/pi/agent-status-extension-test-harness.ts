@@ -109,8 +109,8 @@ export function createAgentStatusExtensionHarness(args: {
     )
   }
 
-  const module = {
-    exports: {} as {
+  const module: {
+    exports: {
       default?: (pi: {
         on: (name: string, handler: HookHandler) => void
         registerCommand: (
@@ -120,7 +120,7 @@ export function createAgentStatusExtensionHarness(args: {
         setModel: (model: unknown) => Promise<boolean>
       }) => void
     }
-  }
+  } = { exports: {} }
   const requireMock = vi.fn((specifier: string) => {
     if (specifier === 'fs') {
       return fsMock
