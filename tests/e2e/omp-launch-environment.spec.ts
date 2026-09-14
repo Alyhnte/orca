@@ -12,6 +12,10 @@ import {
 const test = base.extend({
   launchEnv: async ({ seedTestRepo }, run, testInfo) => {
     void seedTestRepo
+    if (!process.env.ORCA_OMP_PROOF_BINARY || process.platform !== 'darwin') {
+      await run({})
+      return
+    }
     const shell = testInfo.outputPath('login-shell')
     const profileDir = testInfo.outputPath('profile')
     await mkdir(profileDir, { recursive: true })
