@@ -229,6 +229,7 @@ export function useMobileNativeChatController(args: {
 
   const { nativeChatSessionOptions, recordCommand: recordNativeChatSessionOptionCommand } =
     useMobileNativeChatSessionOptionController({
+      client,
       activeChatStructured,
       activeSessionTabId,
       agent: activeChatResolution?.agent ?? null,
@@ -237,6 +238,7 @@ export function useMobileNativeChatController(args: {
       isTabChatView,
       isWorking: nativeChatAgentWorking,
       reportedModel: activeSessionTab?.agentStatus?.model ?? null,
+      modelSwitchCommand: activeSessionTab?.agentStatus?.modelSwitchCommand,
       structured: {
         optionPickerRequest: structuredNativeChat.optionPickerRequest,
         conversationCommands: structuredNativeChat.conversationCommands,
