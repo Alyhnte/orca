@@ -73,7 +73,7 @@ describe('OMP session status ownership', () => {
       harness.fetchMock.mock.calls.map((call) => JSON.parse(call[1].body).payload.session_id)
     ).toEqual(['initial', 'new', 'resumed'])
   })
-  it('isolates separately launched panes in the same host process', async () => {
+  it('uses a distinct ownership key when pane and launch change before callbacks', async () => {
     const harness = createAgentStatusExtensionHarness({ kind: 'omp' })
     const parent = {
       sessionManager: { getSessionId: () => 'parent', getSessionFile: () => '/parent.jsonl' }
