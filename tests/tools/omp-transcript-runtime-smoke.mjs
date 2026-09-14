@@ -35,6 +35,7 @@ const server = createServer(async (request, response) => {
 })
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve))
 const managers = []
+const transcripts = []
 try {
   process.env.ORCA_AGENT_HOOK_PORT = String(server.address().port)
   process.env.ORCA_AGENT_HOOK_TOKEN = 'test-token'
@@ -87,6 +88,7 @@ try {
       assert.ok('messages' in transcript, JSON.stringify(transcript))
       assert.equal(transcript.messages.length, 1)
       assert.ok(JSON.stringify(transcript.messages).includes(`Transcript proof ${kind} ${phase}`))
+      transcripts.push({ kind, phase, sessionId: session.id, messages: transcript.messages })
       const beforeChild = posts.length
       const childExtension = await load()
       await emit(childExtension, 'session_start', child)
@@ -94,6 +96,9 @@ try {
       await emit(childExtension, 'agent_end', child)
       assert.equal(posts.length, beforeChild)
     }
+  }
+  if (process.argv[3]) {
+    await writeFile(resolve(process.argv[3]), `${JSON.stringify({ transcripts }, null, 2)}\n`)
   }
   console.log(
     JSON.stringify({
