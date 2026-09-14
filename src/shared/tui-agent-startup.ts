@@ -72,9 +72,7 @@ export function buildAgentStartupPlan(args: {
     return null
   }
   const launchCommand =
-    agent === 'omp' && !args.isRemote
-      ? withFreshOmpLaunch(baseCommand.command, shell)
-      : baseCommand.command
+    agent === 'omp' ? withFreshOmpLaunch(baseCommand.command, shell) : baseCommand.command
   const launchConfig = buildSleepingAgentLaunchConfig({
     ...args,
     // Why: picker flags are a one-time launch choice; a resumed provider
@@ -103,7 +101,10 @@ export function buildAgentStartupPlan(args: {
     const promptSeparator = config.argvPromptSeparator ? ` ${config.argvPromptSeparator}` : ''
     return {
       agent,
-      launchCommand: `${launchCommand}${promptSeparator} ${quotedPrompt}`,
+      launchCommand:
+        agent === 'omp'
+          ? withFreshOmpLaunch(baseCommand.command, shell, `${promptSeparator} ${quotedPrompt}`)
+          : `${launchCommand}${promptSeparator} ${quotedPrompt}`,
       expectedProcess: config.expectedProcess,
       followupPrompt: null,
       launchConfig,
@@ -228,9 +229,7 @@ export function buildAgentDraftLaunchPlan(args: {
     return null
   }
   const launchCommand =
-    agent === 'omp' && !args.isRemote
-      ? withFreshOmpLaunch(baseCommand.command, shell)
-      : baseCommand.command
+    agent === 'omp' ? withFreshOmpLaunch(baseCommand.command, shell) : baseCommand.command
   const launchConfig = buildSleepingAgentLaunchConfig({
     ...args,
     // Why: see the new-session path above — resume must not replay picker flags.

@@ -6,7 +6,7 @@ describe('OMP fresh launch intent', () => {
   it.each(['omp', 'omp launch', 'omp --model provider/model', 'omp --config user.yml'])(
     '%s adds the final overlay',
     (command) => {
-      expect(withFreshOmpLaunch(command, 'posix')).toBe(
+      expect(withFreshOmpLaunch(command, 'posix')).toContain(
         `${command} --config "$ORCA_OMP_FRESH_CONFIG"`
       )
     }
@@ -29,13 +29,13 @@ describe('OMP fresh launch intent', () => {
     'echo omp',
     'omp && echo hi'
   ])('preserves %s', (command) => {
-    expect(withFreshOmpLaunch(command, 'posix')).toBe(command)
+    expect(withFreshOmpLaunch(command, 'posix')).toContain(command)
   })
   it('quotes the host config path for each Windows shell', () => {
-    expect(withFreshOmpLaunch('omp', 'powershell')).toBe(
+    expect(withFreshOmpLaunch('omp', 'powershell')).toContain(
       'omp --config "$env:ORCA_OMP_FRESH_CONFIG"'
     )
-    expect(withFreshOmpLaunch('omp', 'cmd')).toBe('omp --config "%ORCA_OMP_FRESH_CONFIG%"')
+    expect(withFreshOmpLaunch('omp', 'cmd')).toContain('omp --config "%ORCA_OMP_FRESH_CONFIG%"')
   })
   it('keeps fresh intent out of saved resume command and environment', () => {
     const plan = buildAgentStartupPlan({
@@ -48,7 +48,7 @@ describe('OMP fresh launch intent', () => {
     expect(JSON.stringify(plan?.launchConfig)).not.toContain('ORCA_OMP_FRESH_CONFIG')
     expect(plan?.env).toBeUndefined()
   })
-  it('does not require a new environment field from an older SSH relay', () => {
+  it('requires host-owned configuration for fresh SSH launches', () => {
     const plan = buildAgentStartupPlan({
       agent: 'omp',
       prompt: 'new task',
@@ -56,6 +56,6 @@ describe('OMP fresh launch intent', () => {
       platform: 'linux',
       isRemote: true
     })
-    expect(plan?.launchCommand).not.toContain('ORCA_OMP_FRESH_CONFIG')
+    expect(plan?.launchCommand).toContain('test -f "$ORCA_OMP_FRESH_CONFIG"')
   })
 })

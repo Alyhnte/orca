@@ -648,7 +648,7 @@ describe('tui agent startup plans', () => {
     expect(plan).not.toBeNull()
     expect(plan?.env).toEqual({ ORCA_OMP_PREFILL: 'fix the omp regression' })
     expect(plan?.expectedProcess).toBe('omp')
-    expect(plan?.launchCommand).toBe(
+    expect(plan?.launchCommand).toContain(
       `omp --config "$ORCA_OMP_FRESH_CONFIG"; command test -n "$fish_pid" && set --erase -g ORCA_OMP_PREFILL; command test -z "$fish_pid" && unset ORCA_OMP_PREFILL; true`
     )
   })

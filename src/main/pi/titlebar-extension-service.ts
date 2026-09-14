@@ -1,8 +1,4 @@
-import {
-  OMP_FRESH_CONFIG_FILENAME,
-  OMP_FRESH_CONFIG_SOURCE,
-  ORCA_OMP_FRESH_CONFIG_ENV
-} from '../../shared/omp-fresh-launch'
+import { materializeOmpFreshConfig } from '../../shared/omp-fresh-config'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
@@ -178,23 +174,21 @@ export class PiTitlebarExtensionService {
     }
   }
 
+  buildFreshOmpEnv(): Record<string, string> {
+    return {
+      ORCA_OMP_FRESH_CONFIG: materializeOmpFreshConfig(
+        join(getAppEnvironment().getPath('userData'), OMP_MANAGED_STATUS_EXTENSION_DIR)
+      )
+    }
+  }
+
   buildPtyEnv(
     ptyId: string,
     existingAgentDir: string | undefined,
     kind: PiAgentKind,
     options?: { materializeDefaultHome?: boolean }
   ): Record<string, string> {
-    const freshConfigEnv: Record<string, string> = {}
-    if (kind === 'omp') {
-      const configDir = join(
-        getAppEnvironment().getPath('userData'),
-        OMP_MANAGED_STATUS_EXTENSION_DIR
-      )
-      mkdirSync(configDir, { recursive: true })
-      const configPath = join(configDir, OMP_FRESH_CONFIG_FILENAME)
-      writeFileSync(configPath, OMP_FRESH_CONFIG_SOURCE)
-      freshConfigEnv[ORCA_OMP_FRESH_CONFIG_ENV] = configPath
-    }
+    const freshConfigEnv = kind === 'omp' ? this.buildFreshOmpEnv() : {}
     const sourceAgentDir = existingAgentDir || getDefaultPiAgentDir(kind)
     if (kind !== 'prime-agent') {
       try {
