@@ -180,9 +180,10 @@ export class PiTitlebarExtensionService {
     kind: PiAgentKind,
     options?: { materializeDefaultHome?: boolean; configDirName?: string }
   ): Record<string, string> {
-    const sourceAgentDir =
-      existingAgentDir ||
-      getDefaultPiAgentDir(kind, options?.configDirName ?? process.env.PI_CONFIG_DIR)
+    // The caller resolves the effective launch environment. Reading the
+    // daemon's ambient PI_CONFIG_DIR here can select the host profile for a
+    // guest/WSL launch whose environment has not been hydrated yet.
+    const sourceAgentDir = existingAgentDir || getDefaultPiAgentDir(kind, options?.configDirName)
     if (kind !== 'prime-agent') {
       try {
         this.safeRemoveOverlay(this.getPtyOverlayDir(ptyId, kind), kind)

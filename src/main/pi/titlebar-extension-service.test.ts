@@ -151,6 +151,23 @@ describe('PiTitlebarExtensionService', () => {
     }
   })
 
+  it('does not use the daemon ambient PI_CONFIG_DIR when launch root is omitted', () => {
+    const fakeHome = mkdtempSync(join(tmpdir(), 'orca-omp-ambient-root-'))
+    homedirOverride.current = fakeHome
+    vi.stubEnv('PI_CONFIG_DIR', 'host-profile')
+    try {
+      const env = new PiTitlebarExtensionService().buildPtyEnv('pty-ambient-root', undefined, 'omp', {
+        materializeDefaultHome: true
+      })
+      expect(env.ORCA_OMP_SOURCE_AGENT_DIR).toBe(join(fakeHome, '.omp', 'agent'))
+      expect(existsSync(join(fakeHome, 'host-profile'))).toBe(false)
+    } finally {
+      vi.unstubAllEnvs()
+      homedirOverride.current = ''
+      rmSync(fakeHome, { recursive: true, force: true })
+    }
+  })
+
   function expectPiHomeIntact(): void {
     expect(readFileSync(join(piHome, 'auth.json'), 'utf-8')).toBe('secret token')
     expect(readFileSync(join(piHome, 'skills', 'my-skill', 'SKILL.md'), 'utf-8')).toBe(
