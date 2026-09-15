@@ -161,9 +161,15 @@ export function buildPtyHostEnv(
     if (shouldPrepareOmpShadow) {
       const ompEnv = piTitlebarExtensionService.buildPtyEnv(id, preexistingOmpAgentDir, 'omp', {
         materializeDefaultHome: explicitPiAgentKind === 'omp',
-        ...(baseEnv.PI_CONFIG_DIR !== undefined && !opts.isWsl
-          ? { configDirName: baseEnv.PI_CONFIG_DIR }
-          : {})
+        // WSL executes on the guest and must never inherit the host's
+        // PI_CONFIG_DIR.  Use OMP's guest-local default when the relay has
+        // not supplied a guest root yet; the relay may still override the
+        // resulting source directory with its materialized guest path.
+        ...(opts.isWsl
+          ? { configDirName: '.omp' }
+          : baseEnv.PI_CONFIG_DIR !== undefined
+            ? { configDirName: baseEnv.PI_CONFIG_DIR }
+            : {})
       })
       Object.assign(baseEnv, ompEnv)
       exposePiManagedExtensionEnv(baseEnv, 'omp', ompEnv)
