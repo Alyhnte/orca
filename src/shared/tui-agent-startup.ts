@@ -252,7 +252,7 @@ export function buildAgentDraftLaunchPlan(args: {
     const clearVar = clearEnvCommand(config.draftPromptEnvVar, shell)
     plan = {
       agent,
-      launchCommand: `${launchCommand}${commandSeparator(shell)}${clearVar}`,
+      launchCommand: agent === 'omp' && shell !== 'powershell' && shell !== 'cmd' ? `( ${launchCommand}; __orca_launch_status=$?; ${clearVar}; exit $__orca_launch_status )` : `${launchCommand}${commandSeparator(shell)}${clearVar}`,
       expectedProcess: config.expectedProcess,
       launchConfig,
       ...appliedSessionOptionProps(baseCommand.appliedSessionOptions),
