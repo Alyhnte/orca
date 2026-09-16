@@ -4,6 +4,7 @@ import type { AgentType } from './agent-status-types'
 import type { TuiAgent } from './tui-agent'
 import { filterHeadlessOneShotAgentCommand } from './agent-headless-command'
 import { getFirstCommandToken } from './command-token-scanner'
+import { isFreshOmpLaunchCommand } from './omp-fresh-launch'
 
 export type RecognizedAgentProcess = { agent: TuiAgent; processName: string }
 
@@ -286,9 +287,7 @@ export function recognizeAgentProcessFromCommandLine(
   if (!commandLine) {
     return null
   }
-  // Fresh OMP launches are wrapped in a shell subshell so cleanup cannot
-  // overwrite the agent exit status; recognize the preserved command body.
-  if (/\bomp\s+--config\s+["']?\$ORCA_OMP_FRESH_CONFIG\b/.test(commandLine)) {
+  if (isFreshOmpLaunchCommand(commandLine)) {
     return recognizedAgentForProcess('omp')
   }
   const keep = options?.includeHeadlessOneShot === true
