@@ -182,8 +182,10 @@ export function makeGateState(filler: number): { state: AppState } {
     groupsByWorktree: {},
     activeGroupIdByWorktree: {},
     layoutByWorktree: {},
-    tabBarOrderByWorktree: {},
-    activeFileId: null,
+    tabBarOrderByWorktree: { [DIRTY_WT]: [DIRTY_TAB, 'gate-bare-term'] },
+    // An active editor file is what makes the inputs builder consult the active-tab-type slices at
+    // all; with none open that whole branch is unreachable and its fingerprint fields are inert.
+    activeFileId: GATE_FILE,
     activeFileIdByWorktree: {},
     activeTabType: null,
     activeTabTypeByWorktree: {},
@@ -226,15 +228,12 @@ export type GateSide = {
   publication: MobileSessionPublicationInputs
 }
 
-const partitionLayouts = createTabKeyedRecordPartitioner<
-  AppState['terminalLayoutsByTabId'][string]
->()
-const partitionTitles = createTabKeyedRecordPartitioner<
-  AppState['runtimePaneTitlesByTabId'][string]
->()
-const partitionDrafts = createTabKeyedRecordPartitioner<
-  NonNullable<AppState['nativeChatLaunchDraftByTabId']>[string]
->()
+const partitionLayouts =
+  createTabKeyedRecordPartitioner<AppState['terminalLayoutsByTabId'][string]>()
+const partitionTitles =
+  createTabKeyedRecordPartitioner<AppState['runtimePaneTitlesByTabId'][string]>()
+const partitionDrafts =
+  createTabKeyedRecordPartitioner<NonNullable<AppState['nativeChatLaunchDraftByTabId']>[string]>()
 
 /** The publication-wide inputs exactly as `buildMobileSessionTabSnapshots` derives them. */
 export function gateSideOf(state: AppState): GateSide {

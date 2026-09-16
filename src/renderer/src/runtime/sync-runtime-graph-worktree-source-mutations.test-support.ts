@@ -53,6 +53,8 @@ export const mutations: { name: string; apply: (state: AppState) => AppState }[]
     apply: (state) => ({ ...state, activeTabId: DIRTY_TAB })
   },
   {
+    // Split from the active-group edit below: one mutation moving both fields lets either
+    // comparison be deleted while the other still fails the assertion.
     name: 'a tab group',
     apply: (state) => ({
       ...state,
@@ -66,9 +68,80 @@ export const mutations: { name: string; apply: (state: AppState) => AppState }[]
             tabOrder: [DIRTY_TAB]
           }
         ]
-      },
+      }
+    })
+  },
+  {
+    name: 'the active tab group',
+    apply: (state) => ({
+      ...state,
       activeGroupIdByWorktree: { ...state.activeGroupIdByWorktree, [DIRTY_WT]: 'gate-group' }
     })
+  },
+  {
+    name: 'the tab bar order',
+    apply: (state) => ({
+      ...state,
+      tabBarOrderByWorktree: {
+        ...state.tabBarOrderByWorktree,
+        [DIRTY_WT]: ['gate-bare-term', DIRTY_TAB]
+      }
+    })
+  },
+  {
+    name: 'the tab group layout',
+    apply: (state) =>
+      patchGateState(state, {
+        layoutByWorktree: { [DIRTY_WT]: { type: 'leaf', groupId: 'gate-group' } }
+      })
+  },
+  {
+    name: "the worktree's active file",
+    apply: (state) =>
+      patchGateState(state, {
+        activeFileIdByWorktree: {
+          ...state.activeFileIdByWorktree,
+          [DIRTY_WT]: '/gate/elsewhere.md'
+        }
+      })
+  },
+  {
+    name: 'the globally active file',
+    apply: (state) => ({ ...state, activeFileId: '/gate/elsewhere.md' })
+  },
+  {
+    name: "the worktree's active tab type",
+    apply: (state) =>
+      patchGateState(state, {
+        activeTabTypeByWorktree: { ...state.activeTabTypeByWorktree, [DIRTY_WT]: 'editor' }
+      })
+  },
+  {
+    name: 'the globally active tab type',
+    apply: (state) => ({ ...state, activeTabType: 'editor' })
+  },
+  {
+    name: "the worktree's active browser workspace",
+    apply: (state) =>
+      patchGateState(state, {
+        activeBrowserTabIdByWorktree: {
+          ...state.activeBrowserTabIdByWorktree,
+          [DIRTY_WT]: GATE_WORKSPACE
+        }
+      })
+  },
+  {
+    name: 'a browser workspace title',
+    apply: (state) =>
+      patchGateState(state, {
+        browserTabsByWorktree: {
+          ...state.browserTabsByWorktree,
+          [DIRTY_WT]: (state.browserTabsByWorktree[DIRTY_WT] ?? []).map((workspace) => ({
+            ...workspace,
+            title: 'Gate renamed'
+          }))
+        }
+      })
   },
   {
     name: 'the generated-title setting',

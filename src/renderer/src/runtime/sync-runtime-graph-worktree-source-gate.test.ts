@@ -1,13 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { AppState } from '../store/types'
-import {
-  buildMobileSessionTabSnapshots,
-  registerRuntimeTerminalTab
-} from './sync-runtime-graph'
-import {
-  getTerminalTabOwnershipIndex,
-  graphState
-} from './sync-runtime-graph/graph-state'
+import { buildMobileSessionTabSnapshots, registerRuntimeTerminalTab } from './sync-runtime-graph'
+import { getTerminalTabOwnershipIndex, graphState } from './sync-runtime-graph/graph-state'
 import { collectMobileSessionWorktreeIds } from './sync-runtime-graph/mobile-session-worktree-sources'
 import { createTabKeyedRecordPartitioner } from './sync-runtime-graph/tab-keyed-record-partition'
 import { getBrowserTabsByWorktree } from './sync-runtime-graph/sync-projections'

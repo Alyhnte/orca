@@ -7,6 +7,7 @@ import {
 } from './sync-runtime-graph/mobile-session-worktree-sources'
 import {
   DIRTY_WT,
+  GATE_FILE,
   gateSideOf,
   makeGateState,
   resetPublicationCaches,
@@ -49,25 +50,78 @@ describe('equal source refs imply the skipped rebuild would have been reusable',
       expect(mobileSessionWorktreeSourceRefsEqual(refsOf(base), refsOf(mutated))).toBe(false)
     })
   }
+})
 
-  /**
-   * Not reachable from a store edit: flipping `tabAutoGenerateTitle` replaces `state.settings`,
-   * which also hands `getMobileTerminalTheme` a new object, so `terminalTheme` always moves with it
-   * and would mask this field's deletion. Drive the publication inputs directly instead — they are
-   * what the collector actually consumes.
-   */
+/**
+ * Three fingerprint fields have a sibling that today always moves with them, so no store edit can
+ * isolate one: `state.settings` feeds both `generatedTitlesEnabled` and `terminalTheme`, and
+ * `getOpenFileIndexes` rebuilds `byWorktreeAndId` and `idsByWorktree` together. Each is therefore
+ * redundant *given the current derivation*, and a suite that only mutates the store can never fail
+ * on its deletion. Perturb the publication inputs instead: that record is what the collector is
+ * declared over, and `canReuseMobileSessionSnapshot` already distinguishes every case below, so the
+ * fingerprint being weaker than it is exactly the bug the gate must not have.
+ */
+describe('the fingerprint is never weaker than the reuse check it stands in for', () => {
+  function withPublication(base: GateSide, publication: GateSide['publication']): GateSide {
+    return { ...base, publication }
+  }
+
+  function expectDistinguished(base: GateSide, perturbed: GateSide): void {
+    expect(canReuseMobileSessionSnapshot(inputsOf(base), inputsOf(perturbed))).toBe(false)
+    expect(mobileSessionWorktreeSourceRefsEqual(refsOf(base), refsOf(perturbed))).toBe(false)
+  }
+
   it('distinguishes the generated-title flag with the terminal theme held fixed', () => {
     const { state } = makeGateState(4)
     const base = gateSideOf(state)
-    const withGeneratedTitles: GateSide = {
-      ...base,
-      publication: { ...base.publication, generatedTitlesEnabled: true }
-    }
+    const perturbed = withPublication(base, {
+      ...base.publication,
+      generatedTitlesEnabled: true
+    })
 
-    expect(base.publication.terminalTheme).toBe(withGeneratedTitles.publication.terminalTheme)
-    expect(canReuseMobileSessionSnapshot(inputsOf(base), inputsOf(withGeneratedTitles))).toBe(false)
-    expect(mobileSessionWorktreeSourceRefsEqual(refsOf(base), refsOf(withGeneratedTitles))).toBe(
-      false
+    expect(perturbed.publication.terminalTheme).toBe(base.publication.terminalTheme)
+    expectDistinguished(base, perturbed)
+  })
+
+  it('distinguishes a saved open file with the id list held fixed', () => {
+    const { state } = makeGateState(4)
+    const base = gateSideOf(state)
+    const { byWorktreeAndId, idsByWorktree } = base.publication.openFileIndexes
+    const saved = new Map(
+      [...(byWorktreeAndId.get(DIRTY_WT) ?? [])].map(([fileId, file]) => [
+        fileId,
+        { ...file, isDirty: false }
+      ])
     )
+    const perturbed = withPublication(base, {
+      ...base.publication,
+      openFileIndexes: {
+        byWorktreeAndId: new Map([...byWorktreeAndId, [DIRTY_WT, saved]]),
+        idsByWorktree
+      }
+    })
+
+    expect(saved.get(GATE_FILE)?.isDirty).toBe(false)
+    expect(perturbed.publication.openFileIndexes.idsByWorktree).toBe(idsByWorktree)
+    expectDistinguished(base, perturbed)
+  })
+
+  it('distinguishes a replaced open-file id list with the file map held fixed', () => {
+    const { state } = makeGateState(4)
+    const base = gateSideOf(state)
+    const { byWorktreeAndId, idsByWorktree } = base.publication.openFileIndexes
+    const perturbed = withPublication(base, {
+      ...base.publication,
+      openFileIndexes: {
+        byWorktreeAndId,
+        idsByWorktree: new Map([
+          ...idsByWorktree,
+          [DIRTY_WT, [...(idsByWorktree.get(DIRTY_WT) ?? [])]]
+        ])
+      }
+    })
+
+    expect(perturbed.publication.openFileIndexes.byWorktreeAndId).toBe(byWorktreeAndId)
+    expectDistinguished(base, perturbed)
   })
 })
