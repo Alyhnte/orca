@@ -25,7 +25,10 @@ import {
 } from './sync-runtime-graph/mobile-session-worktree-sources'
 import { canReuseMobileSessionSnapshot } from './sync-runtime-graph/mobile-session-capture'
 import { createTabKeyedRecordPartitioner } from './sync-runtime-graph/tab-keyed-record-partition'
-import { getEditorDraftVersionByFileId } from './sync-runtime-graph/sync-projections'
+import {
+  getBrowserTabsByWorktree,
+  getEditorDraftVersionByFileId
+} from './sync-runtime-graph/sync-projections'
 import { getMobileTerminalTheme } from './sync-runtime-graph/mobile-terminal-theme'
 import type { MobileSessionPublicationInputs } from './sync-runtime-graph/types'
 
@@ -521,6 +524,23 @@ describe('publication-wide memos the gate depends on', () => {
 
     expect(second).not.toBe(first)
     expect(second.has('repo::/gate-late')).toBe(true)
+  })
+
+  // A pre-browser partial state must not defeat the memo: a fresh `{}` per publication is a cache
+  // key that can never match, so the id set would be rebuilt on every frame.
+  it('keeps the worktree id set across a publication of a state with no browser slice', () => {
+    const { state } = makeGateState(4)
+    const browserless = patchGateState(state, { browserTabsByWorktree: undefined })
+    const seeded = collectMobileSessionWorktreeIds(
+      browserless,
+      getBrowserTabsByWorktree(browserless)
+    )
+
+    buildMobileSessionTabSnapshots(browserless, false)
+
+    expect(
+      collectMobileSessionWorktreeIds(browserless, getBrowserTabsByWorktree(browserless))
+    ).toBe(seeded)
   })
 
   it('keeps an untouched worktree bucket identical when a tab-keyed record is replaced', () => {

@@ -18,7 +18,7 @@ import {
   buildMobileSessionWorktreeInputs,
   getOpenFileIndexes
 } from './mobile-session-inputs'
-import { getEditorDraftVersionByFileId } from './sync-projections'
+import { getBrowserTabsByWorktree, getEditorDraftVersionByFileId } from './sync-projections'
 import { getMobileTerminalTheme } from './mobile-terminal-theme'
 import {
   isMobilePublishableBrowserWorkspace,
@@ -58,7 +58,8 @@ export function buildMobileSessionTabSnapshots(
   )
 ): RuntimeMobileSessionTabsSnapshot[] {
   const openFileIndexes = getOpenFileIndexes(state.openFiles)
-  const browserTabsByWorktree = state.browserTabsByWorktree ?? {}
+  // The shared empty constant, not a fresh literal: this doubles as the worktree-id memo's key.
+  const browserTabsByWorktree = getBrowserTabsByWorktree(state)
   const owners = getTerminalTabOwnershipIndex(state.tabsByWorktree)
   const publicationInputs: MobileSessionPublicationInputs = {
     browserTabsByWorktree,
