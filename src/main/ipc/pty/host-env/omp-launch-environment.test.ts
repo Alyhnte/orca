@@ -69,6 +69,26 @@ describe('OMP launch directory environment', () => {
     expect(resolveLoginShellEnvironment).not.toHaveBeenCalled()
   })
 
+  it('imports explicit WSL roots without importing ambient Windows roots', async () => {
+    vi.stubGlobal('process', { ...process, platform: 'win32' })
+    const env = { PI_CONFIG_DIR: '.host-root', XDG_DATA_HOME: 'C:/host/data', WSLENV: 'KEEP/u' }
+    await inheritOmpLaunchEnvironment(env, {
+      isWsl: true,
+      launchAgent: 'omp',
+      explicitEnv: { PI_CONFIG_DIR: '.guest-root', XDG_CACHE_HOME: '/tmp/guest-cache' }
+    })
+    expect(env.PI_CONFIG_DIR).toBe('.guest-root')
+    expect(env.WSLENV.split(':')).toEqual(['KEEP/u', 'XDG_CACHE_HOME', 'PI_CONFIG_DIR'])
+    expect(resolveLoginShellEnvironment).not.toHaveBeenCalled()
+  })
+
+  it('preserves an explicitly empty WSL config root in the daemon pane delta', async () => {
+    const env = { PI_CONFIG_DIR: '' }
+    await inheritOmpLaunchEnvironment(env, { isWsl: true, launchAgent: 'omp' })
+    expect(env).toEqual({ PI_CONFIG_DIR: '', WSLENV: 'PI_CONFIG_DIR' })
+    expect(resolveLoginShellEnvironment).not.toHaveBeenCalled()
+  })
+
   it('does not import POSIX roots into native Windows', async () => {
     vi.stubGlobal('process', { ...process, platform: 'win32' })
     await inheritOmpLaunchEnvironment({}, { launchAgent: 'omp' })

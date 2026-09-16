@@ -1,3 +1,4 @@
+import { addWslEnvKeys } from '../../../../shared/wsl-env'
 import { detectExplicitPiAgentKindFromCommand } from '../../../../shared/pi-agent-kind'
 import { resolveSetupAgentSequenceLaunchCommand } from '../../../../shared/setup-agent-sequencing'
 import { resolveLoginShellEnvironment } from '../../../startup/login-shell-environment'
@@ -19,7 +20,19 @@ export async function inheritOmpLaunchEnvironment(
     explicitEnv?: Record<string, string>
   }
 ): Promise<void> {
-  if (options.isWsl || process.platform === 'win32') {
+  if (options.isWsl) {
+    const explicitEnv = options.explicitEnv ?? env
+    const keys = OMP_DIRECTORY_ENV_KEYS.filter((key) => explicitEnv[key] !== undefined)
+    if (keys.length > 0) {
+      // WSL drops pane-provided config roots unless their names cross in WSLENV.
+      for (const key of keys) {
+        env[key] = explicitEnv[key]
+      }
+      addWslEnvKeys(env, keys)
+    }
+    return
+  }
+  if (process.platform === 'win32') {
     return
   }
   const command = resolveSetupAgentSequenceLaunchCommand(env, options.launchCommand)
