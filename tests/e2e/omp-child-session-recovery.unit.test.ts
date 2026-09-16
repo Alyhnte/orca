@@ -33,7 +33,6 @@ async function rootWithActiveChild(): Promise<ReturnType<typeof createTestStore>
       if (!event) {
         throw new Error('Expected a normalized OMP hook')
       }
-      listener.lastStatusByPaneKey.set(PANE, event)
       store
         .getState()
         .setAgentStatus(
