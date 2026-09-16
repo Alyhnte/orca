@@ -213,7 +213,13 @@ export const mutations: { name: string; apply: (state: AppState) => AppState }[]
     apply: (state) =>
       patchGateState(state, {
         nativeChatLaunchDraftByTabId: {
-          [DIRTY_TAB]: { agent: 'claude', text: 'draft two', createdAt: 2, resolved: false }
+          [DIRTY_TAB]: {
+            tabId: DIRTY_TAB,
+            agent: 'claude',
+            text: 'draft two',
+            createdAt: 2,
+            resolved: false
+          }
         }
       })
   },
@@ -234,14 +240,14 @@ export const mutations: { name: string; apply: (state: AppState) => AppState }[]
     name: 'a browser certificate failure',
     apply: (state) =>
       patchGateState(state, {
-        browserCertificateFailuresByPageId: {
-          ...state.browserCertificateFailuresByPageId,
-          [GATE_PAGE]: {
-            ...state.browserCertificateFailuresByPageId[GATE_PAGE]!,
-            challengeId: 'gate-challenge-b',
-            canProceed: false
-          }
-        }
+        browserCertificateFailuresByPageId: Object.fromEntries(
+          Object.entries(state.browserCertificateFailuresByPageId).map(([pageId, failure]) => [
+            pageId,
+            pageId === GATE_PAGE
+              ? { ...failure, challengeId: 'gate-challenge-b', canProceed: false }
+              : failure
+          ])
+        )
       })
   },
   {

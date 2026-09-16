@@ -96,7 +96,13 @@ function makeGateFixtureSlices(): Partial<AppState> {
     ],
     editorDrafts: { [GATE_FILE]: '# notes' },
     nativeChatLaunchDraftByTabId: {
-      [DIRTY_TAB]: { agent: 'claude', text: 'draft one', createdAt: 1, resolved: false }
+      [DIRTY_TAB]: {
+        tabId: DIRTY_TAB,
+        agent: 'claude',
+        text: 'draft one',
+        createdAt: 1,
+        resolved: false
+      }
     },
     browserTabsByWorktree: {
       [DIRTY_WT]: [
@@ -157,7 +163,7 @@ function makeGateFixtureSlices(): Partial<AppState> {
         }
       ]
     }
-  } as Partial<AppState>
+  } as unknown as Partial<AppState>
 }
 
 export function makeGateState(filler: number): { state: AppState } {
