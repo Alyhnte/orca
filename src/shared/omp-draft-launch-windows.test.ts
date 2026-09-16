@@ -10,7 +10,7 @@ it.skipIf(process.platform !== 'win32').each(['cmd', 'powershell'] as const)(
   async (shell) => {
     const root = await mkdtemp(join(tmpdir(), 'orca-omp-draft-'))
     try {
-      const config = join(root, 'fresh settings.yml')
+      const config = join(root, 'fresh (%ORCA_EXPANSION_PROBE%) & settings!.yml')
       const calls = join(root, 'calls')
       await writeFile(
         join(root, 'omp.cmd'),
@@ -39,7 +39,8 @@ it.skipIf(process.platform !== 'win32').each(['cmd', 'powershell'] as const)(
           ...process.env,
           ...plan.env,
           ORCA_OMP_FRESH_CONFIG: state === 'unset' ? undefined : config,
-          CAPTURE: calls
+          CAPTURE: calls,
+          ORCA_EXPANSION_PROBE: 'unexpected'
         }
         const result =
           shell === 'cmd'

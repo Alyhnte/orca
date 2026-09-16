@@ -254,8 +254,8 @@ export function buildAgentDraftLaunchPlan(args: {
     plan = {
       agent,
       launchCommand:
-        agent === 'omp' && shell === 'posix' && isFreshOmpLaunchCommand(launchCommand)
-          ? withOmpDraftCleanup(launchCommand)
+        agent === 'omp' && isFreshOmpLaunchCommand(launchCommand)
+          ? withOmpDraftCleanup(launchCommand, shell)
           : `${launchCommand}${commandSeparator(shell)}${clearVar}`,
       expectedProcess: config.expectedProcess,
       launchConfig,
