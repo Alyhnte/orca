@@ -1,3 +1,4 @@
+import { resolveLoginShellEnvironment } from '../main/startup/login-shell-environment'
 import { readSessionShellStartupEnvVar } from '../main/pty/shell-startup-env'
 import {
   PRIMARY_AGENT_DIR_ENV_BY_KIND,
@@ -68,9 +69,16 @@ export function resolvePiSourceAgentDir(
   return undefined
 }
 
-export function resolveOmpConfigDirName(
+export async function resolveOmpConfigDirName(
   env: Record<string, string>,
   shell: string | undefined
-): string | undefined {
-  return env.PI_CONFIG_DIR ?? readStartupEnv('PI_CONFIG_DIR', env, shell)
+): Promise<string | undefined> {
+  if (env.PI_CONFIG_DIR !== undefined) {
+    return env.PI_CONFIG_DIR || '.omp'
+  }
+  const profile = await resolveLoginShellEnvironment({
+    shellOverride: shell ?? env.SHELL ?? null,
+    env
+  })
+  return profile.PI_CONFIG_DIR === '' ? '.omp' : profile.PI_CONFIG_DIR
 }

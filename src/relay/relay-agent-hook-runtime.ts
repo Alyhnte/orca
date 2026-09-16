@@ -78,7 +78,9 @@ export class RelayAgentHookRuntime {
     })
   }
 
-  private buildPluginEnvironment(context: Parameters<PtyEnvAugmenter>[0]): Record<string, string> {
+  private async buildPluginEnvironment(
+    context: Parameters<PtyEnvAugmenter>[0]
+  ): Promise<Record<string, string>> {
     const env: Record<string, string> = {}
     const overlayId = context.paneKey ?? context.id
     if (this.pluginOverlay.hasOpenCodeSource()) {
@@ -118,9 +120,13 @@ export class RelayAgentHookRuntime {
         kind === 'omp'
           ? resolvePiSourceAgentDir(context.env, context.shell, 'omp')
           : context.env.ORCA_OMP_SOURCE_AGENT_DIR
+      const configDirName = await resolveOmpConfigDirName(context.env, context.shell)
+      if (configDirName !== undefined) {
+        env.PI_CONFIG_DIR = configDirName
+      }
       const result = this.pluginOverlay.materializePi(overlayId, sourceDir, 'omp', {
         materializeDefaultHome: explicitKind === 'omp',
-        configDirName: resolveOmpConfigDirName(context.env, context.shell)
+        configDirName
       })
       if (result?.statusExtensionPath) {
         env.ORCA_OMP_STATUS_EXTENSION = result.statusExtensionPath

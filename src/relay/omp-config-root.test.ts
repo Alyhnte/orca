@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { PluginOverlayManager } from './plugin-overlay'
 import { resolveOmpConfigDirName, resolvePiSourceAgentDir } from './plugin-overlay-env'
 import { __resetShellStartupEnvCache } from '../main/pty/shell-startup-env'
+import { resetLoginShellEnvironmentCacheForTests } from '../main/startup/login-shell-environment'
 
 describe('relay OMP config root', () => {
   let home: string
@@ -15,17 +16,19 @@ describe('relay OMP config root', () => {
     manager = new PluginOverlayManager({ homeDir: home })
     manager.setSources({ ompExtensionSource: 'export default function() {}' })
     __resetShellStartupEnvCache()
+    resetLoginShellEnvironmentCacheForTests()
   })
 
   afterEach(() => {
     vi.unstubAllEnvs()
     __resetShellStartupEnvCache()
+    resetLoginShellEnvironmentCacheForTests()
     rmSync(home, { recursive: true, force: true })
   })
 
   it.each(['.company-omp', '.config/omp', ''])(
     'installs into the guest config root %j',
-    (config) => {
+    async (config) => {
       const env = { HOME: home, PI_CONFIG_DIR: config }
       const result = manager.materializePi(
         'pane',
@@ -33,7 +36,7 @@ describe('relay OMP config root', () => {
         'omp',
         {
           materializeDefaultHome: true,
-          configDirName: resolveOmpConfigDirName(env, '/bin/bash')
+          configDirName: await resolveOmpConfigDirName(env, '/bin/bash')
         }
       )
       const expected = join(home, config || '.omp', 'agent')
@@ -65,20 +68,22 @@ describe('relay OMP config root', () => {
     expect(existsSync(join(home, '.company-omp'))).toBe(false)
   })
 
-  it('does not read the relay process config root when the session omits it', () => {
+  it('does not read the relay process config root when the session omits it', async () => {
     vi.stubEnv('PI_CONFIG_DIR', '.wrong-process-root')
-    expect(resolveOmpConfigDirName({ HOME: home }, '/bin/bash')).toBeUndefined()
+    expect(await resolveOmpConfigDirName({ HOME: home }, '/bin/bash')).toBeUndefined()
   })
 
   it.skipIf(process.platform === 'win32')(
     'uses the guest profile only when no pane override exists',
-    () => {
+    async () => {
       writeFileSync(join(home, '.bash_profile'), 'export PI_CONFIG_DIR=".profile-omp"\n')
-      expect(resolveOmpConfigDirName({ HOME: home }, '/bin/bash')).toBe('.profile-omp')
-      expect(resolveOmpConfigDirName({ HOME: home, PI_CONFIG_DIR: '' }, '/bin/bash')).toBe('')
-      expect(resolveOmpConfigDirName({ HOME: home, PI_CONFIG_DIR: '.pane-omp' }, '/bin/bash')).toBe(
-        '.pane-omp'
+      expect(await resolveOmpConfigDirName({ HOME: home }, '/bin/bash')).toBe('.profile-omp')
+      expect(await resolveOmpConfigDirName({ HOME: home, PI_CONFIG_DIR: '' }, '/bin/bash')).toBe(
+        '.omp'
       )
+      expect(
+        await resolveOmpConfigDirName({ HOME: home, PI_CONFIG_DIR: '.pane-omp' }, '/bin/bash')
+      ).toBe('.pane-omp')
     }
   )
 })
