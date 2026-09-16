@@ -49,11 +49,17 @@ describe('OMP launch directory environment', () => {
     expect(overridden.XDG_DATA_HOME).toBe('/pane/data')
   })
 
-  it('preserves explicit pane roots and intentionally empty values', async () => {
+  it('preserves explicit pane roots and intentionally empty XDG values', async () => {
     const env = { XDG_DATA_HOME: '/pane/data', XDG_STATE_HOME: '' }
     await inheritOmpLaunchEnvironment(env, { launchAgent: 'omp' })
     expect(env.XDG_DATA_HOME).toBe('/pane/data')
     expect(env.XDG_STATE_HOME).toBe('')
+  })
+
+  it('keeps an explicitly empty OMP root at the default through profile fallback', async () => {
+    const env = { PI_CONFIG_DIR: '' }
+    await inheritOmpLaunchEnvironment(env, { launchAgent: 'omp' })
+    expect(env.PI_CONFIG_DIR).toBe('.omp')
   })
 
   it.each([
@@ -82,10 +88,10 @@ describe('OMP launch directory environment', () => {
     expect(resolveLoginShellEnvironment).not.toHaveBeenCalled()
   })
 
-  it('preserves an explicitly empty WSL config root in the daemon pane delta', async () => {
+  it('canonicalizes an explicitly empty WSL config root to the OMP default', async () => {
     const env = { PI_CONFIG_DIR: '' }
     await inheritOmpLaunchEnvironment(env, { isWsl: true, launchAgent: 'omp' })
-    expect(env).toEqual({ PI_CONFIG_DIR: '', WSLENV: 'PI_CONFIG_DIR' })
+    expect(env).toEqual({ PI_CONFIG_DIR: '.omp', WSLENV: 'PI_CONFIG_DIR' })
     expect(resolveLoginShellEnvironment).not.toHaveBeenCalled()
   })
 

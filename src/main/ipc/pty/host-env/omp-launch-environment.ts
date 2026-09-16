@@ -26,7 +26,7 @@ export async function inheritOmpLaunchEnvironment(
     if (keys.length > 0) {
       // WSL drops pane-provided config roots unless their names cross in WSLENV.
       for (const key of keys) {
-        env[key] = explicitEnv[key]
+        env[key] = key === 'PI_CONFIG_DIR' && explicitEnv[key] === '' ? '.omp' : explicitEnv[key]
       }
       addWslEnvKeys(env, keys)
     }
@@ -42,10 +42,11 @@ export async function inheritOmpLaunchEnvironment(
   }
   const shellEnv = await resolveLoginShellEnvironment()
   for (const key of OMP_DIRECTORY_ENV_KEYS) {
-    // Explicit pane values, including empty values, take precedence over the login shell.
+    // Explicit pane values take precedence over the login shell.
     const value = (options.explicitEnv ?? env)[key] ?? shellEnv[key] ?? process.env[key]
     if (value !== undefined) {
-      env[key] = value
+      // OMP maps an empty config name to .omp; spell it out before profile defaults run.
+      env[key] = key === 'PI_CONFIG_DIR' && value === '' ? '.omp' : value
     }
   }
 }
