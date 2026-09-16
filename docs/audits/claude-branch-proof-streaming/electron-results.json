@@ -1,0 +1,1740 @@
+{
+  "status": "Actual production source; baseline reconstructed by reverse fix.patch; open-ended experiment retained as a control",
+  "measurement": "Forced GC at actual JSON.parse boundaries; sampled transient live bytes, not RSS, natural peak, or a retained-leak proof.",
+  "sourceHashes": {
+    "src/shared/node-readable-text.ts": "3e077b04805e343f8ac1e56843a512bfdb591fbb613f9e25d87ef7c2f6f64460",
+    "src/main/native-chat/transcript-fallback-id.ts": "1fec8edecb738e64fb218ee9cdf530a20c51b804c35dcb7deb98f47c8e5499ea",
+    "src/main/native-chat/transcript-stream-lines.ts": "5f3a0a1e5b3d003076452fa22234af00502808ed6463672c0e58aa49ae5b6aa1",
+    "src/main/claude/claude-transcript-branch-proof.ts": {
+      "baseline": "3224594befe1edae514724caf5eff6a4cda85212e2985be4920b6164b088b82c",
+      "candidate": "c2e0403d4a98eb5963da23988ad0fde24fc91d22b9e064e342fcfccb875e446f",
+      "windowCandidate": "8688711f711adf434c596dda729018e43cfa46ba746590187388e9f5e864648f"
+    },
+    "src/main/runtime/orca-runtime-stop-structured-session-process.ts": "11b71f61bdad9cde89ac174a22f91937f2ba138e34bb58a86edeb568252a64b9"
+  },
+  "bundleHashes": {
+    "baseline": "c7e5c410a974a3e95a371a1e7fc6e55356163850855a574d0c20fcef8dd93664",
+    "candidate": "8808e92487f7520b389d0c8889ebab4fddd4bcbcde017b656937eddc9d6c9179",
+    "windowCandidate": "5541ba91aa82818da0d49d6eeabdde98cbfc7017ecf6e3a0ba92a8c3920a14ef"
+  },
+  "parity": [
+    {
+      "name": "initial",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "same",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "same"
+        }
+      }
+    },
+    {
+      "name": "descendant",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "descendant"
+        }
+      }
+    },
+    {
+      "name": "valid-unterminated-tail",
+      "sourceBytes": 318,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "blank-lines-crlf",
+      "sourceBytes": 331,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "torn-tail",
+      "sourceBytes": 327,
+      "outcome": {
+        "status": "rejected",
+        "name": "ClaudeTranscriptTailIncompleteError",
+        "message": "Claude transcript branch proof failed: malformed JSONL"
+      }
+    },
+    {
+      "name": "terminated-malformed-tail",
+      "sourceBytes": 328,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: malformed JSONL"
+      }
+    },
+    {
+      "name": "malformed-middle",
+      "sourceBytes": 328,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: malformed JSONL"
+      }
+    },
+    {
+      "name": "malformed-before-blank-tail",
+      "sourceBytes": 329,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: malformed JSONL"
+      }
+    },
+    {
+      "name": "non-object-null",
+      "sourceBytes": 324,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: non-object record"
+      }
+    },
+    {
+      "name": "non-object-array",
+      "sourceBytes": 322,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: non-object record"
+      }
+    },
+    {
+      "name": "missing-marker",
+      "sourceBytes": 246,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: missing last-prompt marker"
+      }
+    },
+    {
+      "name": "marker-before-leaf",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker precedes its leaf record"
+      }
+    },
+    {
+      "name": "wrong-marker-session",
+      "sourceBytes": 308,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+      }
+    },
+    {
+      "name": "empty-marker-leaf",
+      "sourceBytes": 316,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+      }
+    },
+    {
+      "name": "missing-marker-leaf",
+      "sourceBytes": 322,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker leaf is missing from the session graph"
+      }
+    },
+    {
+      "name": "last-marker-wins",
+      "sourceBytes": 393,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "descendant"
+        }
+      }
+    },
+    {
+      "name": "last-marker-sibling",
+      "sourceBytes": 482,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: latest marker is on a sibling branch"
+      }
+    },
+    {
+      "name": "duplicate-identical-after-marker",
+      "sourceBytes": 401,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "duplicate-conflicting-parent",
+      "sourceBytes": 401,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: record old has conflicting ancestry"
+      }
+    },
+    {
+      "name": "duplicate-conflicting-session",
+      "sourceBytes": 390,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: record old has conflicting ancestry"
+      }
+    },
+    {
+      "name": "duplicate-conflicting-sidechain",
+      "sourceBytes": 420,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: record old has conflicting ancestry"
+      }
+    },
+    {
+      "name": "append-order-on-proof-path",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: parent row follows descendant"
+      }
+    },
+    {
+      "name": "append-order-outside-proof-path",
+      "sourceBytes": 527,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: parent row follows descendant"
+      }
+    },
+    {
+      "name": "missing-old-ancestor",
+      "sourceBytes": 238,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: missing ancestor root"
+      }
+    },
+    {
+      "name": "cycle",
+      "sourceBytes": 320,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: cycle in parentUuid ancestry"
+      }
+    },
+    {
+      "name": "missing-previous-cursor",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "rejected",
+        "name": "ClaudeTranscriptPreviousCursorMissingError",
+        "message": "Claude transcript branch proof failed: previous cursor is missing from the session graph"
+      }
+    },
+    {
+      "name": "previous-foreign-session",
+      "sourceBytes": 308,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: previous cursor is not on the main transcript"
+      }
+    },
+    {
+      "name": "disallowed-leaf-sidechain",
+      "sourceBytes": 338,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker leaf is missing from the session graph"
+      }
+    },
+    {
+      "name": "disallowed-old-ancestor-sidechain",
+      "sourceBytes": 338,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: ancestor root is not on the main transcript"
+      }
+    },
+    {
+      "name": "disallowed-leaf-parent-tool",
+      "sourceBytes": 347,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker leaf is missing from the session graph"
+      }
+    },
+    {
+      "name": "disallowed-old-ancestor-parent-tool",
+      "sourceBytes": 347,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: ancestor root is not on the main transcript"
+      }
+    },
+    {
+      "name": "disallowed-leaf-result",
+      "sourceBytes": 321,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker leaf is missing from the session graph"
+      }
+    },
+    {
+      "name": "disallowed-old-ancestor-result",
+      "sourceBytes": 321,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: ancestor root is not on the main transcript"
+      }
+    },
+    {
+      "name": "disallowed-leaf-stream",
+      "sourceBytes": 327,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker leaf is missing from the session graph"
+      }
+    },
+    {
+      "name": "disallowed-old-ancestor-stream",
+      "sourceBytes": 327,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: ancestor root is not on the main transcript"
+      }
+    },
+    {
+      "name": "disallowed-leaf-init",
+      "sourceBytes": 338,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: marker leaf is missing from the session graph"
+      }
+    },
+    {
+      "name": "disallowed-old-ancestor-init",
+      "sourceBytes": 338,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: ancestor root is not on the main transcript"
+      }
+    },
+    {
+      "name": "rewind",
+      "sourceBytes": 320,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "kept",
+          "relation": "intentional-rewind"
+        }
+      }
+    },
+    {
+      "name": "rewind-without-intent",
+      "sourceBytes": 320,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: latest marker is on a sibling branch"
+      }
+    },
+    {
+      "name": "rewind-wrong-target",
+      "sourceBytes": 320,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: rewind target does not match the observed leaf"
+      }
+    },
+    {
+      "name": "rewind-no-previous",
+      "sourceBytes": 320,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: rewind target does not match the observed leaf"
+      }
+    },
+    {
+      "name": "rewind-to-same",
+      "sourceBytes": 319,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: rewind target is not an ancestor of the previous cursor"
+      }
+    },
+    {
+      "name": "rewind-to-sibling",
+      "sourceBytes": 409,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: rewind target is not an ancestor of the previous cursor"
+      }
+    },
+    {
+      "name": "old-ancestor-before-large-body",
+      "sourceBytes": 3146060,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "descendant"
+        }
+      }
+    },
+    {
+      "name": "utf8-crosses-64k-file-chunk",
+      "sourceBytes": 65788,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "unicode-identities",
+      "sourceBytes": 246,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "終é",
+          "relation": "descendant"
+        }
+      }
+    },
+    {
+      "name": "invalid-utf8-replacement-in-message",
+      "sourceBytes": 337,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "old",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "invalid-utf8-in-torn-tail",
+      "sourceBytes": 333,
+      "outcome": {
+        "status": "rejected",
+        "name": "ClaudeTranscriptTailIncompleteError",
+        "message": "Claude transcript branch proof failed: malformed JSONL"
+      }
+    },
+    {
+      "name": "ancestry-depth-10000",
+      "sourceBytes": 947852,
+      "outcome": {
+        "status": "fulfilled",
+        "value": {
+          "leafUuid": "depth-9999",
+          "relation": "initial"
+        }
+      }
+    },
+    {
+      "name": "ancestry-depth-10001",
+      "sourceBytes": 947949,
+      "outcome": {
+        "status": "rejected",
+        "name": "Error",
+        "message": "Claude transcript branch proof failed: ancestry exceeds the bounded proof limit"
+      }
+    }
+  ],
+  "missingFile": "All three readers reject with ENOENT",
+  "growth": {
+    "node": "v24.21.0",
+    "method": "Append after native stat captures size; open-ended stream has no stat, so append before its first native read. Real files and actual proof methods.",
+    "reports": [
+      {
+        "name": "small-regular-file",
+        "initialBytes": 155,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "exact-512k-regular-file",
+        "initialBytes": 524288,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "nonaligned-large-regular-file",
+        "initialBytes": 524388,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "initially-empty-file",
+        "initialBytes": 0,
+        "appendedBytes": 155,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "new-malformed-tail",
+        "initialBytes": 155,
+        "appendedBytes": 14,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "parse-error-closes-reader",
+        "initialBytes": 166,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": false,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "empty-file-closes-reader",
+        "initialBytes": 0,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "read-error-closes-reader",
+        "initialBytes": 155,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Synthetic read failure after actual open",
+              "code": "EIO"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Synthetic read failure after actual open",
+              "code": "EIO"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Synthetic read failure after actual open",
+              "code": "EIO"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "stat-error-closes-reader",
+        "initialBytes": 155,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Synthetic stat failure after actual open",
+              "code": "EIO"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Synthetic stat failure after actual open",
+              "code": "EIO"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "restat-failure-keeps-missing-marker",
+        "initialBytes": 81,
+        "appendedBytes": 74,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "replacement-cannot-prove-original-growth",
+        "initialBytes": 81,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "shrink-cannot-prove-growth",
+        "initialBytes": 83,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "growth-preserves-conflict",
+        "initialBytes": 239,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: record root has conflicting ancestry"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: record root has conflicting ancestry"
+            },
+            "descriptorClosedAtReturn": false,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: record root has conflicting ancestry"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "growth-preserves-wrong-session",
+        "initialBytes": 144,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+            },
+            "descriptorClosedAtReturn": false,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "growth-preserves-append-order",
+        "initialBytes": 240,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: parent row follows descendant"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: parent row follows descendant"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: parent row follows descendant"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "path-replacement-keeps-opened-file",
+        "initialBytes": 155,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "path-deletion-keeps-opened-file",
+        "initialBytes": 155,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "truncation-leaves-complete-prefix",
+        "initialBytes": 314,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "truncation-leaves-torn-tail",
+        "initialBytes": 1024,
+        "appendedBytes": 0,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "prefix-descendant-under-growth",
+        "initialBytes": 240,
+        "appendedBytes": 170,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "descendant"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "grandchild",
+                "relation": "descendant"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "descendant"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "prefix-rewind-under-growth",
+        "initialBytes": 320,
+        "appendedBytes": 73,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "kept",
+                "relation": "intentional-rewind"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: rewind target does not match the observed leaf"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "kept",
+                "relation": "intentional-rewind"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "missing-previous-not-repaired-by-growth",
+        "initialBytes": 155,
+        "appendedBytes": 159,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptPreviousCursorMissingError",
+              "message": "Claude transcript branch proof failed: previous cursor is missing from the session graph"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child",
+                "relation": "same"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "missing-marker-not-repaired-by-growth",
+        "initialBytes": 81,
+        "appendedBytes": 74,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      },
+      {
+        "name": "torn-prefix-not-repaired-by-growth",
+        "initialBytes": 153,
+        "appendedBytes": 2,
+        "phases": {
+          "baseline": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "candidate": {
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root",
+                "relation": "initial"
+              }
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          },
+          "windowCandidate": {
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptTailIncompleteError",
+              "message": "Claude transcript branch proof failed: malformed JSONL"
+            },
+            "descriptorClosedAtReturn": true,
+            "descriptorClosed": true
+          }
+        }
+      }
+    ]
+  },
+  "allocations": [
+    {
+      "count": 16,
+      "payloadBytes": 524288,
+      "sourceBytes": 8391962,
+      "baseline": {
+        "records": 17,
+        "peakHeapIncrease": 9446032,
+        "peakExternalIncrease": 40,
+        "retainedHeapIncrease": 1096,
+        "retainedExternalIncrease": 40
+      },
+      "candidate": {
+        "records": 17,
+        "peakHeapIncrease": 1124812,
+        "peakExternalIncrease": 134433,
+        "retainedHeapIncrease": 8532,
+        "retainedExternalIncrease": 0
+      },
+      "windowCandidate": {
+        "records": 17,
+        "peakHeapIncrease": 1136468,
+        "peakExternalIncrease": 131079,
+        "retainedHeapIncrease": 11688,
+        "retainedExternalIncrease": 0
+      }
+    },
+    {
+      "count": 64,
+      "payloadBytes": 524288,
+      "sourceBytes": 33567578,
+      "baseline": {
+        "records": 65,
+        "peakHeapIncrease": 34630452,
+        "peakExternalIncrease": 0,
+        "retainedHeapIncrease": 3780,
+        "retainedExternalIncrease": 0
+      },
+      "candidate": {
+        "records": 65,
+        "peakHeapIncrease": 1168976,
+        "peakExternalIncrease": 144225,
+        "retainedHeapIncrease": 34808,
+        "retainedExternalIncrease": 0
+      },
+      "windowCandidate": {
+        "records": 65,
+        "peakHeapIncrease": 1109960,
+        "peakExternalIncrease": 131079,
+        "retainedHeapIncrease": -28024,
+        "retainedExternalIncrease": 0
+      }
+    },
+    {
+      "count": 64,
+      "payloadBytes": 0,
+      "sourceBytes": 13146,
+      "baseline": {
+        "records": 65,
+        "peakHeapIncrease": 27668,
+        "peakExternalIncrease": 0,
+        "retainedHeapIncrease": 544,
+        "retainedExternalIncrease": 0
+      },
+      "candidate": {
+        "records": 65,
+        "peakHeapIncrease": 31252,
+        "peakExternalIncrease": 144225,
+        "retainedHeapIncrease": 820,
+        "retainedExternalIncrease": 0
+      },
+      "windowCandidate": {
+        "records": 65,
+        "peakHeapIncrease": 35004,
+        "peakExternalIncrease": 13153,
+        "retainedHeapIncrease": 640,
+        "retainedExternalIncrease": 0
+      }
+    },
+    {
+      "count": 1,
+      "payloadBytes": 8388608,
+      "sourceBytes": 8388902,
+      "baseline": {
+        "records": 2,
+        "peakHeapIncrease": 16779188,
+        "peakExternalIncrease": 0,
+        "retainedHeapIncrease": 856,
+        "retainedExternalIncrease": 0
+      },
+      "candidate": {
+        "records": 2,
+        "peakHeapIncrease": 16780444,
+        "peakExternalIncrease": 131373,
+        "retainedHeapIncrease": 280,
+        "retainedExternalIncrease": 0
+      },
+      "windowCandidate": {
+        "records": 2,
+        "peakHeapIncrease": 16784760,
+        "peakExternalIncrease": 301,
+        "retainedHeapIncrease": 640,
+        "retainedExternalIncrease": 0
+      }
+    }
+  ],
+  "duration": {
+    "node": "v24.21.0",
+    "records": 8193,
+    "sourceBytes": 2793562,
+    "method": "One stable real file, two warm rounds and five measured rounds, alternating phase order; no GC forced during timing. Whole proof, not an isolated parser benchmark.",
+    "durationsMs": {
+      "baseline": [6.07, 5.08, 4.86, 5.1, 5.09],
+      "windowCandidate": [6.95, 7.13, 6.7, 6.84, 6.37]
+    },
+    "medianMs": {
+      "baseline": 5.09,
+      "windowCandidate": 6.84
+    }
+  },
+  "verifier": {
+    "method": "Exact current waitForStructuredClaudeTuiProof method body; live-owner/fresh-hook/path-resolution ports controlled, actual file reader and actual100ms retry timer.",
+    "reports": [
+      {
+        "name": "growing-empty-prefix-retries",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root"
+              }
+            }
+          },
+          "windowCandidate": {
+            "attempts": 2,
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root"
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "growing-missing-marker-retries",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 2,
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root"
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "growing-missing-previous-retries",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptPreviousCursorMissingError",
+              "message": "Claude transcript branch proof failed: previous cursor is missing from the session graph"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 2,
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "child"
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "static-empty-fatal",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            }
+          }
+        }
+      },
+      {
+        "name": "static-missing-marker-fatal",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: missing last-prompt marker"
+            }
+          }
+        }
+      },
+      {
+        "name": "static-missing-previous-fatal",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptPreviousCursorMissingError",
+              "message": "Claude transcript branch proof failed: previous cursor is missing from the session graph"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "ClaudeTranscriptPreviousCursorMissingError",
+              "message": "Claude transcript branch proof failed: previous cursor is missing from the session graph"
+            }
+          }
+        }
+      },
+      {
+        "name": "growing-conflict-fatal",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: record root has conflicting ancestry"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: record root has conflicting ancestry"
+            }
+          }
+        }
+      },
+      {
+        "name": "growing-session-mismatch-fatal",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: invalid last-prompt marker"
+            }
+          }
+        }
+      },
+      {
+        "name": "growing-append-order-fatal",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: parent row follows descendant"
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "rejected",
+              "name": "Error",
+              "message": "Claude transcript branch proof failed: parent row follows descendant"
+            }
+          }
+        }
+      },
+      {
+        "name": "successful-prefix-stays-prefix",
+        "phases": {
+          "baseline": {
+            "attempts": 1,
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root"
+              }
+            }
+          },
+          "windowCandidate": {
+            "attempts": 1,
+            "outcome": {
+              "status": "fulfilled",
+              "value": {
+                "leafUuid": "root"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

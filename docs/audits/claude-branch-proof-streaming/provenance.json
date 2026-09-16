@@ -1,0 +1,275 @@
+{
+  "reportedTag": "v1.4.198",
+  "reportedTagCommit": "e0826956fcfc532f5a1e55b5e081f2e57e553c43",
+  "currentCommitAtCapture": "2c49d285115af945b7be13cdc6da4803671f0eeb",
+  "limits": "Source reachability/version evidence only; no user transcript or incident trigger evidence. Rewind branch support is newer than this tag.",
+  "files": [
+    {
+      "path": "src/main/claude/claude-transcript-branch-proof.ts",
+      "currentSha256": "3224594befe1edae514724caf5eff6a4cda85212e2985be4920b6164b088b82c",
+      "reportedTagSha256": "79409696fc5bf385727d8710a5383acfe3ff350df5bdda93a79f7e97dcc54d1d",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 232,
+          "text": "contents: await readFile(input.transcriptPath, 'utf8'),"
+        },
+        {
+          "line": 240,
+          "text": "export async function readClaudeTranscriptLeafWithReproof(input: {"
+        },
+        {
+          "line": 241,
+          "text": "readTranscriptLeaf: (input: {"
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 215,
+          "text": "contents: await readFile(input.transcriptPath, 'utf8'),"
+        },
+        {
+          "line": 222,
+          "text": "export async function readClaudeTranscriptLeafWithReproof(input: {"
+        },
+        {
+          "line": 223,
+          "text": "readTranscriptLeaf: (input: {"
+        }
+      ]
+    },
+    {
+      "path": "src/main/runtime/structured-claude-runtime-adapter.ts",
+      "currentSha256": "10497152ac595562f19c7db67180ae93fdb0517946b4997977e677397ae957ec",
+      "reportedTagSha256": "4b347b8222ca18eb4bd728a57c307226ba2a279e14fd5ebd4fbfac877aacc8f0",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 41,
+          "text": "export function createStructuredClaudeRuntimeAdapter("
+        },
+        {
+          "line": 74,
+          "text": "readTranscriptLeaf: async ({"
+        },
+        {
+          "line": 94,
+          "text": "? await readClaudeTranscriptLeafUuid(transcriptPath, providerSessionId, previousLeafUuid)"
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 39,
+          "text": "export function createStructuredClaudeRuntimeAdapter("
+        },
+        {
+          "line": 72,
+          "text": "readTranscriptLeaf: async ({ providerSessionId, previousLeafUuid, claudeConfigDir }) => {"
+        },
+        {
+          "line": 77,
+          "text": "? await readClaudeTranscriptLeafUuid(transcriptPath, providerSessionId, previousLeafUuid)"
+        }
+      ]
+    },
+    {
+      "path": "src/main/native-chat/session-file-resolver.ts",
+      "currentSha256": "bf332461d0401c44ab5995822f2a9be097fd24b0b92996afecb04de304a70053",
+      "reportedTagSha256": "573abd5403cc58183e0b266faae09cecaeb8583855a44f0122f03f0d543efde4",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 168,
+          "text": "export async function readClaudeTranscriptLeafUuid("
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 162,
+          "text": "export async function readClaudeTranscriptLeafUuid("
+        }
+      ]
+    },
+    {
+      "path": "src/main/claude/claude-structured-session-close.ts",
+      "currentSha256": "40080bf4ae7b52573f797639863399edece42e254afda642dac07791996d8653",
+      "reportedTagSha256": "dc6c831eb322309b8a7ba89043546c71b2edb1c00eda1521e716498201356938",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 100,
+          "text": "if ((await session.connection.close()) !== true) {"
+        },
+        {
+          "line": 116,
+          "text": "? await readClaudeTranscriptLeafWithReproof({"
+        },
+        {
+          "line": 117,
+          "text": "readTranscriptLeaf: input.readTranscriptLeaf,"
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 77,
+          "text": "if ((await session.connection.close()) !== true) {"
+        },
+        {
+          "line": 85,
+          "text": "? await readClaudeTranscriptLeafWithReproof({"
+        },
+        {
+          "line": 86,
+          "text": "readTranscriptLeaf: input.readTranscriptLeaf,"
+        }
+      ]
+    },
+    {
+      "path": "src/main/claude/claude-structured-session-adapter.ts",
+      "currentSha256": "4a2fc01bab206adf2de7dd63ee5e29e9732dcadbf9530146f81bd05a49881d19",
+      "reportedTagSha256": "87a40dea24a0d742164c9ab2c28f14a05d5a44bf6e511e0b72a280dc083d93d0",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 97,
+          "text": "const closePromise = session.connection.close().catch(() => false)"
+        },
+        {
+          "line": 145,
+          "text": "await this.persistSessionHandle(sessionId, exit.session).catch(() => undefined)"
+        },
+        {
+          "line": 183,
+          "text": "? await readClaudeTranscriptLeafWithReproof({"
+        },
+        {
+          "line": 184,
+          "text": "readTranscriptLeaf: this.deps.readTranscriptLeaf,"
+        },
+        {
+          "line": 314,
+          "text": "...(this.deps.readTranscriptLeaf ? { readTranscriptLeaf: this.deps.readTranscriptLeaf } : {}),"
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 92,
+          "text": "const closePromise = session.connection.close().catch(() => false)"
+        },
+        {
+          "line": 140,
+          "text": "await this.persistSessionHandle(sessionId, exit.session).catch(() => undefined)"
+        },
+        {
+          "line": 166,
+          "text": "? await readClaudeTranscriptLeafWithReproof({"
+        },
+        {
+          "line": 167,
+          "text": "readTranscriptLeaf: this.deps.readTranscriptLeaf,"
+        },
+        {
+          "line": 298,
+          "text": "...(this.deps.readTranscriptLeaf ? { readTranscriptLeaf: this.deps.readTranscriptLeaf } : {}),"
+        }
+      ]
+    },
+    {
+      "path": "src/main/runtime/orca-runtime-stop-structured-session-process.ts",
+      "currentSha256": "11b71f61bdad9cde89ac174a22f91937f2ba138e34bb58a86edeb568252a64b9",
+      "reportedTagSha256": "11b71f61bdad9cde89ac174a22f91937f2ba138e34bb58a86edeb568252a64b9",
+      "identicalToTag": true,
+      "currentCallSites": [
+        {
+          "line": 42,
+          "text": "const deadline = Date.now() + 15_000"
+        },
+        {
+          "line": 48,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        },
+        {
+          "line": 66,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        },
+        {
+          "line": 150,
+          "text": "const deadline = Date.now() + 15_000"
+        },
+        {
+          "line": 172,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        },
+        {
+          "line": 184,
+          "text": "const leafUuid = await readClaudeTranscriptLeafUuid("
+        },
+        {
+          "line": 197,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 42,
+          "text": "const deadline = Date.now() + 15_000"
+        },
+        {
+          "line": 48,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        },
+        {
+          "line": 66,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        },
+        {
+          "line": 150,
+          "text": "const deadline = Date.now() + 15_000"
+        },
+        {
+          "line": 172,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        },
+        {
+          "line": 184,
+          "text": "const leafUuid = await readClaudeTranscriptLeafUuid("
+        },
+        {
+          "line": 197,
+          "text": "await new Promise((resolve) => setTimeout(resolve, 100))"
+        }
+      ]
+    },
+    {
+      "path": "src/main/runtime/structured-agent-session-runtime.ts",
+      "currentSha256": "de0fbb7968e922e21c4d374c3b0315fcb8c7099c9ec2c9aab163e090965e8c0b",
+      "reportedTagSha256": "65f43aaa10363e54159cac9e84e62e89be122c4372c2f41136b053b81a252bae",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 287,
+          "text": "const claude = createStructuredClaudeRuntimeAdapter({"
+        }
+      ],
+      "reportedTagCallSites": [
+        {
+          "line": 238,
+          "text": "const claude = createStructuredClaudeRuntimeAdapter({"
+        }
+      ]
+    },
+    {
+      "path": "src/main/native-chat/transcript-stream-lines.ts",
+      "currentSha256": "5f3a0a1e5b3d003076452fa22234af00502808ed6463672c0e58aa49ae5b6aa1",
+      "reportedTagSha256": "4f3ed634f81521f05e39cc9c9a4e96450e891440372ddb34854d1c295af1f1bc",
+      "identicalToTag": false,
+      "currentCallSites": [
+        {
+          "line": 53,
+          "text": "export async function* splitTranscriptStreamLines("
+        }
+      ],
+      "reportedTagCallSites": []
+    }
+  ]
+}
