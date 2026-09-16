@@ -9,7 +9,11 @@ import {
 } from '../shared/agent-hook-relay'
 import { publishAgentHookEnvelope } from './agent-hook-envelope-publication'
 import { assertPluginSourceUnderByteCap } from './plugin-source-limit'
-import { resolveOpenCodeSourceConfigDir, resolvePiSourceAgentDir } from './plugin-overlay-env'
+import {
+  resolveOpenCodeSourceConfigDir,
+  resolvePiSourceAgentDir,
+  resolveOmpConfigDirName
+} from './plugin-overlay-env'
 import {
   detectExplicitPiAgentKindFromCommand,
   isPiCompatibleAgentType
@@ -115,7 +119,8 @@ export class RelayAgentHookRuntime {
           ? resolvePiSourceAgentDir(context.env, context.shell, 'omp')
           : context.env.ORCA_OMP_SOURCE_AGENT_DIR
       const result = this.pluginOverlay.materializePi(overlayId, sourceDir, 'omp', {
-        materializeDefaultHome: explicitKind === 'omp'
+        materializeDefaultHome: explicitKind === 'omp',
+        configDirName: resolveOmpConfigDirName(context.env, context.shell)
       })
       if (result?.statusExtensionPath) {
         env.ORCA_OMP_STATUS_EXTENSION = result.statusExtensionPath

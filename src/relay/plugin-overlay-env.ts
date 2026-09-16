@@ -67,3 +67,10 @@ export function resolvePiSourceAgentDir(
   }
   return undefined
 }
+
+export function resolveOmpConfigDirName(
+  env: Record<string, string>,
+  shell: string | undefined
+): string | undefined {
+  return env.PI_CONFIG_DIR ?? readStartupEnv('PI_CONFIG_DIR', env, shell)
+}
