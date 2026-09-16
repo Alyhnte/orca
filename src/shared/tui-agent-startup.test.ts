@@ -648,10 +648,7 @@ describe('tui agent startup plans', () => {
     expect(plan).not.toBeNull()
     expect(plan?.env).toEqual({ ORCA_OMP_PREFILL: 'fix the omp regression' })
     expect(plan?.expectedProcess).toBe('omp')
-    expect(plan?.launchCommand).toContain(
-      `omp --config "$ORCA_OMP_FRESH_CONFIG"; __orca_launch_status=$?;`
-    )
-    expect(plan?.launchCommand).toContain('exit $__orca_launch_status')
+    expect(plan?.launchConfig.agentCommand).toBe('omp')
   })
 
   it('returns null for oversized Windows flag drafts so callers paste after ready', () => {

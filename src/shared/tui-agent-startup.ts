@@ -1,4 +1,5 @@
-import { withFreshOmpLaunch } from './omp-fresh-launch'
+import { withFreshOmpLaunch, isFreshOmpLaunchCommand } from './omp-fresh-launch'
+import { withOmpDraftCleanup } from './omp-draft-launch'
 import { isShellProcess } from './agent-detection'
 import type { SleepingAgentLaunchConfig } from './agent-session-resume'
 import {
@@ -252,7 +253,10 @@ export function buildAgentDraftLaunchPlan(args: {
     const clearVar = clearEnvCommand(config.draftPromptEnvVar, shell)
     plan = {
       agent,
-      launchCommand: agent === 'omp' && shell !== 'powershell' && shell !== 'cmd' ? `( ${launchCommand}; __orca_launch_status=$?; ${clearVar}; exit $__orca_launch_status )` : `${launchCommand}${commandSeparator(shell)}${clearVar}`,
+      launchCommand:
+        agent === 'omp' && shell === 'posix' && isFreshOmpLaunchCommand(launchCommand)
+          ? withOmpDraftCleanup(launchCommand)
+          : `${launchCommand}${commandSeparator(shell)}${clearVar}`,
       expectedProcess: config.expectedProcess,
       launchConfig,
       ...appliedSessionOptionProps(baseCommand.appliedSessionOptions),
