@@ -12,12 +12,12 @@ vi.mock('../../src/main/startup/hydrate-shell-path', () => ({
   resolveProfileLoadingShell: () => fixture.shell,
   resolveProfileLoadingFallbackShell: () => null
 }))
-const shells = (process.platform === 'win32' ? [] : ['bash', 'zsh', 'fish']).flatMap((name) => {
+const shells = ['bash', 'zsh', 'fish'].map((name) => {
   const path = (process.env.PATH ?? '')
     .split(delimiter)
     .map((dir) => join(dir, name))
     .find(existsSync)
-  return path ? [{ name, path }] : []
+  return { name, path }
 })
 afterEach(() => {
   vi.unstubAllEnvs()
@@ -49,25 +49,30 @@ function prepare(shell) {
 }
 for (const shell of shells) {
   for (const config of [undefined, '.pane-omp', '']) {
-    it(`${shell.name}: local installer agrees with the launched shell, pane=${JSON.stringify(config)}`, async () => {
-      prepare(shell)
-      const env = config === undefined ? {} : { PI_CONFIG_DIR: config }
-      await inheritOmpLaunchEnvironment(env, { launchAgent: 'omp', explicitEnv: { ...env } })
-      const service = new PiTitlebarExtensionService()
-      const managed = service.buildPtyEnv('root-proof', undefined, 'omp', {
-        configDirName: env.PI_CONFIG_DIR
-      })
-      const result = await runProcess({
-        program: shell.path,
-        args: ['-ilc', 'printf "ROOT=%s\\n" "$PI_CONFIG_DIR"'],
-        env: { ...process.env, ...env }
-      })
-      expect(result.code).toBe(0)
-      const actual = result.stdout.match(/ROOT=([^\r\n]*)/)?.[1]
-      if (config === '') {
-        expect(actual).toBe('.omp')
+    it.skipIf(process.platform === 'win32' || !shell.path)(
+      `${shell.name}: local installer agrees with the launched shell, pane=${JSON.stringify(config)}`,
+      async () => {
+        prepare(shell)
+        const env = config === undefined ? {} : { PI_CONFIG_DIR: config }
+        await inheritOmpLaunchEnvironment(env, { launchAgent: 'omp', explicitEnv: { ...env } })
+        const service = new PiTitlebarExtensionService()
+        const managed = service.buildPtyEnv('root-proof', undefined, 'omp', {
+          configDirName: env.PI_CONFIG_DIR
+        })
+        const result = await runProcess({
+          program: shell.path,
+          args: ['-ilc', 'printf "ROOT=%s\\n" "$PI_CONFIG_DIR"'],
+          env: { ...process.env, ...env }
+        })
+        expect(result.code).toBe(0)
+        const actual = result.stdout.match(/ROOT=([^\r\n]*)/)?.[1]
+        if (config === '') {
+          expect(actual).toBe('.omp')
+        }
+        expect(managed.ORCA_OMP_SOURCE_AGENT_DIR).toBe(
+          join(fixture.home, actual || '.omp', 'agent')
+        )
       }
-      expect(managed.ORCA_OMP_SOURCE_AGENT_DIR).toBe(join(fixture.home, actual || '.omp', 'agent'))
-    })
+    )
   }
 }
