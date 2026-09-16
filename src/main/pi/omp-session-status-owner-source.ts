@@ -4,6 +4,7 @@ export function getOmpSessionOwnerHandlerSourceLines(): string[] {
     '  // SessionManager survives reload/new/resume; task children own a different instance.',
     '  function ownsSessionStatus(ctx): boolean {',
     '    if (!isOmpRuntime()) return true',
+    '    if (ctx?.agentKind === "sub") return false',
     '    const manager = ctx?.sessionManager',
     "    if (!manager || typeof manager !== 'object') return true",
     '    // Keep ownership through module reload and shutdown while child sessions drain.',

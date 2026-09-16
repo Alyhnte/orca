@@ -100,3 +100,52 @@ describe('OMP session status ownership', () => {
     ).toEqual(['agent_start', 'agent_end'])
   })
 })
+
+describe('OMP runtime session provenance', () => {
+  it.each(['omp', 'pi'] as const)(
+    'rejects an earlier child callback before it can claim the %s pane',
+    async (kind) => {
+      const harness = createAgentStatusExtensionHarness({ kind, argv: ['bun', '/opt/omp/bin/omp'] })
+      const child = {
+        agentKind: 'sub',
+        hasUI: false,
+        sessionManager: { getSessionId: () => 'child', getSessionFile: () => '/child.jsonl' }
+      }
+      await harness.callHook('session_start', {}, child)
+      await harness.callHook('agent_start', {}, child)
+      await settle()
+      expect(harness.fetchMock).not.toHaveBeenCalled()
+      harness.reload()
+      const root = {
+        agentKind: 'main',
+        hasUI: false,
+        sessionManager: { getSessionId: () => 'root', getSessionFile: () => '/root.jsonl' }
+      }
+      await harness.callHook('session_start', {}, root)
+      await settle()
+      harness.fetchMock.mockClear()
+      await harness.callHook('agent_start', {}, root)
+      await settle()
+      expect(harness.fetchMock).toHaveBeenCalledTimes(1)
+      expect(JSON.parse(harness.fetchMock.mock.calls[0][1].body).payload.session_id).toBe('root')
+    }
+  )
+
+  it('allows a former child transcript resumed as the runtime main session', async () => {
+    const harness = createAgentStatusExtensionHarness({ kind: 'omp' })
+    const root = {
+      agentKind: 'main',
+      hasUI: false,
+      sessionManager: {
+        getSessionId: () => 'resumed-child',
+        getSessionFile: () => '/sessions/parent/subagent/child.jsonl'
+      }
+    }
+    await harness.callHook('session_start', {}, root)
+    await harness.callHook('agent_start', {}, root)
+    await settle()
+    expect(JSON.parse(harness.fetchMock.mock.calls[0][1].body).payload.session_id).toBe(
+      'resumed-child'
+    )
+  })
+})
