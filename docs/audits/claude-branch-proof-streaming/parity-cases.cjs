@@ -47,10 +47,10 @@ function parityCases() {
     'Error'
   )
   add('duplicate-identical-after-marker', good + jsonl([row('old', 'kept')]))
-  for (const [name, extra] of [
-    ['parent', { parentUuid: 'root' }],
-    ['session', { sessionId: 'foreign' }],
-    ['sidechain', { isSidechain: true }]
+  for (const { name, extra } of [
+    { name: 'parent', extra: { parentUuid: 'root' } },
+    { name: 'session', extra: { sessionId: 'foreign' } },
+    { name: 'sidechain', extra: { isSidechain: true } }
   ]) {
     add(`duplicate-conflicting-${name}`, good + jsonl([row('old', 'kept', extra)]), {}, 'Error')
   }
@@ -81,12 +81,12 @@ function parityCases() {
     { previousLeafUuid: 'root' },
     'Error'
   )
-  for (const [name, extra] of [
-    ['sidechain', { isSidechain: true }],
-    ['parent-tool', { parent_tool_use_id: 'tool' }],
-    ['result', { type: 'result' }],
-    ['stream', { type: 'stream_event' }],
-    ['init', { type: 'system', subtype: 'init' }]
+  for (const { name, extra } of [
+    { name: 'sidechain', extra: { isSidechain: true } },
+    { name: 'parent-tool', extra: { parent_tool_use_id: 'tool' } },
+    { name: 'result', extra: { type: 'result' } },
+    { name: 'stream', extra: { type: 'stream_event' } },
+    { name: 'init', extra: { type: 'system', subtype: 'init' } }
   ]) {
     add(
       `disallowed-leaf-${name}`,
