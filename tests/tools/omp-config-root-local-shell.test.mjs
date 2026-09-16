@@ -6,12 +6,7 @@ import { runProcess } from '../../src/shared/child-process/run-process'
 import { inheritOmpLaunchEnvironment } from '../../src/main/ipc/pty/host-env/omp-launch-environment'
 import { resetLoginShellEnvironmentCacheForTests } from '../../src/main/startup/login-shell-environment'
 import { PiTitlebarExtensionService } from '../../src/main/pi/titlebar-extension-service'
-const fixture = vi.hoisted(() => ({ home: '', shell: '' }))
-vi.mock('node:os', async (original) => ({ ...(await original()), homedir: () => fixture.home }))
-vi.mock('../../src/main/startup/hydrate-shell-path', () => ({
-  resolveProfileLoadingShell: () => fixture.shell,
-  resolveProfileLoadingFallbackShell: () => null
-}))
+const fixture = { home: '', shell: '' }
 const shells = ['bash', 'zsh', 'fish'].map((name) => {
   const path = (process.env.PATH ?? '')
     .split(delimiter)
@@ -30,6 +25,7 @@ function prepare(shell) {
   fixture.home = mkdtempSync(join(tmpdir(), 'omp20605-shell-root-'))
   fixture.shell = shell.path
   vi.stubEnv('HOME', fixture.home)
+  vi.stubEnv('SHELL', shell.path)
   vi.stubEnv('ZDOTDIR', fixture.home)
   vi.stubEnv('XDG_CONFIG_HOME', join(fixture.home, '.config'))
   vi.stubEnv('PI_CONFIG_DIR', undefined)
