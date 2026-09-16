@@ -72,3 +72,27 @@ for (const shell of shells) {
     )
   }
 }
+
+const selectedShell = shells.find((shell) => shell.name === 'zsh')
+it.skipIf(process.platform === 'win32' || !selectedShell?.path).each(['provider', 'daemon'])(
+  '%s uses the selected pane shell instead of the process default',
+  async (route) => {
+    prepare(selectedShell)
+    vi.stubEnv('SHELL', '/bin/bash')
+    writeFileSync(join(fixture.home, '.bash_profile'), 'export PI_CONFIG_DIR=.wrong-shell\n')
+    const env = { SHELL: route === 'provider' ? '/bin/bash' : selectedShell.path }
+    await inheritOmpLaunchEnvironment(env, {
+      launchAgent: 'omp',
+      explicitEnv: { ...env },
+      ...(route === 'provider' ? { shellPath: selectedShell.path } : {})
+    })
+    expect(env.PI_CONFIG_DIR).toBe('.profile-omp')
+    const launched = await runProcess({
+      program: selectedShell.path,
+      args: ['-ilc', 'printf "ROOT=%s\\n" "$PI_CONFIG_DIR"'],
+      env: { ...process.env, ...env }
+    })
+    expect(launched.code).toBe(0)
+    expect(launched.stdout).toContain('ROOT=.profile-omp')
+  }
+)

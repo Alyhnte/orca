@@ -14,6 +14,7 @@ const OMP_DIRECTORY_ENV_KEYS = [
 export async function inheritOmpLaunchEnvironment(
   env: Record<string, string>,
   options: {
+    shellPath?: string
     isWsl?: boolean
     launchAgent?: string
     launchCommand?: string
@@ -40,7 +41,9 @@ export async function inheritOmpLaunchEnvironment(
   if (agent !== 'omp' && (options.launchAgent !== undefined || command?.trim())) {
     return
   }
-  const shellEnv = await resolveLoginShellEnvironment()
+  const shellPath =
+    options.shellPath || (options.explicitEnv ?? env).SHELL || process.env.SHELL || '/bin/zsh'
+  const shellEnv = await resolveLoginShellEnvironment({ shellOverride: shellPath })
   for (const key of OMP_DIRECTORY_ENV_KEYS) {
     // Explicit pane values take precedence over the login shell.
     const value = (options.explicitEnv ?? env)[key] ?? shellEnv[key] ?? process.env[key]

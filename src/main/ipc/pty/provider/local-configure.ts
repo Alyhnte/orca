@@ -56,6 +56,7 @@ export function configureLocalPtyProvider(args: {
       const skipCodexHomeEnv = ctx?.isWsl === true && !selectedCodexHomePath
       const ptySettings = getSettings?.()
       await inheritOmpLaunchEnvironment(baseEnv, {
+        shellPath: ctx?.shellPath,
         explicitEnv: ctx?.explicitEnv,
         isWsl: ctx?.isWsl,
         launchAgent: ctx?.launchAgent,
