@@ -7,6 +7,8 @@ import type {
 import { parseWorkspaceKey } from '../../../../shared/workspace-scope'
 import {
   collectAmbiguousTerminalTabIds,
+  EMPTY_AGENT_STATUS_BY_PANE_KEY,
+  getTerminalTabOwnershipIndex,
   graphState,
   jsonContentEquals,
   mobilePublicationEpoch
@@ -33,6 +35,20 @@ import { buildMobileMarkdownTab, buildMobileFileTab } from './mobile-session-edi
 import { buildMobileBrowserTab } from './mobile-session-browser-tabs'
 import type { MobileSessionPublicationInputs } from './types'
 import { canReuseMobileSessionSnapshot } from './mobile-session-capture'
+import { createTabKeyedRecordPartitioner } from './tab-keyed-record-partition'
+import {
+  collectMobileSessionWorktreeIds,
+  collectMobileSessionWorktreeSourceRefs,
+  mobileSessionWorktreeSourceRefsEqual
+} from './mobile-session-worktree-sources'
+
+// Module-scoped so each record keeps its own grouping across publications; the reuse depends on it.
+const partitionTerminalLayouts =
+  createTabKeyedRecordPartitioner<AppState['terminalLayoutsByTabId'][string]>()
+const partitionRuntimePaneTitles =
+  createTabKeyedRecordPartitioner<AppState['runtimePaneTitlesByTabId'][string]>()
+const partitionLaunchDrafts =
+  createTabKeyedRecordPartitioner<NonNullable<AppState['nativeChatLaunchDraftByTabId']>[string]>()
 
 export function buildMobileSessionTabSnapshots(
   state: AppState,
@@ -43,27 +59,26 @@ export function buildMobileSessionTabSnapshots(
 ): RuntimeMobileSessionTabsSnapshot[] {
   const openFileIndexes = getOpenFileIndexes(state.openFiles)
   const browserTabsByWorktree = state.browserTabsByWorktree ?? {}
+  const owners = getTerminalTabOwnershipIndex(state.tabsByWorktree)
   const publicationInputs: MobileSessionPublicationInputs = {
     browserTabsByWorktree,
     openFileIndexes,
     editorDraftVersionByFileId: getEditorDraftVersionByFileId(state.editorDrafts),
     agentStatusByWorktreeId: buildMobileSessionAgentStatusByWorktree(
-      state.agentStatusByPaneKey ?? {},
+      // A fresh `{}` literal per call would miss the identity memo on every publication.
+      state.agentStatusByPaneKey ?? EMPTY_AGENT_STATUS_BY_PANE_KEY,
       state.tabsByWorktree
     ),
+    terminalLayoutByWorktree: partitionTerminalLayouts(state.terminalLayoutsByTabId, owners),
+    runtimePaneTitleByWorktree: partitionRuntimePaneTitles(state.runtimePaneTitlesByTabId, owners),
+    launchDraftByWorktree: partitionLaunchDrafts(state.nativeChatLaunchDraftByTabId, owners),
     generatedTitlesEnabled: state.settings?.tabAutoGenerateTitle === true,
     terminalTheme: getMobileTerminalTheme(state, systemPrefersDark)
   }
   const liveFolderWorkspaceIds = new Set(
     (state.folderWorkspaces ?? []).map((workspace) => workspace.id)
   )
-  const worktreeIds = new Set<string>([
-    ...Object.keys(state.tabsByWorktree),
-    ...Object.keys(state.groupsByWorktree),
-    ...Object.keys(state.unifiedTabsByWorktree),
-    ...Object.keys(browserTabsByWorktree),
-    ...state.openFiles.map((file) => file.worktreeId)
-  ])
+  const worktreeIds = collectMobileSessionWorktreeIds(state, browserTabsByWorktree)
   const snapshots: RuntimeMobileSessionTabsSnapshot[] = []
 
   for (const worktreeId of worktreeIds) {
@@ -75,14 +90,33 @@ export function buildMobileSessionTabSnapshots(
       graphState.mobileSessionSnapshotCacheByWorktree.delete(worktreeId)
       continue
     }
+    const cached = graphState.mobileSessionSnapshotCacheByWorktree.get(worktreeId)
+    const sourceRefs = collectMobileSessionWorktreeSourceRefs(
+      state,
+      worktreeId,
+      publicationInputs,
+      owners
+    )
+    // A worktree with no mounted TerminalPane has no live input outside the store, so unchanged
+    // sources prove the rebuild below would land on `canReuseMobileSessionSnapshot` anyway. Mounted
+    // worktrees still rebuild: their PaneManager/DOM state can move with no store mutation at all.
+    if (
+      cached &&
+      cached.inputs.mountedSurfaceCaptureByTabId.size === 0 &&
+      !graphState.registeredTabIdsByWorktree.has(worktreeId) &&
+      mobileSessionWorktreeSourceRefsEqual(cached.sourceRefs, sourceRefs)
+    ) {
+      snapshots.push(cached.snapshot)
+      continue
+    }
     const inputs = buildMobileSessionWorktreeInputs(
       state,
       worktreeId,
       publicationInputs,
       ambiguousTerminalTabIds
     )
-    const cached = graphState.mobileSessionSnapshotCacheByWorktree.get(worktreeId)
     if (cached && canReuseMobileSessionSnapshot(cached.inputs, inputs)) {
+      graphState.mobileSessionSnapshotCacheByWorktree.set(worktreeId, { ...cached, sourceRefs })
       snapshots.push(cached.snapshot)
       continue
     }
@@ -222,6 +256,7 @@ export function buildMobileSessionTabSnapshots(
             }
       graphState.mobileSessionSnapshotCacheByWorktree.set(worktreeId, {
         inputs,
+        sourceRefs,
         content,
         snapshot
       })
@@ -235,7 +270,12 @@ export function buildMobileSessionTabSnapshots(
       snapshotVersion: candidateVersion,
       ...content
     }
-    graphState.mobileSessionSnapshotCacheByWorktree.set(worktreeId, { inputs, content, snapshot })
+    graphState.mobileSessionSnapshotCacheByWorktree.set(worktreeId, {
+      inputs,
+      sourceRefs,
+      content,
+      snapshot
+    })
     snapshots.push(snapshot)
   }
   for (const worktreeId of graphState.mobileSessionSnapshotCacheByWorktree.keys()) {

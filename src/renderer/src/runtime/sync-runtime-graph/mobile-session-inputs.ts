@@ -10,7 +10,10 @@ import {
   EMPTY_WORKTREE_TERMINAL_TABS,
   EMPTY_WORKTREE_UNIFIED_TABS,
   EMPTY_LAYOUT_BY_WORKTREE,
-  graphState
+  getMobileSessionAgentStatusCache,
+  getTerminalTabOwnershipIndex,
+  graphState,
+  setMobileSessionAgentStatusCache
 } from './graph-state'
 import type {
   MobileSessionAgentStatusByWorktree,
@@ -18,11 +21,16 @@ import type {
   MobileSessionWorktreeInputs,
   OpenFileIndexes
 } from './types'
-import { captureMountedTerminalSurfaces, narrowRecordByKeys } from './mobile-session-capture'
+import {
+  captureMountedTerminalSurfaces,
+  narrowedEntriesEqual,
+  narrowRecordByKeys
+} from './mobile-session-capture'
 import {
   getRuntimeLeafIdsForTerminal,
   resolveMobileTabWideAgentHintLeafId
 } from './mobile-session-surfaces'
+import { tabKeyedRecordBucket } from './tab-keyed-record-partition'
 
 export function getOpenFileIndexes(openFiles: AppState['openFiles']): OpenFileIndexes {
   if (graphState.cachedOpenFileIndexesSource === openFiles && graphState.cachedOpenFileIndexes) {
@@ -51,34 +59,54 @@ export function getOpenFileIndexes(openFiles: AppState['openFiles']): OpenFileIn
   return graphState.cachedOpenFileIndexes
 }
 
+/**
+ * Memoized on both source slices: the tab->worktree map it rebuilds is proportional to every tab
+ * in the store, yet one OSC frame replaces only `agentStatusByPaneKey`. Both slices are
+ * copy-on-write, so an unchanged pair of references cannot hide a changed grouping.
+ *
+ * Unchanged worktrees keep their previous bucket object. One status frame then leaves every other
+ * worktree's bucket reference-equal, which is what lets the publication loop skip it.
+ */
 export function buildMobileSessionAgentStatusByWorktree(
   agentStatusByPaneKey: AppState['agentStatusByPaneKey'],
   tabsByWorktree: AppState['tabsByWorktree']
 ): MobileSessionAgentStatusByWorktree {
-  const byWorktreeId = new Map<string, Map<string, AppState['agentStatusByPaneKey'][string]>>()
-  const paneKeys = Object.keys(agentStatusByPaneKey)
-  if (paneKeys.length === 0) {
-    return byWorktreeId
+  const cached = getMobileSessionAgentStatusCache()
+  if (cached?.agentStatusSource === agentStatusByPaneKey && cached.tabsSource === tabsByWorktree) {
+    return cached.byWorktreeId
   }
-  const worktreeIdByTabId = new Map<string, string>()
-  for (const [worktreeId, tabs] of Object.entries(tabsByWorktree)) {
-    for (const tab of tabs) {
-      worktreeIdByTabId.set(tab.id, worktreeId)
-    }
-  }
-  for (const paneKey of paneKeys) {
+  const built = new Map<string, Map<string, AppState['agentStatusByPaneKey'][string]>>()
+  // Ambiguous tab ids are absent from the index: the snapshot builders drop those terminals, so a
+  // bucket entry for one could only mislabel another worktree's pane.
+  const { worktreeIdByTabId } = getTerminalTabOwnershipIndex(tabsByWorktree)
+  for (const paneKey of Object.keys(agentStatusByPaneKey)) {
     const tabId = parsePaneKey(paneKey)?.tabId
     const worktreeId = tabId === undefined ? undefined : worktreeIdByTabId.get(tabId)
     if (worktreeId === undefined) {
       continue
     }
-    let bucket = byWorktreeId.get(worktreeId)
+    let bucket = built.get(worktreeId)
     if (!bucket) {
       bucket = new Map()
-      byWorktreeId.set(worktreeId, bucket)
+      built.set(worktreeId, bucket)
     }
     bucket.set(paneKey, agentStatusByPaneKey[paneKey])
   }
+  const byWorktreeId = new Map<
+    string,
+    ReadonlyMap<string, AppState['agentStatusByPaneKey'][string]>
+  >(built)
+  for (const [worktreeId, bucket] of built) {
+    const previousBucket = cached?.byWorktreeId.get(worktreeId)
+    if (previousBucket && narrowedEntriesEqual(previousBucket, bucket)) {
+      byWorktreeId.set(worktreeId, previousBucket)
+    }
+  }
+  setMobileSessionAgentStatusCache({
+    agentStatusSource: agentStatusByPaneKey,
+    tabsSource: tabsByWorktree,
+    byWorktreeId
+  })
   return byWorktreeId
 }
 
@@ -104,11 +132,15 @@ export function buildMobileSessionWorktreeInputs(
   const terminalTabs = sourceTerminalTabs.some((tab) => ambiguousTerminalTabIds.has(tab.id))
     ? sourceTerminalTabs.filter((tab) => !ambiguousTerminalTabIds.has(tab.id))
     : sourceTerminalTabs
-  const terminalTabIds = terminalTabs.map((tab) => tab.id)
-  const terminalLayoutByTabId = narrowRecordByKeys(state.terminalLayoutsByTabId, terminalTabIds)
+  // Tab-keyed records arrive pre-grouped by owning worktree: narrowing them here cost one scan per
+  // worktree per publication, and the bucket identity is what lets an unchanged worktree be skipped.
+  const terminalLayoutByTabId = tabKeyedRecordBucket(
+    publication.terminalLayoutByWorktree,
+    worktreeId
+  )
   const mountedSurfaceCaptureByTabId = captureMountedTerminalSurfaces(
     terminalTabs,
-    state.terminalLayoutsByTabId,
+    terminalLayoutByTabId,
     worktreeId
   )
   const browserWorkspaces =
@@ -143,12 +175,12 @@ export function buildMobileSessionWorktreeInputs(
     openFilesById,
     openFileIds,
     terminalLayoutByTabId,
-    paneTitlesByTabId: narrowRecordByKeys(state.runtimePaneTitlesByTabId, terminalTabIds),
+    paneTitlesByTabId: tabKeyedRecordBucket(publication.runtimePaneTitleByWorktree, worktreeId),
     launchDraftByPaneKey: buildMobileLaunchDraftsByPaneKey({
       terminalTabs,
       terminalLayoutByTabId,
       mountedSurfaceCaptureByTabId,
-      launchDraftByTabId: narrowRecordByKeys(state.nativeChatLaunchDraftByTabId, terminalTabIds)
+      launchDraftByTabId: tabKeyedRecordBucket(publication.launchDraftByWorktree, worktreeId)
     }),
     agentStatusByPaneKey:
       publication.agentStatusByWorktreeId.get(worktreeId) ?? EMPTY_NARROWED_BY_KEY,
@@ -166,7 +198,9 @@ export function buildMobileSessionWorktreeInputs(
       ? (state.activeTabTypeByWorktree?.[worktreeId] ?? state.activeTabType)
       : null,
     activeTerminalTabId:
-      activeTabId !== null && terminalTabIds.includes(activeTabId) ? activeTabId : null,
+      activeTabId !== null && terminalTabs.some((tab) => tab.id === activeTabId)
+        ? activeTabId
+        : null,
     activeBrowserWorkspaceId: state.activeBrowserTabIdByWorktree?.[worktreeId] ?? null,
     generatedTitlesEnabled: publication.generatedTitlesEnabled,
     terminalTheme: publication.terminalTheme,
