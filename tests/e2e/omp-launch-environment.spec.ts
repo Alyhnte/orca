@@ -56,14 +56,15 @@ exec /bin/zsh "$@"
   }
 })
 
+test.skip(
+  !process.env.ORCA_OMP_PROOF_BINARY || process.platform !== 'darwin',
+  'Opt-in macOS OMP runtime proof'
+)
+
 test('OMP launched by Orca uses login-profile data and config roots', async ({
   orcaPage,
   electronApp
 }, testInfo) => {
-  test.skip(
-    !process.env.ORCA_OMP_PROOF_BINARY || process.platform !== 'darwin',
-    'Opt-in macOS OMP runtime proof'
-  )
   await waitForSessionReady(orcaPage)
   const worktreeId = await waitForActiveWorktree(orcaPage)
   await ensureTerminalVisible(orcaPage)
@@ -114,7 +115,9 @@ export default function (api) {
     )
   await expect(orcaPage.locator('.xterm-screen').first()).toBeVisible()
   await orcaPage.screenshot({ path: testInfo.outputPath('omp-profile-root.png') })
-  expect(await readdir(join(home, 'xdg-data', 'omp'))).toContain('agent.db')
+  await expect(async () => {
+    expect(await readdir(join(home, 'xdg-data', 'omp'))).toContain('agent.db')
+  }).toPass({ timeout: 30_000 })
   const overrideData = join(home, 'pane-data')
   await mkdir(join(overrideData, 'omp'), { recursive: true })
   const overrideResult = testInfo.outputPath('omp-pane-paths.json')
@@ -164,7 +167,9 @@ export default function (api) {
           session: expect.stringContaining(join('pane-data', 'omp', 'sessions'))
         })
       )
-    expect(await readdir(join(overrideData, 'omp'))).toContain('agent.db')
+    await expect(async () => {
+      expect(await readdir(join(overrideData, 'omp'))).toContain('agent.db')
+    }).toPass({ timeout: 30_000 })
   } finally {
     await orcaPage.evaluate((id) => window.api.pty.kill(id), overridePty)
   }

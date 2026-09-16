@@ -68,7 +68,7 @@ describe('relay OMP config root', () => {
     expect(existsSync(join(home, '.company-omp'))).toBe(false)
   })
 
-  it('does not read the relay process config root when the session omits it', async () => {
+  it('does not fall back to process.env for the config root', async () => {
     vi.stubEnv('PI_CONFIG_DIR', '.wrong-process-root')
     expect(await resolveOmpConfigDirName({ HOME: home }, '/bin/bash')).toBeUndefined()
   })
