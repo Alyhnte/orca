@@ -22,7 +22,7 @@
         "japanese": "日本語",
         "spanish": "Español",
         "french": "Français",
-        "turkish": "土耳其语"
+        "turkish": "Türkçe"
       },
       "statusBar": {
         "claudeToggleDescription": "显示当前工作区的 Claude Token 与费用消耗情况。",
