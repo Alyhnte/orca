@@ -8,21 +8,23 @@ import { salvagedOptional } from '../../../src/shared/zod-salvage'
 /**
  * One host's lifetime-usage row.
  *
- * Every member is optional and none is required, because `totalHomeStats` is the reader and it says
- * so itself: it skips a non-object row and runs every number through `finiteOrZero`
- * (home-stats-total.ts:33-39). What the schema adds is that the stored row is an object at all —
- * the card keeps one slot per host for the life of the process, so a null or absent summary used to
- * sit in that slot until the host replied again.
+ * Nothing here is required, not even the object. `totalHomeStats` is the reader and it guards the
+ * row itself (`if (!host || typeof host !== 'object') continue`, home-stats-total.ts:36), so
+ * requiring the object would buy nothing at the read and would cost the row upstream: the refusal
+ * reaches `fetchMobileHomeStats`'s `.catch`, the per-host slot is never written, `hostIds.filter`
+ * finds no host and the header draws no stats row where main drew a zeroed one.
  *
  * `firstEventAt` keeps its explicit `null`: that is the host's "no events yet", and the total
  * distinguishes it from a number when taking the minimum.
  */
-export const homeHostStatsSchema = z.looseObject({
-  totalAgentsSpawned: salvagedOptional('totalAgentsSpawned', z.number()),
-  totalPRsCreated: salvagedOptional('totalPRsCreated', z.number()),
-  totalAgentTimeMs: salvagedOptional('totalAgentTimeMs', z.number()),
-  firstEventAt: salvagedOptional('firstEventAt', z.number().nullable())
-})
+export const homeHostStatsSchema = z
+  .looseObject({
+    totalAgentsSpawned: salvagedOptional('totalAgentsSpawned', z.number()),
+    totalPRsCreated: salvagedOptional('totalPRsCreated', z.number()),
+    totalAgentTimeMs: salvagedOptional('totalAgentTimeMs', z.number()),
+    firstEventAt: salvagedOptional('firstEventAt', z.number().nullable())
+  })
+  .nullish()
 
 /**
  * One host's accounts snapshot, forwarded whole.

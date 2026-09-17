@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { z } from 'zod'
+import { totalHomeStats } from '../stats/home-stats-total'
 import { homeHostAccountsSchema, homeHostStatsSchema } from './home-host-reply-schema'
 
 function reads<T>(schema: z.ZodType<T, unknown>, value: unknown): T {
@@ -8,6 +9,14 @@ function reads<T>(schema: z.ZodType<T, unknown>, value: unknown): T {
     throw new Error(`expected a readable reply: ${parsed.error.message}`)
   }
   return parsed.data
+}
+
+function readsRow(value: unknown): NonNullable<z.output<typeof homeHostStatsSchema>> {
+  const row = reads(homeHostStatsSchema, value)
+  if (!row) {
+    throw new Error('expected an object row')
+  }
+  return row
 }
 
 function refuses(schema: z.ZodType<unknown, unknown>, value: unknown): boolean {
@@ -22,22 +31,31 @@ describe('a stats row is checked as an object and nothing more', () => {
       totalAgentTimeMs: 90,
       firstEventAt: 1700000000000
     }
-    expect(reads(homeHostStatsSchema, row)).toMatchObject(row)
+    expect(readsRow(row)).toMatchObject(row)
   })
 
   it('reads a host that answers a shape totalHomeStats still sums', () => {
-    expect(reads(homeHostStatsSchema, { totalWorktrees: 3 })).toMatchObject({ totalWorktrees: 3 })
-    expect(reads(homeHostStatsSchema, {}).totalAgentsSpawned).toBe(undefined)
+    expect(readsRow({ totalWorktrees: 3 })).toMatchObject({ totalWorktrees: 3 })
+    expect(readsRow({}).totalAgentsSpawned).toBe(undefined)
   })
 
   it('preserves an explicit null firstEventAt, which the total reads as no events yet', () => {
-    expect(reads(homeHostStatsSchema, { firstEventAt: null }).firstEventAt).toBe(null)
-    expect(reads(homeHostStatsSchema, { firstEventAt: 'never' }).firstEventAt).toBe(undefined)
+    expect(readsRow({ firstEventAt: null }).firstEventAt).toBe(null)
+    expect(readsRow({ firstEventAt: 'never' }).firstEventAt).toBe(undefined)
   })
 
-  it('keeps a null or absent summary out of the card slot', () => {
-    expect(refuses(homeHostStatsSchema, null)).toBe(true)
-    expect(refuses(homeHostStatsSchema, undefined)).toBe(true)
+  // Main seated a null or absent summary in the per-host slot and `totalHomeStats` skipped it, so
+  // the header still drew a zeroed row. Refusing here would empty the row instead of zeroing it.
+  it('seats a null or absent summary in the card slot, which the total skips', () => {
+    expect(refuses(homeHostStatsSchema, null)).toBe(false)
+    expect(refuses(homeHostStatsSchema, undefined)).toBe(false)
+    expect(reads(homeHostStatsSchema, null)).toBe(null)
+    expect(totalHomeStats({ 'host-1': reads(homeHostStatsSchema, null) }, ['host-1'])).toEqual({
+      totalAgentsSpawned: 0,
+      totalPRsCreated: 0,
+      totalAgentTimeMs: 0,
+      firstEventAt: null
+    })
   })
 })
 

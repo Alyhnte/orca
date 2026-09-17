@@ -13,8 +13,12 @@ export type HomeStatsSummary = {
  * Summing only `hostIds` keeps an unpaired desktop out of the total: replies are cached per host
  * for the life of the process, so an entry outlives the host it describes.
  */
-/** One host's row as the wire carries it: every field may be missing or the wrong type. */
-export type HomeStatsRow = Partial<HomeStatsSummary>
+/**
+ * One host's row as the wire carries it: the row itself may be null or absent, and every field may
+ * be missing or the wrong type. The loop below guards all three, which is why the reader requires
+ * none of them.
+ */
+export type HomeStatsRow = Partial<HomeStatsSummary> | null | undefined
 
 export function totalHomeStats(
   byHost: Record<string, HomeStatsRow>,

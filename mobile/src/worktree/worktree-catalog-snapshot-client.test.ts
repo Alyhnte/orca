@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import type { RpcClient } from '../transport/rpc-client'
+import { RpcIncompatibleReplyError } from '../transport/rpc-incompatible-reply-error'
 import {
   admitWorktreeCatalogResponse,
   WORKTREE_PS_FULL_LIMIT,
@@ -219,6 +220,18 @@ describe('WorktreeCatalogSnapshotClient', () => {
       limit: WORKTREE_PS_FULL_LIMIT,
       afterSnapshotId: 'snapshot-1'
     })
+  })
+
+  // Why this belongs here: `use-host-worktree-catalog.ts:125` keys its `invalid_response` state on
+  // the error *class*, and no adapter mounts that screen, so this is the only place the class is
+  // pinned. Deleting the reader leaves a host-payload defect reported to the user as a network one.
+  it('rejects with RpcIncompatibleReplyError when the host answers a result the reader refuses', async () => {
+    const client = clientWithResults('all')
+    const snapshots = new WorktreeCatalogSnapshotClient()
+
+    await expect(snapshots.fetch(client, 'host-1')).rejects.toBeInstanceOf(
+      RpcIncompatibleReplyError
+    )
   })
 
   it('falls back to a generic failure code when the error carries none', async () => {
