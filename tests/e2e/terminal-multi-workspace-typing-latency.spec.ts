@@ -87,6 +87,7 @@ import {
   injectRendererLongTaskSelfTest,
   startRuntimeGraphPublicationProbe,
   stopRuntimeGraphPublicationProbe,
+  type RendererLongTaskSelfTestWindow,
   type RuntimeGraphPublicationProbeSnapshot
 } from './runtime-graph-publication-probe'
 
@@ -173,24 +174,50 @@ async function withRendererCpuThrottle<T>(
   page: Page,
   rate: number,
   run: () => Promise<T>
-): Promise<T> {
+): Promise<{ result: T; appliedRate: number }> {
   if (rate <= 1) {
-    return await run()
+    return { result: await run(), appliedRate: 1 }
   }
   const session = await page.context().newCDPSession(page)
   try {
     await session.send('Emulation.setCPUThrottlingRate', { rate })
-    return await run()
+    return { result: await run(), appliedRate: rate }
   } finally {
     await session.send('Emulation.setCPUThrottlingRate', { rate: 1 }).catch(() => {})
     await session.detach().catch(() => {})
   }
 }
 
+/** Carries the conditions the window ran under, so the report cannot invent them. */
+type TypingWindowMeasurement = {
+  measurement: PacedTypingMeasurement
+  appliedCpuThrottleRate: number
+}
+
+/**
+ * The only way to obtain a measurement writeBenchReport will accept: a scenario
+ * that skips the throttle cannot then report one.
+ */
+async function measureTypingWindow(
+  page: Page,
+  runId: string,
+  sidecarPath: string
+): Promise<TypingWindowMeasurement> {
+  const { result, appliedRate } = await withRendererCpuThrottle(page, CPU_THROTTLE_RATE, () =>
+    withTypingRendererCpuProfile(page, process.env.ORCA_TYPING_BENCH_CPU_PROFILE, () =>
+      measurePacedTyping(page, runId, sidecarPath, {
+        keyCount: KEY_COUNT,
+        keyCadenceMs: KEY_CADENCE_MS
+      })
+    )
+  )
+  return { measurement: result, appliedCpuThrottleRate: appliedRate }
+}
+
 function writeBenchReport(
   testInfo: TestInfo,
   scenario: string,
-  measurement: PacedTypingMeasurement,
+  measured: TypingWindowMeasurement,
   scheduler: SchedulerDebugSnapshot | null,
   mainDelivery: MainDeliveryDebugSnapshot | null,
   instrumentation?: unknown,
@@ -202,6 +229,7 @@ function writeBenchReport(
   ptyWorkload?: unknown,
   graphProbe?: RuntimeGraphPublicationProbeSnapshot | null
 ): void {
+  const { measurement, appliedCpuThrottleRate } = measured
   const report = {
     benchmark: 'multi-workspace-typing-latency',
     label: BENCH_LABEL,
@@ -241,7 +269,8 @@ function writeBenchReport(
       ),
       instrumentationRequested: BENCH_INSTRUMENTATION_REQUESTED,
       graphProbeRequested: GRAPH_PROBE_REQUESTED,
-      cpuThrottleRate: CPU_THROTTLE_RATE,
+      // What this scenario actually ran under, not what the flag requested.
+      cpuThrottleRate: appliedCpuThrottleRate,
       statusTrafficModel: PTY_METADATA
         ? 'pty-osc-through-runtime-and-ipc-bridge'
         : 'electron-ipc-burst-through-production-bridge'
@@ -355,18 +384,12 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
     try {
       await resetDeliveryDebug(orcaPage)
       await startTypingProbe(orcaPage, typingPtyId, probePath, runId)
-      const measurement = await withRendererCpuThrottle(orcaPage, CPU_THROTTLE_RATE, () =>
-        withTypingRendererCpuProfile(orcaPage, process.env.ORCA_TYPING_BENCH_CPU_PROFILE, () =>
-          measurePacedTyping(orcaPage, runId, sidecarPath, {
-            keyCount: KEY_COUNT,
-            keyCadenceMs: KEY_CADENCE_MS
-          })
-        )
-      )
+      const measured = await measureTypingWindow(orcaPage, runId, sidecarPath)
+      const { measurement } = measured
       writeBenchReport(
         testInfo,
         'baseline',
-        measurement,
+        measured,
         await readSchedulerDebug(orcaPage),
         await readMainDeliveryDebug(orcaPage)
       )
@@ -407,7 +430,7 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
     let statusTrafficStarted = false
     let instrumentationAvailable = false
     let graphProbeStart: { main: string; renderer: string } | null = null
-    let graphProbeSelfTestBeforeEpochMs = 0
+    let graphProbeSelfTest: RendererLongTaskSelfTestWindow | null = null
     let statusIngressValidation: AccumulatedStatusIngressValidation | null = null
     try {
       await switchToWorktree(orcaPage, loadWorktreeId)
@@ -464,8 +487,10 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
       if (GRAPH_PROBE_REQUESTED) {
         graphProbeStart = await startRuntimeGraphPublicationProbe(electronApp, orcaPage)
         if (GRAPH_PROBE_SELF_TEST_MS > 0) {
-          await injectRendererLongTaskSelfTest(orcaPage, GRAPH_PROBE_SELF_TEST_MS)
-          graphProbeSelfTestBeforeEpochMs = Date.now()
+          graphProbeSelfTest = await injectRendererLongTaskSelfTest(
+            orcaPage,
+            GRAPH_PROBE_SELF_TEST_MS
+          )
         }
         console.log(`[multi-workspace-typing] graph probe: ${JSON.stringify(graphProbeStart)}`)
       }
@@ -510,14 +535,8 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
           .toBe(LOAD_PANES)
       }
       await startTypingProbe(orcaPage, typingPtyId, probePath, runId)
-      const measurement = await withRendererCpuThrottle(orcaPage, CPU_THROTTLE_RATE, () =>
-        withTypingRendererCpuProfile(orcaPage, process.env.ORCA_TYPING_BENCH_CPU_PROFILE, () =>
-          measurePacedTyping(orcaPage, runId, sidecarPath, {
-            keyCount: KEY_COUNT,
-            keyCadenceMs: KEY_CADENCE_MS
-          })
-        )
-      )
+      const measured = await measureTypingWindow(orcaPage, runId, sidecarPath)
+      const { measurement } = measured
       const statusWorkload = statusTrafficStarted
         ? await stopAccumulatedStatusTraffic(electronApp, orcaPage)
         : null
@@ -539,14 +558,14 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
             electronApp,
             orcaPage,
             graphProbeStart,
-            graphProbeSelfTestBeforeEpochMs
+            graphProbeSelfTest
           )
         : null
       graphProbeStart = null
       writeBenchReport(
         testInfo,
         `hidden-load-${LOAD_PANES}x${LOAD_RATE_KBPS}kbps-cpu${CPU_WORKERS}`,
-        measurement,
+        measured,
         await readSchedulerDebug(orcaPage),
         await readMainDeliveryDebug(orcaPage),
         instrumentation,
@@ -646,19 +665,12 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
 
       await resetDeliveryDebug(orcaPage)
       await startTypingProbe(orcaPage, typingPane.ptyId, probePath, runId)
-      const measurement = await withTypingRendererCpuProfile(
-        orcaPage,
-        process.env.ORCA_TYPING_BENCH_CPU_PROFILE,
-        () =>
-          measurePacedTyping(orcaPage, runId, sidecarPath, {
-            keyCount: KEY_COUNT,
-            keyCadenceMs: KEY_CADENCE_MS
-          })
-      )
+      const measured = await measureTypingWindow(orcaPage, runId, sidecarPath)
+      const { measurement } = measured
       writeBenchReport(
         testInfo,
         `visible-split-${LOAD_RATE_KBPS}kbps-cpu${CPU_WORKERS}`,
-        measurement,
+        measured,
         await readSchedulerDebug(orcaPage),
         await readMainDeliveryDebug(orcaPage)
       )

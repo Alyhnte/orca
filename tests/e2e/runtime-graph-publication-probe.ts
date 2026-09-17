@@ -10,7 +10,10 @@
  * even though `longtask` is in `supportedEntryTypes`, so a zero there means
  * "oracle unproven", not "no long task happened". Run with
  * ORCA_TYPING_BENCH_GRAPH_PROBE_SELFTEST_MS and require a non-zero
- * `selfTestLongTaskMs` before believing any long-task number.
+ * `selfTestLongTaskMs` before believing any long-task number. That number comes
+ * from the entry the busy-wait actually ran in (see `partitionSelfTestLongTask`),
+ * so unrelated work cannot satisfy it, and the same entry is withheld from every
+ * workload summary so the oracle does not measure itself.
  *
  * Renderer-side per-publication build time is unavailable here; attribute it
  * with a separate --cpu-profile run instead.
@@ -29,6 +32,11 @@ export type DurationSummary = {
   p90Ms: number
 }
 
+export type LongTaskSample = { startEpochMs: number; durationMs: number }
+
+/** Renderer-clock bounds of the injected busy-wait, same base as long-task entries. */
+export type RendererLongTaskSelfTestWindow = { startEpochMs: number; endEpochMs: number }
+
 export type RuntimeGraphPublicationProbeSnapshot = {
   mainCounterInstalled: boolean
   mainCounterReason: string
@@ -40,12 +48,13 @@ export type RuntimeGraphPublicationProbeSnapshot = {
   mainHandler: DurationSummary
   /** Gaps between consecutive publications, epoch ms. */
   publicationIntervalMs: DurationSummary
+  /** Workload long tasks; the self-test's own entry is excluded. */
   longTasks: DurationSummary
-  /** Non-zero only when the self-test ran; proves the long-task oracle is live. */
+  /** Non-zero only when the self-test's own entry was observed; proves the oracle is live. */
   selfTestLongTaskMs: number
   /** Long tasks whose window contains a publication's main-side arrival. */
   longTasksAroundPublication: DurationSummary
-  longestLongTasks: { startEpochMs: number; durationMs: number }[]
+  longestLongTasks: LongTaskSample[]
 }
 
 type MainProbeGlobals = {
@@ -80,16 +89,51 @@ function summarize(values: number[]): DurationSummary {
 /**
  * Presence precondition for the long-task oracle: burns a known span on the
  * renderer thread so a run that reports zero long tasks has proved it could
- * have seen one. Returns the observed duration, or 0 if the observer missed it.
+ * have seen one. Returns the busy-wait's own bounds — a cutoff timestamp would
+ * let any earlier unrelated long task stand in for it.
  */
-export async function injectRendererLongTaskSelfTest(page: Page, busyMs: number): Promise<number> {
+export async function injectRendererLongTaskSelfTest(
+  page: Page,
+  busyMs: number
+): Promise<RendererLongTaskSelfTestWindow> {
   return page.evaluate((durationMs) => {
-    const deadline = performance.now() + durationMs
+    const startedAt = performance.now()
+    const deadline = startedAt + durationMs
     while (performance.now() < deadline) {
       // Intentional busy wait: setTimeout would not produce a long task.
     }
-    return durationMs
+    return {
+      startEpochMs: performance.timeOrigin + startedAt,
+      endEpochMs: performance.timeOrigin + performance.now()
+    }
   }, busyMs)
+}
+
+/**
+ * Main-thread tasks never overlap, so at most one long task can contain the
+ * busy-wait's midpoint and that one is the task the busy-wait ran in. Anything
+ * else — including a long task that merely started earlier — leaves the oracle
+ * unproven rather than falsely satisfied.
+ */
+export function partitionSelfTestLongTask(
+  longTasks: LongTaskSample[],
+  selfTest: RendererLongTaskSelfTestWindow | null
+): { selfTestLongTaskMs: number; workloadLongTasks: LongTaskSample[] } {
+  if (!selfTest) {
+    return { selfTestLongTaskMs: 0, workloadLongTasks: longTasks }
+  }
+  const midpoint = (selfTest.startEpochMs + selfTest.endEpochMs) / 2
+  const selfTestTask = longTasks.find(
+    (task) => task.startEpochMs <= midpoint && midpoint <= task.startEpochMs + task.durationMs
+  )
+  if (!selfTestTask) {
+    return { selfTestLongTaskMs: 0, workloadLongTasks: longTasks }
+  }
+  return {
+    selfTestLongTaskMs: Number(selfTestTask.durationMs.toFixed(1)),
+    // Identity, not value: duplicate-looking entries must not be dropped too.
+    workloadLongTasks: longTasks.filter((task) => task !== selfTestTask)
+  }
 }
 
 export async function startRuntimeGraphPublicationProbe(
@@ -176,7 +220,7 @@ export async function stopRuntimeGraphPublicationProbe(
   electronApp: ElectronApplication,
   page: Page,
   start: { main: string; renderer: string },
-  selfTestBeforeEpochMs = 0
+  selfTest: RendererLongTaskSelfTestWindow | null = null
 ): Promise<RuntimeGraphPublicationProbeSnapshot> {
   const mainResult =
     start.main === 'installed'
@@ -199,12 +243,13 @@ export async function stopRuntimeGraphPublicationProbe(
     .slice(1)
     .map((value, index) => value - (publicationEpochMs[index] ?? value))
   const timeOrigin = rendererResult?.timeOrigin ?? 0
-  const longTasks = (rendererResult?.longTasks ?? []).map((task) => ({
+  const longTasks: LongTaskSample[] = (rendererResult?.longTasks ?? []).map((task) => ({
     startEpochMs: timeOrigin + task.start,
     durationMs: task.duration
   }))
+  const { selfTestLongTaskMs, workloadLongTasks } = partitionSelfTestLongTask(longTasks, selfTest)
   // A renderer graph build ends at the invoke; allow slack for IPC transit either way.
-  const around = longTasks.filter((task) =>
+  const around = workloadLongTasks.filter((task) =>
     publicationEpochMs.some(
       (at) => at >= task.startEpochMs - 5 && at <= task.startEpochMs + task.durationMs + 50
     )
@@ -218,14 +263,10 @@ export async function stopRuntimeGraphPublicationProbe(
     publications: mainResult?.count ?? 0,
     mainHandler: summarize(mainResult?.handlerMs ?? []),
     publicationIntervalMs: summarize(intervals),
-    longTasks: summarize(longTasks.map((task) => task.durationMs)),
-    selfTestLongTaskMs: Number(
-      (
-        longTasks.find((task) => task.startEpochMs <= selfTestBeforeEpochMs)?.durationMs ?? 0
-      ).toFixed(1)
-    ),
+    longTasks: summarize(workloadLongTasks.map((task) => task.durationMs)),
+    selfTestLongTaskMs,
     longTasksAroundPublication: summarize(around.map((task) => task.durationMs)),
-    longestLongTasks: [...longTasks]
+    longestLongTasks: [...workloadLongTasks]
       .sort((a, b) => b.durationMs - a.durationMs)
       .slice(0, 10)
       .map((task) => ({
