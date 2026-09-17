@@ -1,0 +1,43 @@
+diff --git a/src/main/crash-reporting/crashpad-capture.ts b/src/main/crash-reporting/crashpad-capture.ts
+index 1f628fe9c2..3f936f0942 100644
+--- a/src/main/crash-reporting/crashpad-capture.ts
++++ b/src/main/crash-reporting/crashpad-capture.ts
+@@ -7,9 +7,13 @@
+ // a CHECK failure becomes nameable without shipping raw memory anywhere.
+ 
+ import type { Dirent } from 'node:fs'
+-import { readdir, readFile, rm, stat } from 'node:fs/promises'
++import { readdir, rm, stat } from 'node:fs/promises'
+ import path from 'node:path'
+ import { app, crashReporter } from 'electron'
++import {
++  NodeFileReadTooLargeError,
++  readNodeFileWithinLimit
++} from '../../shared/node-bounded-file-reader'
+ import {
+   parseMinidumpCrashSignature,
+   type MinidumpCrashSignature
+@@ -292,7 +296,8 @@ export async function captureMinidumpSignature(
+       }
+       reservedDumpPaths.add(dump.filePath)
+       try {
+-        const signature = parseMinidumpCrashSignature(await readFile(dump.filePath), {
++        const { buffer } = await readNodeFileWithinLimit(dump.filePath, MAX_DUMP_BYTES)
++        const signature = parseMinidumpCrashSignature(buffer, {
+           expectedProcessType: options.expectedProcessType
+         })
+         if (
+@@ -304,7 +309,12 @@ export async function captureMinidumpSignature(
+           return null
+         }
+         claimedDumpPaths.set(dump.filePath, dump.mtimeMs)
+-        return { filePath: dump.filePath, sizeBytes: dump.size, signature }
++        return { filePath: dump.filePath, sizeBytes: buffer.byteLength, signature }
++      } catch (error) {
++        if (error instanceof NodeFileReadTooLargeError) {
++          return null
++        }
++        throw error
+       } finally {
+         reservedDumpPaths.delete(dump.filePath)
+       }

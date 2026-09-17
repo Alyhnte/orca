@@ -1,0 +1,39 @@
+{
+  "comparison": "Actual crashpad capture and parser with temporary synthetic files; before reverses only fix.patch in memory; descriptor-growth control is fixed-only",
+  "sourceHashes": {
+    "src/main/crash-reporting/crashpad-capture.ts": {
+      "before": "f0326e6be534a321adc765bc0bf95ef72debe5ac701861c82e96b87ec822f022",
+      "after": "3d6ec639f4849944dc73f7c9d73c243bc34375ce8e2ba1584d6350e91763edbd"
+    },
+    "src/main/crash-reporting/crashpad-capture-read-limit.test.ts": {
+      "current": "0d285d75aa09b5ccbdb38d4360e29b6b5f74e43a75c803c2aefeeb190684036d"
+    },
+    "src/main/crash-reporting/minidump-crash-signature.ts": {
+      "current": "91a87850fd5b303cc1607825886f8ee43c68b15e5367d19632726fa93aa48c8d"
+    },
+    "src/shared/node-bounded-file-reader.ts": {
+      "current": "2cffa451b72d059226e0c2d4b6d2a5203cb8ddafb358d5e828dcd3436d197ecb"
+    }
+  },
+  "before": {
+    "exitCode": 1,
+    "timedOut": false,
+    "passed": 4,
+    "failed": 3,
+    "skipped": 1,
+    "failedCases": [
+      "skips growth past existing limit and captures next valid dump",
+      "skips replacement past existing limit and captures next valid dump",
+      "records bytes actually parsed when permitted growth follows directory stat"
+    ]
+  },
+  "after": {
+    "exitCode": 0,
+    "timedOut": false,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "failedCases": []
+  },
+  "passed": true
+}
