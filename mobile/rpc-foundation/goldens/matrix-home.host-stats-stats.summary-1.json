@@ -3,7 +3,7 @@
   "family": "home.host-stats",
   "namedDeltas": [],
   "runnerVersion": 1,
-  "baseline": "26bd50a4609e59b38b73c14745c3ee9571e357b6",
+  "baseline": "0b8bd1c3c73e05dc6c20b75740a704c482536d20",
   "lockfileSha256": "4568633356187895ccda8e2ff83245c37d5621832c69e268733733b6947971e3",
   "recorderSha256": "d4fa125899cd863c03dbf96657d46b8c7d6c0ccf522b342bc4f164ed1e3becfe",
   "adapterSha256": "a9e0780298a1443664e7ae02056168aa34d67556c9c056d51a82c7b4a73ad35b",
@@ -83,6 +83,11 @@
       }
     },
     "44136fa355b3": {},
+    "556edbbc8712": {
+      "host-1": {
+        "$rpc": "null"
+      }
+    },
     "5691d0e49e5a": {
       "name": "stats.summary#1",
       "ordinal": 1,
@@ -114,6 +119,15 @@
           "result": {
             "error": "refused"
           }
+        }
+      }
+    },
+    "570b0ab475a2": {
+      "name": "stats",
+      "ordinal": 3,
+      "value": {
+        "host-1": {
+          "$rpc": "null"
         }
       }
     },
@@ -306,6 +320,11 @@
         "error": "refused"
       }
     },
+    "c5bfd5f18460": {
+      "host-1": {
+        "$rpc": "undefined"
+      }
+    },
     "c60ee6b032a7": {
       "name": "stats.summary#1",
       "ordinal": 1,
@@ -416,6 +435,15 @@
       "name": "stats.summary#1",
       "ordinal": 2,
       "json": "{\"id\":\"frame-1\",\"deviceToken\":\"recording-device\",\"method\":\"stats.summary\"}"
+    },
+    "db6e2ff86f92": {
+      "name": "stats",
+      "ordinal": 3,
+      "value": {
+        "host-1": {
+          "$rpc": "undefined"
+        }
+      }
     },
     "dccf8acd7784": {
       "name": "stats.summary#1",
@@ -530,8 +558,8 @@
           "settlements": {
             "load": "eb79a9b3682a"
           },
-          "state": "44136fa355b3",
-          "effects": []
+          "state": "c5bfd5f18460",
+          "effects": ["db6e2ff86f92"]
         }
       },
       {
@@ -542,8 +570,8 @@
           "settlements": {
             "load": "eb79a9b3682a"
           },
-          "state": "44136fa355b3",
-          "effects": []
+          "state": "556edbbc8712",
+          "effects": ["570b0ab475a2"]
         }
       },
       {
