@@ -135,7 +135,7 @@
         "japanese": "日本語",
         "spanish": "Español",
         "french": "Français",
-        "turkish": "Turkish"
+        "turkish": "Türkçe"
       },
       "statusBar": {
         "claudeToggleDescription": "Show Claude token and cost usage for the active workspace.",
