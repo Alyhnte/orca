@@ -1,10 +1,6 @@
 import { z } from 'zod'
 import { salvagedOptional } from '../../../src/shared/zod-salvage'
 
-// The terminal-send verdict is the terminal domain's, re-exported so the session screen's writes
-// keep one name for it and the two domains cannot drift on what "delivered" means.
-export { terminalSendAcceptedSchema } from '../terminal/terminal-reply-schema'
-
 // The session screen's writes: terminal input from native chat and the image surfaces, the tab
 // strip's rename/close/activate, the New Tab terminal create, the terminal menu's display-mode
 // toggle, the markdown tab save and the worktree review-notes write.
