@@ -1,4 +1,3 @@
-import { fstatSync } from 'node:fs'
 import type { FileHandle } from 'node:fs/promises'
 import type * as FsPromises from 'node:fs/promises'
 import { join } from 'node:path'
@@ -9,7 +8,7 @@ type ReaderState = {
   path: string
   opens: number
   closes: number
-  fd: number
+  handles: FileHandle[]
   bytesRead: number
   statErrorOn: number
   readError: boolean
@@ -20,7 +19,7 @@ const state = vi.hoisted((): ReaderState => ({
   path: '',
   opens: 0,
   closes: 0,
-  fd: -1,
+  handles: [],
   bytesRead: 0,
   statErrorOn: 0,
   readError: false,
@@ -37,7 +36,7 @@ vi.mock('node:fs/promises', async (importOriginal) => {
         return handle
       }
       state.opens++
-      state.fd = handle.fd
+      state.handles.push(handle)
       let statsRead = 0
       return {
         stat: async () => {
@@ -100,7 +99,7 @@ beforeEach(async () => {
     path: join(directory, 'transcript.jsonl'),
     opens: 0,
     closes: 0,
-    fd: -1,
+    handles: [],
     bytesRead: 0,
     statErrorOn: 0,
     readError: false,
@@ -112,8 +111,10 @@ beforeEach(async () => {
 afterEach(async () => {
   try {
     expect(state.closes).toBe(state.opens)
-    if (state.fd >= 0) {
-      expect(() => fstatSync(state.fd)).toThrow()
+    for (const handle of state.handles) {
+      // Another test can reuse a closed descriptor number in this process.
+      expect(handle.fd).toBe(-1)
+      await expect(handle.stat()).rejects.toMatchObject({ code: 'EBADF' })
     }
   } finally {
     await rm(directory, { recursive: true, force: true })
