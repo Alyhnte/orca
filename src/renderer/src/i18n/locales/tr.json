@@ -999,9 +999,9 @@
         "724c440e72": "başlarken",
         "0505d0df29": "orca ile başlayın",
         "ea0b1bc7b8": "kurulum kılavuzu",
-        "17005c73d4": "Kurulum ve kilometre taşı adımları için katılım denetim listesini açın.",
+        "17005c73d4": "Kurulum ve kilometre taşı adımları için karşılama denetim listesini açın.",
         "ded9e9032f": "Karşılama denetim listesi",
-        "5f32ac08f3": "Çekirdek Orca iş akışları için katılım denetim listesini bitirin.",
+        "5f32ac08f3": "Çekirdek Orca iş akışları için karşılama denetim listesini bitirin.",
         "8ac3de82f5": "Cihaz içi modellerle yerel konuşmadan metne dikte.",
         "6a50cdcd7c": "Ses",
         "0059bd17f3": "Ajanların bilgisayarınızdaki her uygulamayı denetlemesine izin verin.",
@@ -1422,8 +1422,8 @@
           "92f4238f1a": "WSL varsayılanı",
           "fc806485ae": "WSL yükleniyor",
           "c7c516946f": "WSL bu makinede kullanılamıyor.",
-          "9bccf48906": "Aracı konumu",
-          "d00949e59b": "Kurulu aracıları {{value0}} kaynağından gösterin. Yenile, o ortamdaki PATH'i yeniden denetler."
+          "9bccf48906": "Ajan konumu",
+          "d00949e59b": "Kurulu ajanları {{value0}} kaynağından gösterin. Yenile, o ortamdaki PATH'i yeniden denetler."
         },
         "AgentSkillSetupPanel": {
           "5289300939": "Kurulu değil",
@@ -1452,20 +1452,20 @@
           "8dc0192e48": "Devre Dışı",
           "df123171d1": "Kurulu değil",
           "d4d2a45d63": "Etkin",
-          "d83834f5e6": "Kurulu aracılar algılanıyor…",
-          "024bd95089": "aracılar",
+          "d83834f5e6": "Kurulu ajanlar algılanıyor…",
+          "024bd95089": "ajanlar",
           "e8da2af684": "Kurulabilir",
           "ed3e110e61": "algılandı",
           "03e1a5081a": "{{value0}} üzerinde",
-          "25a41a9aad": "Etkin sunucuda kurulu aracıları yeniden algıla",
-          "remoteDetectionFailed": "Kurulu aracılar algılanamadı. Ana bilgisayar bağlantısını denetleyip yeniden deneyin.",
+          "25a41a9aad": "Etkin sunucuda kurulu ajanları yeniden algıla",
+          "remoteDetectionFailed": "Kurulu ajanlar algılanamadı. Ana bilgisayar bağlantısını denetleyip yeniden deneyin.",
           "retryDetection": "Yeniden Dene",
           "02e0143be5": "Kurulu",
-          "110b74b022": "Aracı yok (boş terminal)",
+          "110b74b022": "Ajan yok (boş terminal)",
           "92033495ff": "Otomatik",
-          "9b175d0f5e": "Yeni çalışma alanı açılırken önceden seçilen aracı.",
-          "385212c7a1": "Varsayılan Aracı",
-          "f9f127d664": "İkili dosya yolunu veya adını geçersiz kılın; bu aracı için varsayılan başlatma bağımsız değişkenlerini veya ortamı düzenleyin.",
+          "9b175d0f5e": "Yeni çalışma alanı açılırken önceden seçilen ajan.",
+          "385212c7a1": "Varsayılan Ajan",
+          "f9f127d664": "İkili dosya yolunu veya adını geçersiz kılın; bu ajan için varsayılan başlatma bağımsız değişkenlerini veya ortamı düzenleyin.",
           "f95b5c79b8": "Kur",
           "fe4d630c94": "Belgeler",
           "c8794e622e": "Algılandı",
@@ -1478,24 +1478,24 @@
           "959b67385b": "Varsayılanı ayarla",
           "24e032fa34": "Varsayılan",
           "5f986a9b92": "Varsayılan yap",
-          "d7625cf8b2": "Varsayılan aracı",
+          "d7625cf8b2": "Varsayılan ajan",
           "cfb3f35775": "Bağımsız değişkenler",
           "6f99bf5dd0": "Varsayılan bağımsız değişken yok",
           "8fbe1f37c1": "Ortam",
           "2d133152fa": "Varsayılan ortam yok",
-          "agentPermissions": "Aracı İzinleri",
-          "agentPermissionsInfo": "Aracı izinleri bilgisi",
-          "agentPermissionsTooltip": "Başlatma bağımsız değişkenlerini geçersiz kıldığınız aracılara uygulanmaz.",
-          "agentPermissionsDescription": "Orca'nın aracıları daha az izin istemiyle mi yoksa el ile denetimlerle mi başlatacağını seçin.",
+          "agentPermissions": "Ajan İzinleri",
+          "agentPermissionsInfo": "Ajan izinleri bilgisi",
+          "agentPermissionsTooltip": "Başlatma bağımsız değişkenlerini geçersiz kıldığınız ajanlara uygulanmaz.",
+          "agentPermissionsDescription": "Orca'nın ajanları daha az izin istemiyle mi yoksa el ile denetimlerle mi başlatacağını seçin.",
           "agentPermissionsManual": "El ile",
           "3f1bdf3cb4": "Ortam metni güvenli ayrıştırılamayacak kadar büyük.",
           "codexSessionSource": "İçe aktarılacak Codex çalışma alanı",
           "codexSessionSourceInfo": "Codex geçmişini içe aktarma hakkında",
           "codexSessionSourceTooltip": "Orca, Codex'i yalıtılmış bir çalışma alanında çalıştırır. O oturum geçmişini içe aktarmak için bunu mevcut Codex çalışma alanınıza yönlendirin. Boş, ~/.codex kullanır.",
           "storedDefaultUndetected": "Varsayılanınız olarak kaydedildi ancak şu anda algılanmadı",
-          "noAgentsDetected": "Aracı algılanamadı. Biri kuruluysa, yoklama zaman aşımına uğramış olabilir.",
+          "noAgentsDetected": "Ajan algılanamadı. Biri kuruluysa, yoklama zaman aşımına uğramış olabilir.",
           "c9b33eb5c0": "Yenileniyor…",
-          "13647f9f80": "Kabuk PATH'inizi yeniden okuyun ve kurulu aracıları yeniden algılayın"
+          "13647f9f80": "Kabuk PATH'inizi yeniden okuyun ve kurulu ajanları yeniden algılayın"
         },
         "AppIconSelector": {
           "d5a112dc9b": "Sonraki simge",
@@ -1578,9 +1578,9 @@
           "9241b59bf5": "Şunu kullanın",
           "a869d0edd8": "Dal adı komut şablonu",
           "d9b65054ef": ") görevi özetleyen kısa bir adla yeniden adlandırır. Yalnızca Orca'nın kendi adlandırdığı dallar yeniden adlandırılır ve gönderildikten sonra asla.",
-          "12ea4a408d": "Bir aracı yeni bir çalışma alanında çalışmaya başladığında Orca, otomatik oluşturulan dalı (ör.",
+          "12ea4a408d": "Bir ajan yeni bir çalışma alanında çalışmaya başladığında Orca, otomatik oluşturulan dalı (ör.",
           "ef787db0e3": "Dalı Otomatik Yeniden Adlandır",
-          "6a051586d2": "Aracı başladıktan sonra otomatik oluşturulan dalı yapılan işe göre yeniden adlandırın.",
+          "6a051586d2": "Ajan başladıktan sonra otomatik oluşturulan dalı yapılan işe göre yeniden adlandırın.",
           "cfd82406dd": "Kaydediliyor...",
           "7c7e34a66d": "Kaydedilmemiş değişiklikler"
         },
@@ -1667,12 +1667,12 @@
           "333984cf90": "Mevcut tarayıcı oturumunu kullan"
         },
         "BrowserUseEnableSwitch": {
-          "aea3f45349": "Aracı Tarayıcı Kullanımını Etkinleştir"
+          "aea3f45349": "Ajan Tarayıcı Kullanımını Etkinleştir"
         },
         "BrowserUseExamples": {
           "1199258ace": "Kopyala",
           "1188e56af4": "Örnek istemi kopyala",
-          "c5325e91f6": "Bunlardan birini, becerinin kurulu olduğu bir projede Claude Code, Codex veya başka bir aracıya yapıştırın.",
+          "c5325e91f6": "Bunlardan birini, becerinin kurulu olduğu bir projede Claude Code, Codex veya başka bir ajana yapıştırın.",
           "2a180694f7": "Deneyin — örnek istemler",
           "5ec620ccc4": "Kopyalanamadı.",
           "a602d43069": "{{value0}} kopyalandı."
@@ -1682,18 +1682,18 @@
           "e44c5d681e": "Kaynak",
           "67d9a53f47": "Ayrı girişler için profilleri yönetin",
           "112f70adc4": "Son içe aktarma: {{value0}}",
-          "72d4815523": "Mevcut girişlerinizi Orca'ya taşıyın; aracılar kimlik doğrulamalı sayfalara erişebilsin. Varsayılan profile içe aktarılır.",
+          "72d4815523": "Mevcut girişlerinizi Orca'ya taşıyın; ajanlar kimlik doğrulamalı sayfalara erişebilsin. Varsayılan profile içe aktarılır.",
           "2eb906706c": "Tarayıcı Çerezlerini İçe Aktar",
-          "af8c83ed61": "Girişlerinizi aracılar yeniden kullanabilsin diye çerezleri Chrome, Edge veya diğer tarayıcılardan içe aktarın.",
-          "68ea76eb71": "Aracılar Orca'nın tarayıcısını kullanabilsin diye Browser Use becerisini kurun.",
+          "af8c83ed61": "Girişlerinizi ajanlar yeniden kullanabilsin diye çerezleri Chrome, Edge veya diğer tarayıcılardan içe aktarın.",
+          "68ea76eb71": "Ajanlar Orca'nın tarayıcısını kullanabilsin diye Browser Use becerisini kurun.",
           "2d6ead9ab2": "Browser Use Becerisini Kur",
           "e9f3f3b488": "Kurulduğu yer",
-          "9fca1f7f5d": "Orca CLI komutunu kaydeder; aracılar tarayıcıyı kendi kabuklarından yönetebilir.",
+          "9fca1f7f5d": "Orca CLI komutunu kaydeder; ajanlar tarayıcıyı kendi kabuklarından yönetebilir.",
           "c6065d205d": "Orca CLI'yi Etkinleştir",
-          "c79eff0213": "Aracılar tarayıcıyı kullanabilsin diye Orca CLI'yi kaydedin.",
-          "702488a5f7": "Kodlama aracılarının bu tarayıcıyı girişlerinizle kullanmasına izin verin. Aşağıdaki üç adımı tamamlayın.",
-          "b8a1f2d84d": "Aracı Tarayıcı Kullanımı",
-          "96b91c6349": "Kodlama aracılarının bu tarayıcıyı girişlerinizle kullanmasına izin verin.",
+          "c79eff0213": "Ajanlar tarayıcıyı kullanabilsin diye Orca CLI'yi kaydedin.",
+          "702488a5f7": "Kodlama ajanların bu tarayıcıyı girişlerinizle kullanmasına izin verin. Aşağıdaki üç adımı tamamlayın.",
+          "b8a1f2d84d": "Ajan Tarayıcı Kullanımı",
+          "96b91c6349": "Kodlama ajanların bu tarayıcıyı girişlerinizle kullanmasına izin verin.",
           "2ea4617e3a": "{{value1}}{{value2}} kaynağından {{value0}} çerez içe aktarıldı.",
           "721aee31b4": "Orca CLI PATH içine kaydedildi.",
           "180a9abf3a": "CLI durumu yüklenemedi.",
@@ -1707,16 +1707,16 @@
           "0289434ed6": "Etkin"
         },
         "BrowserUseSkillStep": {
-          "0871b6998d": "Aracıların Orca'nın tarayıcısında sayfalarda gezinmesini ve sayfaları doğrulamasını sağlar.",
+          "0871b6998d": "Ajanların Orca'nın tarayıcısında sayfalarda gezinmesini ve sayfaları doğrulamasını sağlar.",
           "459e24eebc": "Browser Use becerisi"
         },
         "CliSection": {
           "8671e406f0": "İptal",
           "a4aafe46e3": "Hedef yol:",
-          "e8012c03a1": "Aracıların Orca çalışma alanı, terminal ve ilerleme komutlarını kullanmasını sağlar.",
+          "e8012c03a1": "Ajanların Orca çalışma alanı, terminal ve ilerleme komutlarını kullanmasını sağlar.",
           "6053cf736c": "CLI becerisi",
-          "36a6f919ba": "Aracılara Orca uyumlu çalışma alanı, terminal ve ilerleme iş akışları verin.",
-          "04873eea3e": "Aracı becerileri",
+          "36a6f919ba": "Ajanlara Orca uyumlu çalışma alanı, terminal ve ilerleme iş akışları verin.",
+          "04873eea3e": "Ajan becerileri",
           "7f2747f7dd": "bu kabuk için şu anda PATH içinde görünmüyor.",
           "b0c310ab46": "Mevcut başlatıcı hedefi:",
           "15eaad0d31": "Komut yolu:",
@@ -1753,7 +1753,7 @@
           "3728a94fb6": "WSL kabuk komutu müdahale gerektiriyor",
           "775a4cfbb8": "WSL kabuk komutu kaydı kullanılamıyor",
           "c47127f222": "WSL varsayılanı",
-          "0c9f3cf9da": "Orca'nın genel aracı becerilerini nerede denetleyip kuracağını seçin.",
+          "0c9f3cf9da": "Orca'nın genel ajan becerilerini nerede denetleyip kuracağını seçin.",
           "f00d6aa9b5": "WSL bu makinede kullanılamıyor.",
           "fc0fcf72fd": "Beceri kurulumundan önce WSL kabuk komutunu kaydedin.",
           "windowsPathUnknown": "WSL kabuk komutu PATH denetimi yapılamadı",
@@ -1777,7 +1777,7 @@
           "4f722a5f53": "Özel komut seçen commit-message, pull-request ve branch-name tarifleri tarafından kullanılır. Şunu kullanın:",
           "47e45cbd5a": "Özel komut",
           "1ef29f8c29": "Metin tarifi Özel komut kullandığında Orca'nın çalıştırdığı komut satırı.",
-          "2339a89104": "Seçili aracıyı o eylemin komut şablonuyla çalıştıran AI düğmeleri ekler.",
+          "2339a89104": "Seçili ajanı o eylemin komut şablonuyla çalıştıran AI düğmeleri ekler.",
           "d5b45a3628": "Source Control AI eylemlerini göster",
           "7bcad2b200": "Source Control commit, pull request, branch-name ve fix eylemleri için eylem tarifleri ekler.",
           "25350d670f": "özel",
@@ -1793,7 +1793,7 @@
           "54038660e0": "komut"
         },
         "ComputerUsePane": {
-          "1735461723": "Aracıların yerel masaüstü uygulamalarını incelemesini ve kullanmasını sağlar.",
+          "1735461723": "Ajanların yerel masaüstü uygulamalarını incelemesini ve kullanmasını sağlar.",
           "93255aaf18": "Computer Use becerisi",
           "45f8e22c2e": "Aç",
           "d95d1cfab8": "Yenile",
@@ -1805,7 +1805,7 @@
           "740766c291": "Computer Use kurulumu zaten tamamlandı",
           "697005758f": "macOS Gizlilik ve Güvenlik açıldı",
           "2168fa5ab0": "Computer Use izinleri yüklenemedi",
-          "0c9a33f468": "Aracılar görsel durumu inceleyebilsin diye uygulama pencerelerini yakalayın.",
+          "0c9a33f468": "Ajanlar görsel durumu inceleyebilsin diye uygulama pencerelerini yakalayın.",
           "07bbe4c4cb": "Ekran görüntüleri",
           "4d03dec2d0": "Uygulama arayüz ağaçlarını okuyun ve istenen eylemleri gerçekleştirin.",
           "6b5a2cd3a5": "Erişilebilirlik",
@@ -1831,7 +1831,7 @@
           "e7bb06007c": "Yerel Ağ",
           "4a73f5217a": "Diğer yerel uygulamaları denetleyen betikler için Apple Events.",
           "e119f0d66b": "Otomasyon",
-          "7ca17b62c8": "Çalıştırdığı aracılar diğer uygulamaların verilerini okuduğunda macOS, terminal komutlarının sorumlu işlemi olduğu için Orca'yı adlandırır. Bu istemleri azaltmak için Orca'ya bu izni verin. Ardından Orca'dan çıkıp yeniden açın.",
+          "7ca17b62c8": "Çalıştırdığı ajanlar diğer uygulamaların verilerini okuduğunda macOS, terminal komutlarının sorumlu işlemi olduğu için Orca'yı adlandırır. Bu istemleri azaltmak için Orca'ya bu izni verin. Ardından Orca'dan çıkıp yeniden açın.",
           "c566bca278": "Tam Disk Erişimi",
           "9f35980756": "Tuş vuruşu enjeksiyonu, pencere denetimi ve UI otomasyon araçları.",
           "5b2f22ca2d": "Erişilebilirlik",
@@ -1879,20 +1879,20 @@
           "9762364929": "Mümkün olduğunda macOS üzerinde APFS klon kopyası kullanır, aksi halde yapılandırılmış klasörleri veya dosyaları oluşturulan çalışma ağaçlarına sembolik bağlarla ekler.",
           "24416f42cd": "Çalışma ağaçlarında paylaşılan yollar",
           "fb82ea1d7a": "Yapılandırılmış dosya veya klasörleri yeni oluşturulan çalışma ağaçlarına otomatik olarak ekleyin.",
-          "a20d5ea365": "Terminal zili veya aracı tamamlama olaylarından sonra bölme düzeyi vurguyu o bölmeyle etkileşime girene kadar görünür tutar. Sinyal ayarlanırken deneyseldir.",
+          "a20d5ea365": "Terminal zili veya ajan tamamlama olaylarından sonra bölme düzeyi vurguyu o bölmeyle etkileşime girene kadar görünür tutar. Sinyal ayarlanırken deneyseldir.",
           "ec897e8d89": "Terminal dikkati",
-          "88b7613afb": "Terminal zili ve aracı tamamlama olayları için kalıcı bölme vurgusu.",
-          "0277901cf7": "Sol kenar çubuğuna, tamamlanan aracılar, engelleyici sorular, okunmamış durum ve çalışma ağacı oluşturma olayları için iş parçacıklı çalışma ağacı akışıyla bir Aracılar girdisi ekler. Deneysel — olay modeli ve arayüz değişebilir.",
-          "a05bcdaf57": "Aracılar Görünümü",
-          "f63ea281e3": "Aracı tamamlamaları ve engelleyici durumlar için iş parçacıklı sol kenar çubuğu akışı.",
+          "88b7613afb": "Terminal zili ve ajan tamamlama olayları için kalıcı bölme vurgusu.",
+          "0277901cf7": "Sol kenar çubuğuna, tamamlanan ajanlar, engelleyici sorular, okunmamış durum ve çalışma ağacı oluşturma olayları için iş parçacıklı çalışma ağacı akışıyla bir Ajanlar girdisi ekler. Deneysel — olay modeli ve arayüz değişebilir.",
+          "a05bcdaf57": "Ajanlar Görünümü",
+          "f63ea281e3": "Ajan tamamlamaları ve engelleyici durumlar için iş parçacıklı sol kenar çubuğu akışı.",
           "agentHibernation": {
-            "copy": "Yapılandırılan boşta süresi sonunda boşta kalan arka plan aracı terminallerini durdurur ve yeniden açtığınızda desteklenen oturumları sürdürür. Aracı uykusu, Orca tarafından başlatılan aracıların başlatma seçeneklerini korur. El ile başlatılan aracılar mevcut Orca varsayılanlarınızla sürebilir. Güvenlik modeli ayarlanırken deneyseldir.",
-            "description": "Yapılandırılan boşta süresi sonunda boşta kalan arka plan aracı terminallerini durdurur ve yeniden açtığınızda desteklenen oturumları sürdürür.",
-            "idleMinutesDescription": "Tamamlanan bir arka plan aracının Orca onu uyutmadan önce kaç dakika boşta beklemesi gerektiği.",
+            "copy": "Yapılandırılan boşta süresi sonunda boşta kalan arka plan ajan terminallerini durdurur ve yeniden açtığınızda desteklenen oturumları sürdürür. Ajan uykusu, Orca tarafından başlatılan ajanların başlatma seçeneklerini korur. El ile başlatılan ajanlar mevcut Orca varsayılanlarınızla sürebilir. Güvenlik modeli ayarlanırken deneyseldir.",
+            "description": "Yapılandırılan boşta süresi sonunda boşta kalan arka plan ajan terminallerini durdurur ve yeniden açtığınızda desteklenen oturumları sürdürür.",
+            "idleMinutesDescription": "Tamamlanan bir arka plan ajanın Orca onu uyutmadan önce kaç dakika boşta beklemesi gerektiği.",
             "idleMinutesLabel": "Uyku süresi",
             "idleMinutesSuffix": "dakika",
-            "title": "Aracı uykusu",
-            "toggleLabel": "Aracı uykusunu aç/kapat"
+            "title": "Ajan uykusu",
+            "toggleLabel": "Ajan uykusunu aç/kapat"
           },
           "newWorktreeCardStyle": {
             "copy": "Güncellenmiş çalışma ağacı kartı düzenini, meta veri yerleşimini, kart görüntüleme menü seçeneklerini ve durum sunumunu önizleyin.",
@@ -1905,11 +1905,11 @@
           "0e89a574ae": "Sağ alt köşede yüzen animasyonlu evcil hayvan.",
           "nativeChat": {
             "title": "Sohbet Arayüzü",
-            "description": "Desteklenen aracı terminal oturumları için masaüstü sohbet yüzeyini önizleyin.",
+            "description": "Desteklenen ajan terminal oturumları için masaüstü sohbet yüzeyini önizleyin.",
             "copy": "Yeni oluşturulan desteklenen yerel oturumlar için deneysel Sohbet Arayüzünü etkinleştirir. Konuşma metni doğruluğu, akış ve eşlik ayarlanırken mevcut terminal oturumları terminal sohbet yolunu korur.",
             "toggleLabel": "Sohbet Arayüzünü aç/kapat",
             "defaultTitle": "Varsayılan görünüm",
-            "defaultCopy": "Yeni desteklenen aracı terminal sekmelerinin nasıl açılacağını seçin.",
+            "defaultCopy": "Yeni desteklenen ajan terminal sekmelerinin nasıl açılacağını seçin.",
             "defaultViewLabel": "Varsayılan Sohbet Arayüzü görünümü",
             "defaultViewTerminal": "Terminal sohbeti",
             "defaultViewNative": "Sohbet Arayüzü",
@@ -1919,13 +1919,13 @@
             "structuredToggleLabel": "Güncellenmiş yapısal yerel sohbeti aç/kapat"
           },
           "agentDashboard": {
-            "title": "Aracı Panosu",
-            "description": "Çalışma ağaçlarındaki aracıları izlemek için Kanban panosu; pencere içinde veya ayrı açılır pencere olarak.",
-            "copy": "Sol kenar çubuğuna bir Aracı Panosu girdisi ekler. Size ihtiyacı olan, çalışan veya biten aracıları; isteğe bağlı olarak boşta aracıları izleyin.",
-            "toggleLabel": "Aracı Panosunu aç/kapat",
+            "title": "Ajan Panosu",
+            "description": "Çalışma ağaçlarındaki ajanları izlemek için Kanban panosu; pencere içinde veya ayrı açılır pencere olarak.",
+            "copy": "Sol kenar çubuğuna bir Ajan Panosu girdisi ekler. Size ihtiyacı olan, çalışan veya biten ajanları; isteğe bağlı olarak boşta ajanları izleyin.",
+            "toggleLabel": "Ajan Panosunu aç/kapat",
             "modeLabel": "Açılış biçimi",
             "modeCopy": "Panoyu kenar çubuğunun yanında pencere içi pano olarak veya ayrı bir açılır pencere olarak gösterin.",
-            "modeAriaLabel": "Aracı Panosu açılış modu",
+            "modeAriaLabel": "Ajan Panosu açılış modu",
             "modeInWindow": "Pencere içi",
             "modePopout": "Açılır pencere"
           }
@@ -1949,14 +1949,14 @@
           "8b9e202e0a": "Bunu sağlayıcınızın önbellek TTL değeriyle eşleştirin. Varsayılan 5 dakikadır.",
           "a2a8962138": "Zamanlayıcı Süresi",
           "b4e7302944": "Önbellek Zamanlayıcısı",
-          "487b176240": "Bir Claude aracısı boşta kaldığında kenar çubuğunda geri sayım gösterin.",
-          "9c20253679": "Bir Claude aracısı boşta kaldığında geri sayım gösterin.",
+          "487b176240": "Bir Claude ajanı boşta kaldığında kenar çubuğunda geri sayım gösterin.",
+          "9c20253679": "Bir Claude ajanı boşta kaldığında geri sayım gösterin.",
           "fe590653c1": "Claude maliyetleri azaltmak için konuşmanızı önbelleğe alır. Çok uzun boşta kalındığında önbellek dolar ve sonraki ileti tam bağlamı daha yüksek maliyetle yeniden gönderir. Ne zaman devam edeceğinizi bilmeniz için bu bir geri sayım gösterir.",
           "a137f8854d": "İstem Önbellek Zamanlayıcısı",
           "80c454e8a6": "Bunu sağlayıcınızın önbellek TTL değeriyle eşleştirin."
         },
         "GeneralEditorSettingsSection": {
-          "f80603d293": "Zengin düzenleyici modunda yerel markdown not denetimlerini ve aracı devir eylemlerini gösterin.",
+          "f80603d293": "Zengin düzenleyici modunda yerel markdown not denetimlerini ve ajan devir eylemlerini gösterin.",
           "4edc104f0f": "Markdown İnceleme Notları",
           "5f02e6fb21": "Zengin düzenleyici modunda yerel markdown inceleme notu denetimlerini gösterin.",
           "51161d1647": "Dosya düzenlerken minik harita görünümünü gösterin.",
@@ -2288,7 +2288,7 @@
           "251b96564a": "algılandı ·",
           "f34c152dc0": "MCP yapılandırmalarını yenile",
           "6bac9ddfc6": "SSH depoları uzak dosya sistemi üzerinden okunur. Başlangıç oluşturma, çalışma alanı kök yapılandırmasıyla sınırlıdır.",
-          "96f5609b04": "Aracıların bu depoda çalışırken kullanabileceği MCP sunucu tanımlarını inceleyin.",
+          "96f5609b04": "Ajanların bu depoda çalışırken kullanabileceği MCP sunucu tanımlarını inceleyin.",
           "55eea3ef47": "MCP Yapılandırmaları",
           "1f3665e35a": "MCP yapılandırması oluşturuldu",
           "82436439eb": "MCP yapılandırması ekle",
@@ -2301,20 +2301,20 @@
           "cdeaed9e37": "Orca CLI PATH içine kaydedildi.",
           "8af7a8bc38": "Komutlar mevcut çalışma ağacının etkin öykünücüsünü hedefler. Koordinatlar 0..1 aralığına normalize edilir.",
           "c7f3fe0a6e": "Yaygın öykünücü komutları",
-          "d94ca6a623": "Aracıların mobil öykünücü denetimi dahil Orca CLI komutlarını kullanmasını sağlar.",
+          "d94ca6a623": "Ajanların mobil öykünücü denetimi dahil Orca CLI komutlarını kullanmasını sağlar.",
           "67e19ee03c": "Orca CLI becerisi",
-          "2fef055608": "Orca CLI komutunu kaydeder; aracılar etkin öykünücüyü kendi kabuklarından denetleyebilir.",
-          "ff4b7e65d6": "Kodlama aracılarının etkin mobil öykünücüyü Orca CLI komutlarıyla denetlemesine izin verin.",
-          "2a674aa810": "Aracı Mobil Öykünücü Denetimi",
+          "2fef055608": "Orca CLI komutunu kaydeder; ajanlar etkin öykünücüyü kendi kabuklarından denetleyebilir.",
+          "ff4b7e65d6": "Kodlama ajanların etkin mobil öykünücüyü Orca CLI komutlarıyla denetlemesine izin verin.",
+          "2a674aa810": "Ajan Mobil Öykünücü Denetimi",
           "3d34423e88": "Orca CLI kaydediliyor",
-          "3be27641c9": "böylece öykünücü komutları aracı kabuklarından çalışabilir.",
+          "3be27641c9": "böylece öykünücü komutları ajan kabuklarından çalışabilir.",
           "3941719a56": "Beceri kurulumu açılmadan önce Orca CLI denetleniyor."
         },
         "MobileEmulatorExamples": {
           "edf13dd03b": "Kopyala",
           "c12b253997": "Örnek istemi kopyala",
           "0820b3f84f": "Deneyin — örnek istemler",
-          "4daa95f25a": "Bunlardan birini, Orca CLI becerisinin kurulu olduğu bir projede Claude Code, Codex veya başka bir aracıya yapıştırın.",
+          "4daa95f25a": "Bunlardan birini, Orca CLI becerisinin kurulu olduğu bir projede Claude Code, Codex veya başka bir ajana yapıştırın.",
           "1f608e7d60": "İstem kopyalanamadı.",
           "2b077b5544": "İstem kopyalandı."
         },
@@ -2322,21 +2322,21 @@
           "c6f3ea4f12": "Hazır",
           "a4f1c82d90": "Devre Dışı",
           "b5e2d93e01": "Denetleniyor...",
-          "19d39113b6": "Kodlama aracılarının etkin mobil öykünücüyü Orca CLI komutlarıyla denetlemesine izin verin.",
-          "f2f8d97bb6": "Aracı Mobil Öykünücü Denetimi",
+          "19d39113b6": "Kodlama ajanların etkin mobil öykünücüyü Orca CLI komutlarıyla denetlemesine izin verin.",
+          "f2f8d97bb6": "Ajan Mobil Öykünücü Denetimi",
           "143961d031": "Varsayılan Cihaz",
           "8aec2f99a0": "Öykünücü kullanılabilirliğini yenile",
           "ae1612c58c": "Kullanılabilirlik",
-          "f9af91ea26": "Yeni Mobil Öykünücü eylemini gösterir ve aracıların etkin öykünücüye bağlanmasına izin verir.",
+          "f9af91ea26": "Yeni Mobil Öykünücü eylemini gösterir ve ajanların etkin öykünücüye bağlanmasına izin verir.",
           "700ddbf9b1": "Mobil Öykünücüyü Etkinleştir",
-          "bc39d0f115": "Orca ve kodlama aracıları için mobil öykünücü desteğini yapılandırın.",
+          "bc39d0f115": "Orca ve kodlama ajanları için mobil öykünücü desteğini yapılandırın.",
           "6593c9ddd3": "Mobil Öykünücü",
           "d704fb5023": "Kurulum gerekli",
           "06b06429c6": "Android SDK ve iOS Simulator desteği denetleniyor.",
           "6d1483d4a0": "1 öykünücü cihaz algılandı.",
           "0a452d4d3b": "{{value0}} öykünücü cihaz algılandı.",
           "f62a1bb759": "Cihazlar algılandıktan sonra Orca bir öykünücü cihazı otomatik seçer.",
-          "b2fd62ea75": "Yeni öykünücü sekmeleri ve aracı bağlanma komutları için varsayılan cihaz. Otomatik seçim, zaten çalışan bir cihazı tercih eder."
+          "b2fd62ea75": "Yeni öykünücü sekmeleri ve ajan bağlanma komutları için varsayılan cihaz. Otomatik seçim, zaten çalışan bir cihazı tercih eder."
         },
         "MobileNetworkInterfaceSection": {
           "51d29927eb": "Kur",
@@ -2390,7 +2390,7 @@
           "installOutro": ", ardından aşağıda eşleştirin.",
           "c8491c17ef": "QR kod tarayarak Orca'yı telefonunuzdan denetleyin. Beta / erken önizleme - hata ve kırıcı değişiklikler bekleyin. iOS uygulamasını şuradan alın:",
           "e7a3ae8c4e": "Mobil",
-          "174f4a3c6d": "Terminalleri ve aracıları telefonunuzdan denetleyin.",
+          "174f4a3c6d": "Terminalleri ve ajanları telefonunuzdan denetleyin.",
           "d4f2b65f30": "Kenar çubuğunda Orca Mobile kısayolunu gösterin."
         },
         "NotificationsPane": {
@@ -2405,8 +2405,8 @@
           "88686e6ca8": "Bildirim Sesi",
           "b6fc369244": "Arka plan terminali zil karakteri yayar.",
           "591fe605b9": "Terminal Zili",
-          "55f901a59b": "Kodlama aracısı biter ve boşta kalır.",
-          "ca76d06fd2": "Aracı Görevi Tamamlandı",
+          "55f901a59b": "Kodlama ajanı biter ve boşta kalır.",
+          "ca76d06fd2": "Ajan Görevi Tamamlandı",
           "deff6d30da": "Arka plan olayları için yerel sistem bildirimleri.",
           "841c8c549f": "Bildirimleri Etkinleştir",
           "0fadad17ce": "Bildirim sesi çalınamadı",
@@ -2459,37 +2459,37 @@
           "f79084947b": "Yeni uygulama"
         },
         "OrchestrationPane": {
-          "52e0634e2c": "Koordinatör aracıdan devirler, çalışma ağacı aktarımları ve sıralı veya paralel çocuk aracılar için orkestrasyon kullanmasını isteyin.",
+          "52e0634e2c": "Koordinatör ajandan devirler, çalışma ağacı aktarımları ve sıralı veya paralel çocuk ajanlar için orkestrasyon kullanmasını isteyin.",
           "ae79504732": "Nasıl kullanılır",
           "7bc082f4de": "Kurulum komutunu kopyala",
           "832f1f3ee6": "Kendi terminalinizi mi tercih edersiniz?",
-          "9bedd2a6e5": "Aracıların bağlam devretmesini ve Orca üzerinden çalışmayı koordine etmesini sağlar.",
+          "9bedd2a6e5": "Ajanların bağlam devretmesini ve Orca üzerinden çalışmayı koordine etmesini sağlar.",
           "07641b9768": "Orkestrasyon becerisi",
-          "2aacdb0517": "Kodlama aracılarını devirler, çalışma ağacı aktarımları ve çocuk-aracı çalışmaları arasında koordine edin.",
-          "191ac34567": "Aracı Orkestrasyonu",
+          "2aacdb0517": "Kodlama ajanlarını devirler, çalışma ağacı aktarımları ve çocuk-ajan çalışmaları arasında koordine edin.",
+          "191ac34567": "Ajan Orkestrasyonu",
           "nestedWorkerDepthTitle": "İç içe çalışan derinliği",
-          "nestedWorkerDepthDescription": "Gönderilen çalışanların kaç kuşağı kendi çalışanlarını oluşturabilir. 1 aracı ağacını düz tutar: koordinatör çalışanları gönderir ve o çalışanlar göndermez."
+          "nestedWorkerDepthDescription": "Gönderilen çalışanların kaç kuşağı kendi çalışanlarını oluşturabilir. 1 ajan ağacını düz tutar: koordinatör çalışanları gönderir ve o çalışanlar göndermez."
         },
         "OrchestrationSetupCard": {
-          "e7d2a5146c": "Aracıların bağlam devretmesini ve Orca üzerinden çalışmayı koordine etmesini sağlar.",
+          "e7d2a5146c": "Ajanların bağlam devretmesini ve Orca üzerinden çalışmayı koordine etmesini sağlar.",
           "2777ff0fdc": "Orkestrasyon becerisi"
         },
         "OrchestrationSkillAgentCoverage": {
           "1e8f8d8fae": "Hazır",
-          "6dec5ce2d2": "Aracı kapsamı",
+          "6dec5ce2d2": "Ajan kapsamı",
           "ffe13e36fb": "Eksik",
-          "checking": "Kurulu aracılar ve beceri yolları denetleniyor…",
-          "noAgents": "PATH üzerinde aracı CLI algılanmadı. Aracıları Ayarlar → Aracılar bölümüne kurun, ardından yeniden denetleyin.",
-          "fullCoverage_one": "Algılanan 1 aracının becerisi var.",
-          "fullCoverage_other": "Algılanan {{value0}} aracının becerisi var.",
+          "checking": "Kurulu ajanlar ve beceri yolları denetleniyor…",
+          "noAgents": "PATH üzerinde ajan CLI algılanmadı. Ajanları Ayarlar → Ajanlar bölümüne kurun, ardından yeniden denetleyin.",
+          "fullCoverage_one": "Algılanan 1 ajanın becerisi var.",
+          "fullCoverage_other": "Algılanan {{value0}} ajanın becerisi var.",
           "noCoverage": "Yukarıdaki beceriyi kurun, ardından yeniden denetleyin.",
-          "partialCoverage": "Algılanan {{value1}} aracıdan {{value0}} tanesinin becerisi var."
+          "partialCoverage": "Algılanan {{value1}} ajandan {{value0}} tanesinin becerisi var."
         },
         "OrchestrationSkillPromptDialog": {
           "35550f3b3b": "Bitti",
           "f08d45293d": "Komutu kopyalayın",
           "1bdce1911e": "Orkestrasyon becerisi kurulum komutunu kopyala",
-          "b99f375eb2": "Aracılarınız için orkestrasyon becerisini kurmak üzere bu komutu bir terminalde çalıştırın.",
+          "b99f375eb2": "Ajanlarınız için orkestrasyon becerisini kurmak üzere bu komutu bir terminalde çalıştırın.",
           "2914abcfa2": "Orkestrasyon becerisini kur",
           "d3dc559225": "Kurulum komutu kopyalanamadı.",
           "239bf9132b": "Kurulum komutu kopyalandı."
@@ -2545,7 +2545,7 @@
           "3d9dc558e8": "Bu hızlı komut kaydedilen listenizden kaldırılacak.",
           "3edf3deaf8": "\"{{value0}}\" silinsin mi?",
           "9fcfc29519": "Ekle",
-          "4ccc63da87": "Aracı",
+          "4ccc63da87": "Ajan",
           "0252ddd578": "Komut metni yok",
           "2bb9e38e93": "Adsız",
           "3eb9897ab0": "Seçilen kapsamlarda komut yok.",
@@ -2647,8 +2647,8 @@
           "0ce113fd7b": "Yerel betikler kaydedildi ancak Betik Kaynağı yalnızca orca.yaml olarak ayarlı.",
           "7f78e5eea6": "Yerel betikler kaydedildi. Orca hangi betik kaynağını önereceğine karar vermeden önce orca.yaml dosyasını denetliyor.",
           "3149964b66": "Kopyalandı",
-          "waitForSetupBeforeAgent": "Aracıyı başlatmadan önce kurulumun tamamlanmasını bekle",
-          "waitForSetupBeforeAgentHelp": "Kurulum, aracının başlatma sırasında ihtiyaç duyduğu bağımlılıkları, MCP sunucularını veya yapılandırma dosyalarını kuruyorsa bunu açın.",
+          "waitForSetupBeforeAgent": "Ajanı başlatmadan önce kurulumun tamamlanmasını bekle",
+          "waitForSetupBeforeAgentHelp": "Kurulum, ajanın başlatma sırasında ihtiyaç duyduğu bağımlılıkları, MCP sunucularını veya yapılandırma dosyalarını kuruyorsa bunu açın.",
           "9b821fa19d": "# ör. echo \"Cleaning up $ORCA_WORKSPACE_NAME\"",
           "a3fc966677": "# ör. pnpm install cp \"$ORCA_ROOT_PATH/.env\" \"$ORCA_WORKTREE_PATH/.env\"",
           "95a0411b3e": "şablon"
@@ -2755,10 +2755,10 @@
         },
         "RepositorySourceControlAiActionRows": {
           "2b2f38652b": "Özel komut",
-          "f4310cf63f": "Aracı",
+          "f4310cf63f": "Ajan",
           "548a6e1281": "Komut şablonu",
           "7a3a8e431d": "CLI bağımsız değişkenleri",
-          "0ffb081b3a": "Varsayılan aracıyı kullan",
+          "0ffb081b3a": "Varsayılan ajanı kullan",
           "1cd88d470a": "Özelleştir",
           "403876bb48": "Geneli kullan",
           "f0aa2cfaea": "Eylem tarifleri"
@@ -2966,9 +2966,9 @@
           "3de4bbb841": "Terminal",
           "8bd117d669": "Arayüz",
           "65358016ea": "At",
-          "c6c01ac209": "Terminalleri ve aracıları telefonunuzdan denetleyin.",
+          "c6c01ac209": "Terminalleri ve ajanları telefonunuzdan denetleyin.",
           "c40dadaac8": "Mobil",
-          "01f9d36292": "Orca ve kodlama aracıları için mobil öykünücü desteğini yapılandırın.",
+          "01f9d36292": "Orca ve kodlama ajanları için mobil öykünücü desteğini yapılandırın.",
           "f75daf1002": "Mobil Öykünücü",
           "mobile_group": "Mobil",
           "2309068a6f": "yıkıcı",
@@ -2989,7 +2989,7 @@
           "954a8f5aef": "İstatistik ve Kullanım",
           "a737a4bb22": "Yaygın eylemler için klavye kısayolları.",
           "23bf7a1ad4": "Kısayollar",
-          "7210ac09c4": "Aracı etkinliği ve terminal olayları için yerel masaüstü bildirimleri.",
+          "7210ac09c4": "Ajan etkinliği ve terminal olayları için yerel masaüstü bildirimleri.",
           "9907545fa3": "Bildirimler",
           "d0b7021d64": "Seçim ve düzenleme davranışı.",
           "d7a3e635b6": "Girdi ve Düzenleme",
@@ -3009,17 +3009,17 @@
           "c9ca101a3b": "Tümleştirmeler",
           "f9b77539fd": "Çalışma alanı varsayılanları, uygulama kurulumu ve bakım.",
           "7807c11c4d": "Genel",
-          "6855b0f77d": "Orca'yı paralel aracı çalışması için kullanışlı kılan çekirdek iş akışlarını tamamlayın.",
+          "6855b0f77d": "Orca'yı paralel ajan çalışması için kullanışlı kılan çekirdek iş akışlarını tamamlayın.",
           "6d119427ef": "Karşılama denetim listesi",
           "eb1176a14e": "Cihaz-içi modellerle yerel konuşma-metni diktesi.",
           "5063bb47a5": "Ses",
-          "7118953f14": "Aracıların bilgisayarınızdaki her uygulamayı denetlemesini sağlayın.",
-          "475980f53d": "Birden çok kodlama aracısını Orca üzerinden koordine edin.",
+          "7118953f14": "Ajanların bilgisayarınızdaki her uygulamayı denetlemesini sağlayın.",
+          "475980f53d": "Birden çok kodlama ajanını Orca üzerinden koordine edin.",
           "00c3a7950d": "Orkestrasyon",
           "21f09426ea": "İsteğe bağlı. Orca mevcut sağlayıcı girişlerinizle çalışır; Orca'nın aralarında geçişe yardım etmesini istiyorsanız hesap ekleyin.",
           "ad6c529693": "AI Sağlayıcı Hesapları",
-          "ec1ba547f7": "AI aracılarını yönetin, varsayılan ayarlayın ve komutları özelleştirin.",
-          "8afa676615": "Aracılar",
+          "ec1ba547f7": "AI ajanlarını yönetin, varsayılan ayarlayın ve komutları özelleştirin.",
+          "8afa676615": "Ajanlar",
           "3c88ec55d6": "\" için ayar bulunamadı: \"",
           "c7ad095d96": "Ayarlar yükleniyor...",
           "acc7bbdefd": "Ayarlardan çıkmak için ESC'ye yeniden basın",
@@ -3032,7 +3032,7 @@
           "23c6874fdf": "AI Yetenekleri",
           "dev": "Geliştirici Araçları",
           "devDescription": "Yalnızca geliştirici: UI durumlarını test etme araçları.",
-          "linearDescription": "Linear'ın Orca'da nasıl çalıştığı, kurulum denetim listesi, aracı becerisi ve örnek istemler.",
+          "linearDescription": "Linear'ın Orca'da nasıl çalıştığı, kurulum denetim listesi, ajan becerisi ve örnek istemler.",
           "tasksDescription": "Sağlayıcıları bağlayın, Linear becerisini kurun ve Görevler'de ne görüneceğini seçin."
         },
         "SettingsFormControls": {
@@ -3106,10 +3106,10 @@
           "817128d94e": "Kaydedilmemiş değişiklikler",
           "fb09da4345": "Komut şablonu",
           "2cb4bb7e5d": "CLI bağımsız değişkenleri",
-          "ee0e5c2a48": "Varsayılan aracıyı kullan",
-          "bf84dea6af": "Değişkenleri yalnızca Orca'nın bağlam eklemesini istediğinizde kullanın. Normal aracı tercihinizi izlemek için aracıyı varsayılan bırakın.",
+          "ee0e5c2a48": "Varsayılan ajanı kullan",
+          "bf84dea6af": "Değişkenleri yalnızca Orca'nın bağlam eklemesini istediğinizde kullanın. Normal ajan tercihinizi izlemek için ajanı varsayılan bırakın.",
           "a79c567194": "Eylem tarifleri",
-          "cf01d41bce": "Her Source Control AI düğmesinin kullandığı aracı, CLI bağımsız değişkenleri ve komut şablonu.",
+          "cf01d41bce": "Her Source Control AI düğmesinin kullandığı ajan, CLI bağımsız değişkenleri ve komut şablonu.",
           "b5f46664d3": "Source Control AI eylem varsayılanı kaydedilemedi: {{value0}}",
           "cb67b938c5": "düzeltin",
           "2037c78a6f": "şablon",
@@ -3236,7 +3236,7 @@
           "b2ab248ded": "Atlama Ana Bilgisayarı",
           "3b01ca44a0": "İsteğe bağlı. Tünelleme için kullanılır (ör. Cloudflare Access, ProxyCommand).",
           "c7d0e18ecb": "Proxy Komutu",
-          "cb91f6375c": "İsteğe bağlı. Varsayılan olarak SSH aracısı kullanılır.",
+          "cb91f6375c": "İsteğe bağlı. Varsayılan olarak SSH ajanı kullanılır.",
           "63c0c145c1": "Kimlik Dosyası",
           "dc1dc52aaa": "Kullanıcı adı",
           "ce370ce674": "Ana bilgisayar veya takma ad *",
@@ -3255,7 +3255,7 @@
           "editDescription": "Bu makinenin bağlantı ayrıntılarını güncelleyin. Değişiklikler sonraki bağlantıda uygulanır.",
           "addDescription": "SSH üzerinden giriş yapabileceğiniz kalıcı bir makine ekleyin.",
           "editingPrefix": "Düzenleniyor",
-          "d6a5f2ee5c": "~/.ssh/id_ed25519 (SSH aracısı için boş bırakın)"
+          "d6a5f2ee5c": "~/.ssh/id_ed25519 (SSH ajanı için boş bırakın)"
         },
         "TasksPane": {
           "openIntegrations": "Tümleştirmeler",
@@ -3272,16 +3272,16 @@
           "addJira": "Jira erişimi ekleyin",
           "githubDescription": "GitHub issue'larına göz atın ve onlardan çalışma alanları başlatın.",
           "gitlabDescription": "GitLab issue'larına göz atın ve onlardan çalışma alanları başlatın.",
-          "linearDescription": "Linear'ı bağlayın, aracı becerisini kurun ve Görevler'de gösterin.",
+          "linearDescription": "Linear'ı bağlayın, ajan becerisini kurun ve Görevler'de gösterin.",
           "jiraDescription": "Jira Cloud veya şirket-içi Jira'yı bağlayın ve Görevler'de gösterin.",
           "setupTitle": "Görev yönetimi kurulumu",
-          "setupDescription": "Her sağlayıcının bağlantı + görünürlüğünü tek yerde tamamlayın. Linear ayrıca kodlama aracılarının biletleri okuyup güncelleyebilmesi için aracı becerisine ihtiyaç duyar. En az bir sağlayıcı görünür kalmalıdır.",
+          "setupDescription": "Her sağlayıcının bağlantı + görünürlüğünü tek yerde tamamlayın. Linear ayrıca kodlama ajanların biletleri okuyup güncelleyebilmesi için ajan becerisine ihtiyaç duyar. En az bir sağlayıcı görünür kalmalıdır.",
           "incompleteBannerTitle": "Bazı görünür sağlayıcıların kurulumu eksik",
           "incompleteBannerBody": "Kullanmadığınız sağlayıcıları gizleyin veya kartı genişletip adımlarını tamamlayın.",
           "providersDescription": "Her kart bağlantıyı (Linear için beceriyi de) ve Görevler'de görünüp görünmediğini adım adım gösterir.",
           "integrationsHint": "Tüm sağlayıcıların kimlik bilgileri ayrıca şurada bulunur:",
           "skillHint": ". Linear bağlandıktan sonra kullanım örnekleri Ayarlar → Linear altında kalır.",
-          "incompleteBannerBodyWithLinear": "Kullanmadığınız sağlayıcıları gizleyin veya kartı genişletip adımlarını tamamlayın. Linear için: API erişimi, aracı becerisi ve Görevlerde Göster."
+          "incompleteBannerBodyWithLinear": "Kullanmadığınız sağlayıcıları gizleyin veya kartı genişletip adımlarını tamamlayın. Linear için: API erişimi, ajan becerisi ve Görevlerde Göster."
         },
         "TerminalAppearanceSection": {
           "870377082f": "Kapalı",
@@ -3405,8 +3405,8 @@
           "cc8c5ca224": "Windows varsayılanı",
           "d78fc4fdef": "Dağıtımlar yükleniyor",
           "219aaa59f4": "WSL Dağıtımı",
-          "2503f1e86b": "Etkin çalışma alanı zaten WSL içinde değilken yeni WSL terminal bölmeleri ve yerel aracı algılama için kullanılır.",
-          "5fe79a5e56": "Yeni WSL terminallerinin ve yerel aracı taramalarının hangi WSL dağıtımını kullanacağını seçin.",
+          "2503f1e86b": "Etkin çalışma alanı zaten WSL içinde değilken yeni WSL terminal bölmeleri ve yerel ajan algılama için kullanılır.",
+          "5fe79a5e56": "Yeni WSL terminallerinin ve yerel ajan taramalarının hangi WSL dağıtımını kullanacağını seçin.",
           "0f1b8669e6": "Komut İstemi",
           "27e301f22c": "Varsayılan Kabuk",
           "09bf02de9a": "Yeni terminal bölmesi açılırken kullanılan kabuk. Yeni terminallerde geçerli olur.",
@@ -3419,7 +3419,7 @@
           "29154326bb": "açık",
           "ab20575a8a": "kapalı",
           "ask_before_closing_running_terminals_title": "Çalışan Terminalleri Kapatmadan Önce Sor",
-          "ask_before_closing_running_terminals_description": "Çalışan komutu veya aracısı olan terminal kapatılmadan önce onay gösterin.",
+          "ask_before_closing_running_terminals_description": "Çalışan komutu veya ajanı olan terminal kapatılmadan önce onay gösterin.",
           "badb1219fc": "İkisi",
           "12e06178fa": "satır"
         },
@@ -3671,14 +3671,14 @@
             "a6d594c17d": "kur",
             "ea71995548": "kaldır",
             "f2932bf22b": "algılandı",
-            "agentPermissions": "Aracı İzinleri",
-            "bb9ad95777": "Aracılar",
-            "cbdd7f3b9e": "Kurulu aracıların bu cihazda mı yoksa WSL içinde mi algılanacağını seçin.",
-            "ef804b7337": "Aracı Konumu",
-            "01926b9d8c": "AI kodlama aracılarını, varsayılan aracıyı ve komut geçersiz kılmaları yapılandırın.",
-            "agentPermissionsDescription": "Aracı izin varsayılanlarını Yolo ve El ile arasında değiştirin.",
-            "agentRuntime": "Aracı Çalışma Ortamı",
-            "agentRuntimeDescription": "Aracıların varsayılan olarak Windows üzerinde mi yoksa WSL içinde mi algılanıp başlatılacağını seçin.",
+            "agentPermissions": "Ajan İzinleri",
+            "bb9ad95777": "Ajanlar",
+            "cbdd7f3b9e": "Kurulu ajanların bu cihazda mı yoksa WSL içinde mi algılanacağını seçin.",
+            "ef804b7337": "Ajan Konumu",
+            "01926b9d8c": "AI kodlama ajanlarını, varsayılan ajanı ve komut geçersiz kılmaları yapılandırın.",
+            "agentPermissionsDescription": "Ajan izin varsayılanlarını Yolo ve El ile arasında değiştirin.",
+            "agentRuntime": "Ajan Çalışma Ortamı",
+            "agentRuntimeDescription": "Ajanların varsayılan olarak Windows üzerinde mi yoksa WSL içinde mi algılanıp başlatılacağını seçin.",
             "d8f3a8b8a0": "varsayılan",
             "affbf130f6": "çalışıyor",
             "6984d4291a": "durum",
@@ -3688,8 +3688,8 @@
             "32836788b0": "oluşturulan başlık",
             "5784ae8c43": "yeniden adlandır",
             "afbf35be68": "kararlı oturum",
-            "agentLocation": "aracı konumu",
-            "installedAgentsWsl": "wsl içinde kurulu aracılar",
+            "agentLocation": "ajan konumu",
+            "installedAgentsWsl": "wsl içinde kurulu ajanlar",
             "719f53350c": "yol",
             "839e82c81f": "algılayın",
             "d2952dfd74": "konum",
@@ -3859,9 +3859,9 @@
             "branch": {
               "search": {
                 "722551c5b3": "Dal adı komut şablonu",
-                "ea94b9da8a": "Aracı başladıktan sonra otomatik oluşturulan dalı yapılan işe göre yeniden adlandırın.",
+                "ea94b9da8a": "Ajan başladıktan sonra otomatik oluşturulan dalı yapılan işe göre yeniden adlandırın.",
                 "427f2cd1eb": "Dalı Otomatik Yeniden Adlandır",
-                "672387fb77": "Dal adları üretilirken kullanılan aracı komut şablonu.",
+                "672387fb77": "Dal adları üretilirken kullanılan ajan komut şablonu.",
                 "50139297e6": "yerleşik istem",
                 "f0acf64301": "yaratık adı",
                 "55a1860e47": "yeniden adlandır",
@@ -3949,12 +3949,12 @@
           },
           "use": {
             "search": {
-              "2fb24d17db": "Girişlerinizi aracılar yeniden kullanabilsin diye çerezleri Chrome, Edge veya diğer tarayıcılardan içe aktarın.",
+              "2fb24d17db": "Girişlerinizi ajanlar yeniden kullanabilsin diye çerezleri Chrome, Edge veya diğer tarayıcılardan içe aktarın.",
               "614c756ab1": "Tarayıcı Çerezlerini İçe Aktar",
               "e5a784bc54": "kur",
-              "a7e82445fa": "Aracılar Orca'nın tarayıcısını kullanabilsin diye Browser Use becerisini kurun.",
+              "a7e82445fa": "Ajanlar Orca'nın tarayıcısını kullanabilsin diye Browser Use becerisini kurun.",
               "a1414dcefb": "Browser Use Becerisini Kur",
-              "890ddf943d": "Aracılar tarayıcıyı kullanabilsin diye Orca CLI'yi kaydedin.",
+              "890ddf943d": "Ajanlar tarayıcıyı kullanabilsin diye Orca CLI'yi kaydedin.",
               "50f0860e18": "Orca CLI'yi Etkinleştir",
               "3f4c559deb": "arc profili",
               "d5afa54d21": "edge profili",
@@ -3982,7 +3982,7 @@
               "search": {
                 "0b946b2abe": "Source Control commit, pull request, branch-name ve fix eylemleri için eylem tarifleri ekler.",
                 "24dbdfca78": "Source Control AI eylemlerini göster",
-                "18b6d38835": "Her Source Control AI düğmesinin kullandığı aracı, CLI bağımsız değişkenleri ve komut şablonu.",
+                "18b6d38835": "Her Source Control AI düğmesinin kullandığı ajan, CLI bağımsız değişkenleri ve komut şablonu.",
                 "3c4e5e5938": "Eylem tarifleri",
                 "001ca3f2af": "PR Oluştur oluşturucu açıldığında kullanılan varsayılanlar.",
                 "eefd33788c": "PR oluşturma varsayılanları",
@@ -4006,7 +4006,7 @@
         "computer": {
           "use": {
             "search": {
-              "9210db582b": "İstediğinizde aracıların ekran görüntülerini incelemesine ve yerel uygulamaları kullanmasına izin verin.",
+              "9210db582b": "İstediğinizde ajanların ekran görüntülerini incelemesine ve yerel uygulamaları kullanmasına izin verin.",
               "798be54d7e": "otomasyon",
               "26c1290d83": "ekran kaydı",
               "e27f8bafbf": "ekran görüntüsü",
@@ -4054,13 +4054,13 @@
         "experimental": {
           "search": {
             "78c2a8dc74": "Çalışma ağaçlarında paylaşılan yollar",
-            "11877246fc": "Terminal zili ve aracı tamamlama olayları için kalıcı bölme vurgusu.",
+            "11877246fc": "Terminal zili ve ajan tamamlama olayları için kalıcı bölme vurgusu.",
             "9e4ddf776d": "Terminal dikkati",
             "agentHibernation": {
               "minutes": "dakika",
-              "title": "Aracı uykusu",
-              "agents": "aracılar",
-              "description": "Yapılandırılan boşta süresi sonunda boşta kalan arka plan aracı terminallerini durdurur ve yeniden açıldığında desteklenen oturumları sürdürür. Aracı uykusu Orca tarafından başlatılan aracıların başlatma seçeneklerini korur; el ile başlatılan aracılar mevcut Orca varsayılanlarıyla sürebilir.",
+              "title": "Ajan uykusu",
+              "agents": "ajanlar",
+              "description": "Yapılandırılan boşta süresi sonunda boşta kalan arka plan ajan terminallerini durdurur ve yeniden açıldığında desteklenen oturumları sürdürür. Ajan uykusu Orca tarafından başlatılan ajanların başlatma seçeneklerini korur; el ile başlatılan ajanlar mevcut Orca varsayılanlarıyla sürebilir.",
               "sleep": "uyku"
             },
             "newWorktreeCardStyle": {
@@ -4072,29 +4072,29 @@
               "metadata": "üst veri",
               "menu": "menü"
             },
-            "4d63251595": "Aracı tamamlamaları ve engelleyici durumlar için iş parçacıklı sol kenar çubuğu akışı.",
-            "ccc5548ac5": "Aracılar Görünümü",
+            "4d63251595": "Ajan tamamlamaları ve engelleyici durumlar için iş parçacıklı sol kenar çubuğu akışı.",
+            "ccc5548ac5": "Ajanlar Görünümü",
             "6b5a56ac35": "Sağ alt köşede yüzen animasyonlu evcil hayvan.",
             "87d99e634b": "Evcil hayvan",
             "nativeChat": {
               "title": "Sohbet Arayüzü",
-              "description": "Desteklenen aracı terminal oturumları için masaüstü sohbet yüzeyini önizleyin.",
+              "description": "Desteklenen ajan terminal oturumları için masaüstü sohbet yüzeyini önizleyin.",
               "native": "yerel",
               "chat": "sohbet"
             },
             "agentDashboard": {
-              "title": "Aracı Panosu",
-              "description": "Çalışma ağaçlarındaki aracıları izlemek için Kanban panosu; pencere içinde veya ayrı açılır pencere olarak.",
+              "title": "Ajan Panosu",
+              "description": "Çalışma ağaçlarındaki ajanları izlemek için Kanban panosu; pencere içinde veya ayrı açılır pencere olarak.",
               "dashboard": "pano",
               "popout": "dışarı açılır",
               "board": "pano",
               "inWindow": "pencere içi"
             },
-            "fa72e71f05": "aracılar",
+            "fa72e71f05": "ajanlar",
             "3021571c30": "paylaşılan",
             "603d29ed74": "Yapılandırılmış dosya veya klasörleri, mümkünse macOS üzerinde APFS klon kopya yoksa sembolik bağlarla yeni oluşturulan çalışma ağaçlarına otomatik ekleyin.",
             "7b79081695": "okunmamış",
-            "92a9357d1f": "aracılar görünümü",
+            "92a9357d1f": "ajanlar görünümü",
             "f082788cfe": "bağlantılar",
             "3028f0bd3a": "bağlantı",
             "f10d307468": "tamamlama",
@@ -4173,14 +4173,14 @@
             "8e593f04fc": "Sabitlenmiş sekme kapatılmadan önce onay iletişim kutusu gösterin.",
             "externalWorktrees": "Harici çalışma ağaçları",
             "externalWorktreesDescription": "Orca dışında oluşturulan çalışma ağaçlarının varsayılan olarak görünüp görünmeyeceğini seçin.",
-            "db11502270": "Varsayılan Aracı",
-            "baa263d6d8": "aracılar",
+            "db11502270": "Varsayılan Ajan",
+            "baa263d6d8": "ajanlar",
             "e53d585ed6": "Son veya sekme şeridi.",
             "256d92554d": "Sekme Sırası",
-            "e2da948f59": "Yeni çalışma alanı oluşturucuda bir AI kodlama aracısını önceden seçin.",
-            "40c9585e43": "İstem önbelleği dolana kadar kalan süreyi gösteren geri sayım (Claude aracıları).",
-            "244e3fb4c8": "Aracılar Orca CLI kullanmayı bilsin diye Orca becerisini kurun.",
-            "2d9f7b42df": "Aracı becerisi",
+            "e2da948f59": "Yeni çalışma alanı oluşturucuda bir AI kodlama ajanını önceden seçin.",
+            "40c9585e43": "İstem önbelleği dolana kadar kalan süreyi gösteren geri sayım (Claude ajanları).",
+            "244e3fb4c8": "Ajanlar Orca CLI kullanmayı bilsin diye Orca becerisini kurun.",
+            "2d9f7b42df": "Ajan becerisi",
             "ca529079bf": "Orca CLI komutunu kaydedin veya kaldırın.",
             "defaultProjectRuntime": "Varsayılan Proje Çalışma Ortamı",
             "defaultProjectRuntimeDescription": "Yerel Windows projelerinin devraldığı çalışma ortamını seçin.",
@@ -4375,10 +4375,10 @@
           "emulator": {
             "search": {
               "2348045036": "Orca'nın varsayılan olarak hangi öykünücü cihazı açacağını seçin.",
-              "9595354cff": "Orca ve kodlama aracıları için mobil öykünücü desteğini yapılandırın.",
+              "9595354cff": "Orca ve kodlama ajanları için mobil öykünücü desteğini yapılandırın.",
               "cdd3c31918": "Mobil Öykünücü",
               "2e0b45b2ba": "Mobil öykünücüyü listelemek, bağlanmak, dokunmak ve yazmak için Orca CLI komutlarını kullanın.",
-              "ea3eac39bb": "Aracı CLI Denetimi",
+              "ea3eac39bb": "Ajan CLI Denetimi",
               "ea1f51b980": "Xcode, simctl, serve-sim ve öykünücü cihazların hazır olup olmadığını denetleyin.",
               "0b95dfd5b3": "Öykünücü Kullanılabilirliği",
               "54184cb9c5": "Varsayılan Öykünücü Cihazı",
@@ -4386,12 +4386,12 @@
               "bbe4267416": "öykünücü türü",
               "64494f03c3": "öykünücü ekleme",
               "6f728f1456": "öykünücü dokunuşu",
-              "f8b871d655": "aracı cli'si",
+              "f8b871d655": "ajan cli'si",
               "27397fe8e9": "xcode komut satırı araçları",
               "ec3c4043fd": "varsayılan ipad",
               "1dc8c52ffa": "varsayılan iphone",
               "ab4814f3c5": "varsayılan simülatör",
-              "b8ddd13195": "aracı öykünücüsü",
+              "b8ddd13195": "ajan öykünücüsü",
               "1ad6fb6230": "varsayılan cihaz",
               "ac0a985873": "öykünücü becerisi",
               "9353854ff3": "orca öykünücüsü",
@@ -4446,7 +4446,7 @@
             "search": {
               "1de96ec8a6": "Orca Mobile Düğmesini Göster",
               "682293cadf": "Sol kenar çubuğunun üstünde Orca Mobile düğmesini gösterin.",
-              "671eb4173c": "Terminalleri ve aracıları telefonunuzdan denetleyin.",
+              "671eb4173c": "Terminalleri ve ajanları telefonunuzdan denetleyin.",
               "ffd52a96e4": "Mobil",
               "59b1d75fd1": "kod",
               "f4ed142753": "telefon",
@@ -4473,7 +4473,7 @@
             "ea8cb8d9ce": "Bildirim Sesi",
             "96562a72c6": "Odaklıyken Bastır",
             "a5edee1d99": "Terminal Zili",
-            "bdc1edaeb4": "Aracı Görevi Tamamlandı",
+            "bdc1edaeb4": "Ajan Görevi Tamamlandı",
             "72539aede4": "sistem",
             "4a210b2f72": "Bildirimleri Etkinleştir",
             "4e30b1925e": "Yerel iletim yolunu kullanarak örnek masaüstü bildirimi tetikleyin.",
@@ -4482,7 +4482,7 @@
             "c718793e95": "Orca'nın masaüstü bildirimleri için çaldığı yerleşik, sistem veya yerel ses dosyasını seçin.",
             "7247b97a31": "Orca etkin çalışma ağacına odaklıyken bildirmekten kaçının.",
             "d3f1c48677": "Arka plan terminali zil karakteri yaydığında bildirin.",
-            "10d83ef8dc": "Kodlama aracısı çalışmadan boştaya geçtiğinde bildirin.",
+            "10d83ef8dc": "Kodlama ajanı çalışmadan boştaya geçtiğinde bildirin.",
             "0534c76311": "Orca masaüstü bildirimleri için ana anahtar.",
             "ecdeff4993": "ses yüksekliği",
             "dc7d7c07cd": "ses",
@@ -4502,10 +4502,10 @@
         },
         "orchestration": {
           "search": {
-            "13ba5c6cbd": "aracılar",
-            "c34045764e": "Aracı Orkestrasyonu",
-            "e05ff36753": "Birden çok kodlama aracısını mesajlaşma, görev DAG'leri, gönderim ve karar kapılarıyla koordine edin.",
-            "f5d39af41e": "alt aracılar",
+            "13ba5c6cbd": "ajanlar",
+            "c34045764e": "Ajan Orkestrasyonu",
+            "e05ff36753": "Birden çok kodlama ajanını mesajlaşma, görev DAG'leri, gönderim ve karar kapılarıyla koordine edin.",
+            "f5d39af41e": "alt ajanlar",
             "08c65b12a2": "örnekler",
             "21c28ccdf7": "koordinatör",
             "7ad948b714": "görev",
@@ -4629,13 +4629,13 @@
             "6438a94c63": "proje simgesi",
             "cd73b976d7": "depo adı",
             "92af66c7ce": "proje adı",
-            "waitForSetupBeforeAgent": "aracıyı başlatmadan önce kurulumu bekleyin",
+            "waitForSetupBeforeAgent": "ajanı başlatmadan önce kurulumu bekleyin",
             "external": "harici",
             "syncFork": "çatalı eşitleyin",
             "behindUpstream": "upstream'in gerisinde",
             "defaultBranch": "varsayılan dal",
             "windowsHost": "windows host",
-            "agentRuntime": "aracı çalışma ortamı",
+            "agentRuntime": "ajan çalışma ortamı",
             "skillRuntime": "beceri çalışma ortamı",
             "80c490b012": "sorun",
             "4c17787d7b": "arşivleyin",
@@ -4709,7 +4709,7 @@
         "tasks": {
           "search": {
             "5b8e4aace5": "Görev Sağlayıcıları",
-            "providersDescription": "Görev sağlayıcıları bağlayın, Linear aracı becerisini kurun ve Görevler'de ne görüneceğini seçin.",
+            "providersDescription": "Görev sağlayıcıları bağlayın, Linear ajan becerisini kurun ve Görevler'de ne görüneceğini seçin.",
             "3d81c26d78": "kaynak",
             "apiKey": "API anahtarı",
             "58cda6f9c0": "gizleyin",
@@ -4819,7 +4819,7 @@
             "0fe0073f0c": "Yeni bölmeler ve canlı güncellemeler için varsayılan terminal yazı tipi boyutu.",
             "5930244899": "Yazı Tipi Boyutu",
             "ask_before_closing_running_terminals_title": "Çalışan Terminalleri Kapatmadan Önce Sor",
-            "ask_before_closing_running_terminals_description": "Çalışan komutu veya aracısı olan terminal kapatılmadan önce onay gösterin.",
+            "ask_before_closing_running_terminals_description": "Çalışan komutu veya ajanı olan terminal kapatılmadan önce onay gösterin.",
             "2610ee3b56": "Yeni çalışma alanı oluşturulduğunda depo kurulum betiğinin nerede çalışacağı: dikey bölme (varsayılan), yatay bölme veya 'Setup' başlıklı arka plan sekmesi.",
             "b36fd2416d": "Arka Plan Opaklığı",
             "f72abc493c": "Donmuş terminallerden oturumları sonlandırarak, kaydedilmiş geriye kaydırmayı temizleyerek veya arka plan hizmetini yeniden başlatarak kurtulun.",
@@ -4930,7 +4930,7 @@
               "d57f870938": "gelişmiş",
               "8ba875c132": "Sağ tık panoyu terminale yapıştırır. Bağlam menüsünü açmak için Ctrl+sağ tık kullanın.",
               "f0b8448570": "Yapıştırmak için sağ tık",
-              "978457945b": "Yeni WSL terminallerinin ve yerel aracı taramalarının hangi WSL dağıtımını kullanacağını seçin.",
+              "978457945b": "Yeni WSL terminallerinin ve yerel ajan taramalarının hangi WSL dağıtımını kullanacağını seçin.",
               "1f402b3651": "WSL Dağıtımı",
               "41a69bc24d": "PowerShell kabuk seçeneğinin yeni terminal bölmeleri için Windows PowerShell mi PowerShell 7+ mı başlatacağını seçin.",
               "860e0e6402": "PowerShell Sürümü",
@@ -4989,14 +4989,14 @@
                   "customCommand": "Özel komut",
                   "commitMessage": "Hazırlanan değişikliklerden commit iletisini üretin.",
                   "pullRequest": "Hosted review başlığını ve açıklamasını üretin.",
-                  "branchName": "Orca'nın oluşturduğu dalları ilk aracı görevinden yeniden adlandırın.",
-                  "fixCommitFailure": "Commit kancası veya git commit başarısız olduğunda aracı başlatın.",
-                  "fixChecks": "Başarısız hosted-review denetimlerinden aracı başlatın.",
-                  "resolveConflicts": "Yerel veya hosted-review birleştirme çakışmaları için aracı başlatın.",
-                  "supportedAgents": "Bu tarif için desteklenen aracılar: {{value0}}.",
-                  "unsupportedSavedAgent": "{{value0}} bu metin-üretim tarifini çalıştıramaz. Aşağıdan desteklenen aracılardan birini seçin.",
-                  "resolveComments": "Seçilen çözülmemiş PR veya MR yorumlarından aracı başlatın.",
-                  "fixPushFailure": "Pre-push kancası veya git push başarısız olduğunda aracı başlatın."
+                  "branchName": "Orca'nın oluşturduğu dalları ilk ajan görevinden yeniden adlandırın.",
+                  "fixCommitFailure": "Commit kancası veya git commit başarısız olduğunda ajan başlatın.",
+                  "fixChecks": "Başarısız hosted-review denetimlerinden ajan başlatın.",
+                  "resolveConflicts": "Yerel veya hosted-review birleştirme çakışmaları için ajan başlatın.",
+                  "supportedAgents": "Bu tarif için desteklenen ajanlar: {{value0}}.",
+                  "unsupportedSavedAgent": "{{value0}} bu metin-üretim tarifini çalıştıramaz. Aşağıdan desteklenen ajanlardan birini seçin.",
+                  "resolveComments": "Seçilen çözülmemiş PR veya MR yorumlarından ajan başlatın.",
+                  "fixPushFailure": "Pre-push kancası veya git push başarısız olduğunda ajan başlatın."
                 }
               }
             }
@@ -5011,20 +5011,20 @@
           "6f7a8b9cad": "Proje başına konum için göreli yol (ör. .orca/worktrees), tek paylaşılan klasör için mutlak yol kullanın."
         },
         "agent-awake-copy": {
-          "e5995ce268": "Aracılar çalışırken bilgisayarı uyanık tut",
-          "95d3031db2": "Aracılar çalışırken bu bilgisayarı ve ekranı uyanık tutar. Kapak kapatma davranışı bu cihazın güç ayarlarını izler.",
-          "a42f6fbdd8": "Aracılar çalışırken bu bilgisayarı ve ekranı uyanık tutar. Orca ayrıca güç politikasına tabi olarak kapak kapalıyken de bu cihazdan uyanık kalmasını ister.",
+          "e5995ce268": "Ajanlar çalışırken bilgisayarı uyanık tut",
+          "95d3031db2": "Ajanlar çalışırken bu bilgisayarı ve ekranı uyanık tutar. Kapak kapatma davranışı bu cihazın güç ayarlarını izler.",
+          "a42f6fbdd8": "Ajanlar çalışırken bu bilgisayarı ve ekranı uyanık tutar. Orca ayrıca güç politikasına tabi olarak kapak kapalıyken de bu cihazdan uyanık kalmasını ister.",
           "modeTitle": "Bilgisayarı uyanık tut",
-          "modeDescriptionWindows": "Açık, Aracı veya Kapalı seçin. Aracı modu aracılar çalışırken uyanık kalır; kapak kapatma davranışı bu cihazın güç ayarlarını izler.",
-          "modeDescriptionDefault": "Açık, Aracı veya Kapalı seçin. Aracı modu aracılar çalışırken uyanık kalır. Orca ayrıca güç politikasına tabi olarak kapak kapalıyken de bu cihazdan uyanık kalmasını ister."
+          "modeDescriptionWindows": "Açık, Ajan veya Kapalı seçin. Ajan modu ajanlar çalışırken uyanık kalır; kapak kapatma davranışı bu cihazın güç ayarlarını izler.",
+          "modeDescriptionDefault": "Açık, Ajan veya Kapalı seçin. Ajan modu ajanlar çalışırken uyanık kalır. Orca ayrıca güç politikasına tabi olarak kapak kapalıyken de bu cihazdan uyanık kalmasını ister."
         },
         "agent-status-hooks-copy": {
-          "7707c15abb": "Aracı durum kancaları",
+          "7707c15abb": "Ajan durum kancaları",
           "a68a642835": "Çalışıyor, bekliyor ve bitti durumlarını Orca'da gösterir. Orca yönetimli kancaları kaldırıp yeniden kurmayı durdurmak için kapatın."
         },
         "agent-generated-tab-title-copy": {
           "19ad21615a": "Sekme başlıklarını otomatik üret",
-          "b036c7a409": "Bilinen ilk aracı isteminden kısa kararlı sekme adları türetin. El ile yeniden adlandırmalar her zaman kazanır."
+          "b036c7a409": "Bilinen ilk ajan isteminden kısa kararlı sekme adları türetin. El ile yeniden adlandırmalar her zaman kazanır."
         },
         "cli": {
           "source": {
@@ -5138,10 +5138,10 @@
           "unavailableTitle": "Computer Use kullanılamıyor.",
           "unavailableDescription": "Computer Use izinleri kullanılamıyor çünkü {{value0}}.",
           "readyTitle": "Computer Use hazır.",
-          "readyDescription": "İstediğinizde aracılar uygulama pencerelerini inceleyip kullanabilir.",
+          "readyDescription": "İstediğinizde ajanlar uygulama pencerelerini inceleyip kullanabilir.",
           "permissionsTitle": "Yerel uygulamaları kullanmak için kurulumu tamamlayın.",
-          "permissionsRequired_one": "Aracılar uygulama pencerelerini kullanmadan önce 1 izin gerekli.",
-          "permissionsRequired_other": "Aracılar uygulama pencerelerini kullanmadan önce {{value0}} izin gerekli."
+          "permissionsRequired_one": "Ajanlar uygulama pencerelerini kullanmadan önce 1 izin gerekli.",
+          "permissionsRequired_other": "Ajanlar uygulama pencerelerini kullanmadan önce {{value0}} izin gerekli."
         },
         "providerAccountScope": {
           "remoteServer": "Uzak sunucu: {{value0}}",
@@ -5153,10 +5153,10 @@
         },
         "settingOwnership": {
           "clientDefault": "İstemci varsayılanı",
-          "sourceControlAiDefaults": "Tarifler, istemler ve hosted-review varsayılanları bu istemci tarafından paylaşılır; model seçimleri ve bulma, aracının çalıştığı ana bilgisayar kapsamında kalır.",
+          "sourceControlAiDefaults": "Tarifler, istemler ve hosted-review varsayılanları bu istemci tarafından paylaşılır; model seçimleri ve bulma, ajanın çalıştığı ana bilgisayar kapsamında kalır.",
           "projectOnThisHost": "Bu ana bilgisayardaki proje",
           "repositorySourceControlAi": "Bu geçersiz kılmalar bu proje kurulumuna uygulanır ve özelleştirilene kadar istemci Source Control AI varsayılanlarını devralır.",
-          "agentLaunchDefaults": "Varsayılan aracı, komut geçersiz kılmaları, CLI bağımsız değişkenleri ve başlatma ortamı istemci tercihleridir. SSH ve uzak sunucu başlatmaları yine de çalışma zamanında ana bilgisayar kullanılabilirliğini doğrular.",
+          "agentLaunchDefaults": "Varsayılan ajan, komut geçersiz kılmaları, CLI bağımsız değişkenleri ve başlatma ortamı istemci tercihleridir. SSH ve uzak sunucu başlatmaları yine de çalışma zamanında ana bilgisayar kullanılabilirliğini doğrular.",
           "clientDefaultProjectScopes": "İstemci varsayılanı + proje kapsamları",
           "terminalQuickCommands": "Komutlar bu istemcide kaydedilir, ardından seçilen terminal bağlamından çalışsın diye genel veya proje kurulumuna kapsanır.",
           "hostOverride": "Ana bilgisayar geçersiz kılması",
@@ -5206,7 +5206,7 @@
           "projectRuntime": "Proje çalışma ortamı",
           "defaultRuntime": "Varsayılan ({{value0}})",
           "selectDistro": "Dağıtım seçin",
-          "runtimeChangeHelp": "Çalışma ortamı değişiklikleri bu proje için yeni terminallere, aracı denetimlerine ve beceri bulmaya uygulanır. Mevcut terminaller çalışma ortamını korur.",
+          "runtimeChangeHelp": "Çalışma ortamı değişiklikleri bu proje için yeni terminallere, ajan denetimlerine ve beceri bulmaya uygulanır. Mevcut terminaller çalışma ortamını korur.",
           "wslUnavailable": "WSL kullanılamıyor. Bu projeyi Windows'a geçirin veya WSL'i onarın.",
           "distroMissing": "{{value0}} WSL içinde kurulu değil. Kurulu bir dağıtım seçin veya bu projeyi Windows'a geçirin.",
           "distroRequired": "WSL dağıtımı seçin veya bu projeyi Windows'a geçirin.",
@@ -5267,11 +5267,11 @@
         "AgentRuntimeSetting": {
           "loadingWsl": "WSL yükleniyor",
           "wslUnavailable": "WSL bu makinede kullanılamıyor.",
-          "label": "Aracı çalışma ortamı",
+          "label": "Ajan çalışma ortamı",
           "selectDistro": "Dağıtım seçin",
-          "windowsDescription": "Çalışma ortamını geçersiz kılmayan projeler için aracıları Windows üzerinde algılayın ve başlatın.",
+          "windowsDescription": "Çalışma ortamını geçersiz kılmayan projeler için ajanları Windows üzerinde algılayın ve başlatın.",
           "distroRequired": "Projeler WSL devralmadan önce bir WSL dağıtımı seçin.",
-          "wslDescription": "Çalışma ortamını geçersiz kılmayan projeler için aracıları WSL üzerinden {{value0}} içinde algılayın ve başlatın."
+          "wslDescription": "Çalışma ortamını geçersiz kılmayan projeler için ajanları WSL üzerinden {{value0}} içinde algılayın ve başlatın."
         },
         "MobileEmulatorSdkStatus": {
           "8c52684db8": "Temizle",
@@ -5382,9 +5382,9 @@
           "skillDescription": "Depoya ait ortam tariflerini kurar, derler, kimlik doğrular ve doğrular.",
           "whatTitle": "Becerinin sizinle yaptıkları",
           "whatScaffold": "Sağlayıcınız için tarifi ve betikleri yazar — Orca sunucusu veya SSH üzerinden bağlı.",
-          "whatBuild": "Yeniden kullanılabilir taban görüntüsü derler ve aracınızın oturumunu açar.",
+          "whatBuild": "Yeniden kullanılabilir taban görüntüsü derler ve ajanınızın oturumunu açar.",
           "whatValidate": "Üzerinde çalışma alanı oluşturabilmeniz için doğrular.",
-          "promptHint": "Herhangi bir çalışma alanında aracınıza sorun:",
+          "promptHint": "Herhangi bir çalışma alanında ajanınıza sorun:",
           "recipes": "Tarifler",
           "recipesHelp": "orca.yaml ve etkin eklentilerden tarifler burada görünür, üzerinde çalışma alanı başlatmaya hazır.",
           "checking": "Tarifler denetleniyor...",
@@ -5399,7 +5399,7 @@
           "cloudVmToggleLabel": "Cloud VM'yi aç/kapat"
         },
         "SourceControlActionRepoOverrideNote": {
-          "agent": "Aracı",
+          "agent": "Ajan",
           "agentArgs": "CLI bağımsız değişkenleri",
           "commandTemplate": "Komut şablonu",
           "more": "+{{count}} tane daha",
@@ -5422,9 +5422,9 @@
                   "checking": "Denetleniyor...",
                   "installed": "Kurulu",
                   "copyCommand": "Komutu kopyalayın",
-                  "skillLabel": "Aracı becerisi:",
-                  "installedDescription": "Aracı becerisi kurulu. Güncellemek için çalıştırın:",
-                  "description": "Aracıların Linear görevlerini okuyup düzenlemesine izin verin. Tam kılavuzlu kurulum (bağlantı + beceri + görünürlük) Ayarlar → Görev Kaynakları altındadır."
+                  "skillLabel": "Ajan becerisi:",
+                  "installedDescription": "Ajan becerisi kurulu. Güncellemek için çalıştırın:",
+                  "description": "Ajanların Linear görevlerini okuyup düzenlemesine izin verin. Tam kılavuzlu kurulum (bağlantı + beceri + görünürlük) Ayarlar → Görev Kaynakları altındadır."
                 }
               },
               "search": {
@@ -5517,7 +5517,7 @@
         },
         "LinearAgentSkillPane": {
           "manageConnectionLink": "Tümleştirmeler",
-          "description": "Linear Orca'da nasıl çalışır: issue'lara göz atın, bağlantılı çalışma alanları başlatın ve aracıların /orca-linear ile biletleri güncellemesine izin verin.",
+          "description": "Linear Orca'da nasıl çalışır: issue'lara göz atın, bağlantılı çalışma alanları başlatın ve ajanların /orca-linear ile biletleri güncellemesine izin verin.",
           "skillTitle": "Linear becerisi",
           "howToUse": "Örnek istemler",
           "howToUseDescription": "İstem kopyalamak için karta tıklayın. Beceri kurulduktan sonra Linear bağlantılı çalışma ağacında kullanın.",
@@ -5605,11 +5605,11 @@
             "notificationsShow": "Eklenti adıyla etiketlenmiş masaüstü bildirimleri gösterir",
             "storage": "Verileri eklentinin kendi depolama klasöründe saklar",
             "secrets": "Sırları eklentinin kendi şifreli kasasında saklar ve okur",
-            "eventsSubscribe": "Çalışma ağaçları oluşturulduğunda veya kaldırıldığında ve aracı durumu değiştiğinde bilgilendirilir",
+            "eventsSubscribe": "Çalışma ağaçları oluşturulduğunda veya kaldırıldığında ve ajan durumu değiştiğinde bilgilendirilir",
             "settingsOwn": "Eklentinin kendi ayarlarını okur ve değiştirir"
           },
           "workerTrust": "Arka plan çalışanı — kendi işlemini çalıştırır",
-          "instructionalTrust": "Yönerge içeriği — sonra kullanıcı veya aracı yetkisiyle çalışır",
+          "instructionalTrust": "Yönerge içeriği — sonra kullanıcı veya ajan yetkisiyle çalışır",
           "declarativeTrust": "Bildirim içeriği — eklenti kodu yok",
           "panelTrust": "Panel veya ana bilgisayar tümleşik içeriği — çalışan işlem yok",
           "trustShortWorker": "Çalışan",
@@ -5623,7 +5623,7 @@
           "reconsent": "İzinler, çalışan güven katmanı veya yönerge içeriği bu eklentiyi son incelemenizden beri değişti. Çalışmadan önce yeniden inceleyin.",
           "capabilities": "Bu eklenti şunları yapabilir:",
           "warning": "Bu izinler eklentinin Orca'nın API'sini nasıl kullandığını sınırlar. Çalışanı yine de bilgisayarınızda dosyalarınıza, ağınıza ve diğer işlemlere tam erişimli normal işlem olarak çalışır.",
-          "instructionalWarning": "Bu eklentinin çalışan işlemi yok. Yönerge içeriği siz veya bir aracı kullandığında yine de eylemlere yol açabilir. Etkinleştirmeden önce aşağıdaki yönergeleri ve komutları inceleyin.",
+          "instructionalWarning": "Bu eklentinin çalışan işlemi yok. Yönerge içeriği siz veya bir ajan kullandığında yine de eylemlere yol açabilir. Etkinleştirmeden önce aşağıdaki yönergeleri ve komutları inceleyin.",
           "panelWarning": "Bu izinler eklentinin Orca'nın API'sini nasıl kullandığını sınırlar. Bu eklentinin arka plan çalışanı yok.",
           "declarativeWarning": "Bu eklenti yalnızca doğrulanmış içerik sağlar. Arka plan çalışanı çalıştırmaz veya Orca'nın API'sine erişim almaz.",
           "keepDisabled": "Devre Dışı Bırak",
@@ -5849,12 +5849,12 @@
           "setupConnectTitle": "1. Linear'ı Bağlayın",
           "setupConnectBody": "Orca issue'ları listeleyip bağlantılı çalışma alanları açabilsin diye Kişisel API anahtarı.",
           "addAccess": "Erişim ekle",
-          "setupSkillTitle": "2. Aracı becerisini kurun",
-          "setupSkillBody": "Kodlama aracılarına okuma, güncelleme, triyaj ve pull veya merge request ekleme için /orca-linear verir.",
+          "setupSkillTitle": "2. Ajan becerisini kurun",
+          "setupSkillBody": "Kodlama ajanlarına okuma, güncelleme, triyaj ve pull veya merge request ekleme için /orca-linear verir.",
           "setupVisibleTitle": "3. Linear'ı Görevlerde Gösterin",
           "setupVisibleBody": "Linear'ı Görevler kaynak seçicide ve kenar çubuğu kısayollarında tutar.",
           "setupTitle": "Kurulum denetim listesi",
-          "setupBody": "Tam Görevler + aracı döngüsü için üçü de gerekli. İlk kez yolu Görev Kaynakları altındadır.",
+          "setupBody": "Tam Görevler + ajan döngüsü için üçü de gerekli. İlk kez yolu Görev Kaynakları altındadır.",
           "setupReady": "Her şey hazır",
           "setupProgress": "{{total}} öğeden {{done}} hazır",
           "notesTitle": "Bilmekte fayda var",
@@ -5862,7 +5862,7 @@
           "noteLinkedTitle": "Linear issue'undan başlayın",
           "noteLinkedBody": "Bilet eylemleri Görevlerden oluşturulan çalışma ağacında en iyi çalışır; issue bağlam olarak bağlı kalır.",
           "noteSlashTitle": "/orca-linear anın",
-          "noteSlashBody": "Sohbette /orca-linear kullanın (veya düz dille sorun); aracı o tur için beceriyi yükler.",
+          "noteSlashBody": "Sohbette /orca-linear kullanın (veya düz dille sorun); ajan o tur için beceriyi yükler.",
           "noteKeysTitle": "Anahtarlar çalışma ortamını izler",
           "noteKeysBody": "API anahtarları ve çalışma alanları etkin çalışma ortamı için depolanır.",
           "noteVisibilityTitle": "Gizleme ≠ bağlantı kesme",
@@ -5876,9 +5876,9 @@
           "connectDescription": "Orca bilet bağlamıyla issue'lara göz atıp çalışma alanları açabilsin diye Kişisel API anahtarı ekleyin.",
           "connectedHint": "Çalışma alanları ve anahtarlar etkin çalışma ortamı için depolanır. İstediğiniz zaman erişim ekleyebilirsiniz.",
           "recheck": "Bağlantıyı yeniden denetle",
-          "skillTitle": "Linear aracı becerisini kurun",
-          "skillDescription": "Aracılara bilet okuma, güncelleme gönderme, durum taşıma ve pull veya merge request ekleme için /orca-linear verir.",
-          "skillBlocked": "Önce Linear'ı bağlayın, ardından aracılar için beceriyi kurun.",
+          "skillTitle": "Linear ajan becerisini kurun",
+          "skillDescription": "Ajanlara bilet okuma, güncelleme gönderme, durum taşıma ve pull veya merge request ekleme için /orca-linear verir.",
+          "skillBlocked": "Önce Linear'ı bağlayın, ardından ajanlar için beceriyi kurun.",
           "skillPanelTitle": "Linear becerisi",
           "terminalTitle": "Linear beceri kurulumu",
           "terminalAriaLabel": "Linear beceri kurulum terminali",
@@ -6002,7 +6002,7 @@
           "howToTitle": "Yapıtlar nasıl kullanılır",
           "howToDescription": "HTML veya Markdown dosyalarını genel bağlantı olarak yayımlayıp ekibinizle paylaşın.",
           "shareStepTitle": "Paylaşılacak dosya seçin",
-          "shareStepDescription": "HTML veya Markdown dosyası açıp Yapıt olarak paylaş'ı seçin veya aracıdan paylaşmasını isteyin.",
+          "shareStepDescription": "HTML veya Markdown dosyası açıp Yapıt olarak paylaş'ı seçin veya ajandan paylaşmasını isteyin.",
           "linkStepTitle": "Genel bağlantıyı kopyalayın",
           "linkStepDescription": "Yayımladıktan sonra bağlantıyı kopyalayıp ekibinize gönderin.",
           "manageStepTitle": "Orca'da yönetin",
@@ -6061,17 +6061,17 @@
           "showButton": "Otomasyonlar Düğmesini Göster",
           "showButtonDescription": "Kenar çubuğunda Otomasyonlar kısayolunu gösterin.",
           "howItWorksTitle": "Otomasyonlar nasıl çalışır",
-          "howItWorksDescription": "Aracı işini bir kez zamanlayın, ardından Orca'nın her çalıştırmayı oluşturmasına ve sonuçlarını bir arada tutmasına izin verin.",
+          "howItWorksDescription": "Ajan işini bir kez zamanlayın, ardından Orca'nın her çalıştırmayı oluşturmasına ve sonuçlarını bir arada tutmasına izin verin.",
           "defineStepTitle": "İşi tanımlayın",
-          "defineStepDescription": "Proje, aracı, istem ve zamanlama seçin.",
+          "defineStepDescription": "Proje, ajan, istem ve zamanlama seçin.",
           "runStepTitle": "Orca her çalıştırmayı başlatır",
-          "runStepDescription": "Seçilen aracı, zamanlama geldiğinde yeni çalışma alanı alır.",
+          "runStepDescription": "Seçilen ajan, zamanlama geldiğinde yeni çalışma alanı alır.",
           "reviewStepTitle": "Sonuçları inceleyin",
           "reviewStepDescription": "Son çalıştırmaları inceleyin ve gerektiğinde işe devam edin.",
           "openAutomations": "Otomasyonları Açın",
           "openAutomationsDescription": "Zamanlamalar oluşturun ve son çalıştırmaları inceleyin.",
           "title": "Otomasyonlar",
-          "description": "Aracı işini zamanlayın ve Otomasyonların kenar çubuğunda görünüp görünmeyeceğini seçin.",
+          "description": "Ajan işini zamanlayın ve Otomasyonların kenar çubuğunda görünüp görünmeyeceğini seçin.",
           "keywordAutomations": "otomasyonlar",
           "keywordRuns": "çalıştırmalar",
           "keywordSchedule": "zamanlama"
@@ -6079,13 +6079,13 @@
         "AgentAwakeSetting": {
           "on": "Açık",
           "off": "Kapalı",
-          "auto": "Aracı"
+          "auto": "Ajan"
         },
         "shareSkills": {
           "refreshLinks": "Yenile",
           "title": "Becerileri Paylaşın",
           "description": "Becerilerinizi listelenmemiş bağlantıyla paylaşın. Bağlantıya sahip herkes kurabilir.",
-          "allowAgentPublishing": "Aracıların ve Orca CLI'nin beceri bağlantıları yayımlamasına izin verin",
+          "allowAgentPublishing": "Ajanların ve Orca CLI'nin beceri bağlantıları yayımlamasına izin verin",
           "allowAgentPublishingDescription": "Komutların açıkça adlandırılmış kurulu becerileri yayımlamasına izin verin. Beceri klasörleri betik, yapılandırma veya sır içerebilir; bu yüzden varsayılan olarak kapalıdır.",
           "allowAgentPublishingWebDescription": "Yalnızca masaüstü. Bu ayarı değiştirmek için ana cihazda Ayarlar → Becerileri Paylaşın bölümünü açın.",
           "selectTitle": "Bir veya daha çok beceri seçin",
@@ -6189,7 +6189,7 @@
           "missionControlConflict": "Mission Control engelledi. Burada yeniden eşleyin veya Sistem Ayarlarında değiştirin."
         },
         "NativeChatSupportedAgents": {
-          "label": "Desteklenen aracılar:"
+          "label": "Desteklenen ajanlar:"
         },
         "contrast": {
           "off": "Kapalı",
@@ -6351,7 +6351,7 @@
           "eab8b45238": "Hatayı kopyala",
           "a23b22d16f": "Kopyalandı",
           "74fc00776f": "Hata ayrıntıları",
-          "3afcad0497": "ilk aracı iletisinden.",
+          "3afcad0497": "ilk ajan iletisinden.",
           "ff62a18580": "Orca dal adı üretemedi:",
           "ca3b225195": "Dal otomatik adlandırma başarısız oldu"
         },
@@ -6556,7 +6556,7 @@
           "80611a8b10": "Ara",
           "0c3395fd32": "Çalışma ağaçları ve tarayıcı sekmelerinde arayın",
           "c86d83b5c3": "Yeni",
-          "9c95e1ce91": "Aracılar",
+          "9c95e1ce91": "Ajanlar",
           "f323383e9a": "Otomasyonlar",
           "e7ad3c540d": "Jira görevlerini açın",
           "c39ab10000": "Linear görevlerini açın",
@@ -6627,7 +6627,7 @@
           "projectSshHost": "Proje SSH",
           "activeRuntimeHost": "Etkin sunucu",
           "projectRuntimeHost": "Proje sunucusu",
-          "95c9754653": "Aracı etkinlik düzeni",
+          "95c9754653": "Ajan etkinlik düzeni",
           "3d4b9c4997": "Üzerine gelme",
           "ba87080fb7": "Özellikleri göster",
           "320b675c9a": "Kart düzeni",
@@ -6656,11 +6656,11 @@
           "6664282a7b": "Düzenlemek için projeleri sürükleyin",
           "7153d07485": "Her grup içinde düzenlemek için çalışma alanlarını sürükleyin.",
           "2170d553cf": "Proje",
-          "b759bb87ee": "Önce ilgi gerektiren aracılar, ardından en son etkinlik.",
-          "503462f2b4": "Aracı Etkinliği",
+          "b759bb87ee": "Önce ilgi gerektiren ajanlar, ardından en son etkinlik.",
+          "503462f2b4": "Ajan Etkinliği",
           "2a81e07366": "Tam liste",
           "25105b28cb": "Kompakt",
-          "d7084e8bc8": "Aracı etkinliği",
+          "d7084e8bc8": "Ajan etkinliği",
           "26c71e536c": "Notlar",
           "b8dcc6f321": "PR/MR bağlantısı",
           "ca4d3c522e": "Linear issue",
@@ -6671,7 +6671,7 @@
           "cc17bd443b": "Ayrıntılı",
           "680043342f": "kompakt",
           "8d62c68b35": "Notlar",
-          "65a9820bd1": "Aracı durumları",
+          "65a9820bd1": "Ajan durumları",
           "219ebf1961": "Dal adı",
           "folderPathIdentity": "Dal / klasör yolu",
           "workspaceOptions": "Çalışma alanı seçenekleri",
@@ -6745,7 +6745,7 @@
           "ef18787206": "Silinmek üzere sırada"
         },
         "WorktreeCardAgents": {
-          "1b0a156717": "Aracılar"
+          "1b0a156717": "Ajanlar"
         },
         "WorktreeCardReviewDetailSection": {
           "copyLink": "Bağlantıyı kopyala"
@@ -6781,7 +6781,7 @@
           "automationMissing": "Otomasyon artık kullanılamıyor.",
           "automationRunMissing": "Çalıştırma geçmişi artık kullanılamıyor.",
           "automationAvailabilityUnavailable": "Otomasyon kullanılabilirliği denetlenemedi.",
-          "cliCreatedFromAgent": "`orca worktree create` ile aracı tarafından oluşturuldu",
+          "cliCreatedFromAgent": "`orca worktree create` ile ajan tarafından oluşturuldu",
           "cliCreatedFromShell": "`orca worktree create` ile oluşturuldu",
           "cliStartupAgent": "{{value0}} ile başlatıldı",
           "cliCreated": "Orca CLI ile oluşturuldu",
@@ -7019,8 +7019,8 @@
               "lockedReason": "Bu çalışma alanı Git tarafından kilitli. Git bildirdi: {{value0}}. Deposundan git worktree unlock <worktree-path> çalıştırıp silmeyi yeniden deneyin.",
               "unstoppedPty": "Orca bu çalışma alanındaki her terminalin çıktığını doğrulayamadı; dosya silmeden durdu. Yine de kaldırmak için Silmeye Zorla kullanın.",
               "unstoppedPtyLive": "Bu çalışma alanında çalışan terminaller var; Orca dosya silmeden durdu. Silmeye Zorla onları sonlandırıp içerdikleri işlenmemiş çalışmaları siler.",
-              "runningAgentSession": "Orca bu çalışma alanındaki her aracı oturumunun kapandığını doğrulayamadı; dosya silmeden durdu. Yine de kaldırmak için Silmeye Zorla kullanın.",
-              "runningAgentSessionLive": "Bu çalışma alanında Orca'nın kapatamadığı çalışan aracı oturumları var; dosya silmeden durdu. Silmeye Zorla içerdikleri çalışmaları siler."
+              "runningAgentSession": "Orca bu çalışma alanındaki her ajan oturumunun kapandığını doğrulayamadı; dosya silmeden durdu. Yine de kaldırmak için Silmeye Zorla kullanın.",
+              "runningAgentSessionLive": "Bu çalışma alanında Orca'nın kapatamadığı çalışan ajan oturumları var; dosya silmeden durdu. Silmeye Zorla içerdikleri çalışmaları siler."
             },
             "failure": {
               "archive": {
@@ -7204,38 +7204,38 @@
         },
         "LinearAgentSkillSetupPrompt": {
           "recheck": "Yeniden denetle",
-          "terminalTitle": "Linear aracı becerisini kurun",
+          "terminalTitle": "Linear ajan becerisini kurun",
           "done": "Bitti",
           "wslLabel": "WSL varsayılanı",
-          "missingCliAndSkill": "Orca CLI ve Linear aracı becerisi eksik.",
+          "missingCliAndSkill": "Orca CLI ve Linear ajan becerisi eksik.",
           "modalTitle": "Linear bilet erişimini etkinleştirin",
           "modalDescription": "Linear becerisini terminalden kurun.",
-          "modalPrompt": "Aracıların ekli Linear biletini okuyup düzenlemesini sağlayın.",
-          "missingBoth": "Orca CLI ve Linear aracı becerisi eksik.",
-          "missingSkill": "Linear aracı becerisi eksik.",
-          "title": "Linear aracı becerisini kurun",
-          "remoteCopy": "Bu, ana bilgisayar kurulumunu kurar; uzak aracı ortamları ayrı kurulum gerektirebilir.",
-          "hostCopy": "Bağlantılı Linear işinden ana bilgisayar aracı devirleri için kurun.",
-          "dismiss": "Linear aracı becerisi kurulumunu kapatın",
+          "modalPrompt": "Ajanların ekli Linear biletini okuyup düzenlemesini sağlayın.",
+          "missingBoth": "Orca CLI ve Linear ajan becerisi eksik.",
+          "missingSkill": "Linear ajan becerisi eksik.",
+          "title": "Linear ajan becerisini kurun",
+          "remoteCopy": "Bu, ana bilgisayar kurulumunu kurar; uzak ajan ortamları ayrı kurulum gerektirebilir.",
+          "hostCopy": "Bağlantılı Linear işinden ana bilgisayar ajan devirleri için kurun.",
+          "dismiss": "Linear ajan becerisi kurulumunu kapatın",
           "setup": "Kur",
-          "panelTitle": "Linear aracı becerisi",
-          "panelDescription": "Bağlantılı Linear görev devirleri için ana bilgisayar aracı becerisini kurun.",
-          "terminalAria": "Linear aracı becerisi kurulum terminali",
+          "panelTitle": "Linear ajan becerisi",
+          "panelDescription": "Bağlantılı Linear görev devirleri için ana bilgisayar ajan becerisini kurun.",
+          "terminalAria": "Linear ajan becerisi kurulum terminali",
           "install": "CLI ve Beceri Kurun",
           "successTitle": "Linear bilet erişimi hazır",
-          "successDescription": "Aracılar artık bu çalışma alanından bağlantılı Linear biletlerini okuyup güncelleyebilir.",
-          "successDescriptionWsl": "WSL aracıları artık bu çalışma alanından bağlantılı Linear biletlerini kullanabilir.",
-          "successDescriptionRemote": "Ana bilgisayar aracıları artık bağlantılı Linear biletlerini kullanabilir. Uzak aracı ortamları yine de kendi kurulumuna ihtiyaç duyabilir.",
+          "successDescription": "Ajanlar artık bu çalışma alanından bağlantılı Linear biletlerini okuyup güncelleyebilir.",
+          "successDescriptionWsl": "WSL ajanları artık bu çalışma alanından bağlantılı Linear biletlerini kullanabilir.",
+          "successDescriptionRemote": "Ana bilgisayar ajanları artık bağlantılı Linear biletlerini kullanabilir. Uzak ajan ortamları yine de kendi kurulumuna ihtiyaç duyabilir.",
           "successStatus": "Linear bilet erişimi hazır",
-          "wslCopy": "Bağlantılı Linear işinden WSL aracı devirleri için kurun.",
+          "wslCopy": "Bağlantılı Linear işinden WSL ajan devirleri için kurun.",
           "toastMissingCliAndSkill": "Orca CLI ve Linear becerisi eksik",
           "toastMissingCli": "Orca CLI eksik",
           "toastMissingSkill": "Linear becerisi eksik",
-          "toastInstallCliAndSkillDescription": "Aracılarınızın Linear görevlerini okuyup düzenlemesi için Orca CLI ve Linear becerisini kurun.",
-          "toastInstallCliDescription": "Aracılarınızın Linear görevlerini okuyup düzenlemesi için Orca CLI'yi kurun.",
-          "toastInstallSkillDescription": "Aracılarınızın Orca CLI üzerinden Linear görevlerini okuyup düzenlemesi için Linear becerisini kurun.",
-          "toastRemoteDescription": "{{value0}} Uzak aracı ortamları kendi kurulumuna ihtiyaç duyabilir.",
-          "toastWslDescription": "{{value0}} Bu kurulum seçilen WSL aracı çalışma ortamında çalışır.",
+          "toastInstallCliAndSkillDescription": "Ajanlarınızın Linear görevlerini okuyup düzenlemesi için Orca CLI ve Linear becerisini kurun.",
+          "toastInstallCliDescription": "Ajanlarınızın Linear görevlerini okuyup düzenlemesi için Orca CLI'yi kurun.",
+          "toastInstallSkillDescription": "Ajanlarınızın Orca CLI üzerinden Linear görevlerini okuyup düzenlemesi için Linear becerisini kurun.",
+          "toastRemoteDescription": "{{value0}} Uzak ajan ortamları kendi kurulumuna ihtiyaç duyabilir.",
+          "toastWslDescription": "{{value0}} Bu kurulum seçilen WSL ajan çalışma ortamında çalışır.",
           "dontShowAgain": "Yeniden gösterme",
           "missingCli": "Orca CLI eksik."
         },
@@ -7528,8 +7528,8 @@
               "pending": "Eşitleniyor…",
               "branch": "Dalı Eşitle"
             },
-            "2ef90c9819": "Bozuk denetimler için AI aracısı başlatıldı.",
-            "a0181a8d76": "Çakışmalar için AI aracısı başlatıldı.",
+            "2ef90c9819": "Bozuk denetimler için AI ajanı başlatıldı.",
+            "a0181a8d76": "Çakışmalar için AI ajanı başlatıldı.",
             "34464d00b9": "güncellendi",
             "dda5924a40": "Denetimler Git dalı ve hosted review bağlamı gerektirir",
             "976cefd02f": "Denetimler kullanılamıyor",
@@ -7550,18 +7550,18 @@
             "653c105ecc": "Diğer PR eylemleri",
             "f316a8ca2b": "Seçilen çözülmemiş yorum yok.",
             "d00ebdc402": "{{value0}} Yorumu AI ile Çözün",
-            "5eb2163b6b": "Aracıyı başlatmadan önce istemi inceleyin. İstem iletildikten sonra Orca seçilen ana bilgisayar dizilerini çözer ve çözemediği yorumları yanıtlar.",
-            "f273f2271c": "Aracı başlatıldı. {{value0}} çözüldü olarak işaretlendi, {{value1}} yanıtlandı, {{value2}} atlandı, {{value3}} başarısız oldu.{{value4}}",
-            "aa95b81a3a": "Aracı başlatıldı. {{value0}} çözüldü olarak işaretlendi, {{value1}} yanıtlandı, {{value2}} atlandı, {{value3}} başarısız oldu.",
-            "495b2f8c4b": "Aracı başlatıldı ancak seçilen yorumlar çözülemedi veya yanıtlanamadı.",
-            "3c3ad3a1d2": "Aracı başlatıldı. Seçilen yorumların hiçbiri ana bilgisayarda çözüldü olarak işaretlenemez.",
+            "5eb2163b6b": "Ajanı başlatmadan önce istemi inceleyin. İstem iletildikten sonra Orca seçilen ana bilgisayar dizilerini çözer ve çözemediği yorumları yanıtlar.",
+            "f273f2271c": "Ajan başlatıldı. {{value0}} çözüldü olarak işaretlendi, {{value1}} yanıtlandı, {{value2}} atlandı, {{value3}} başarısız oldu.{{value4}}",
+            "aa95b81a3a": "Ajan başlatıldı. {{value0}} çözüldü olarak işaretlendi, {{value1}} yanıtlandı, {{value2}} atlandı, {{value3}} başarısız oldu.",
+            "495b2f8c4b": "Ajan başlatıldı ancak seçilen yorumlar çözülemedi veya yanıtlanamadı.",
+            "3c3ad3a1d2": "Ajan başlatıldı. Seçilen yorumların hiçbiri ana bilgisayarda çözüldü olarak işaretlenemez.",
             "7e4b2a19c0": "Yanıtlanacak GitHub PR çözülemedi.",
             "430f1a62d4": "Seçilen dizi ana bilgisayarda çözülemedi.",
             "updateReactionFailed": "Tepki güncellenemedi.",
             "gitlabMoreActions": "Diğer MR eylemleri",
             "gitlabUnlink": "MR bağlantısını kaldır",
             "gitlabLinkAnother": "Başka MR bağlayın",
-            "abf59262fb": "Aracıyı başlatmadan önce istemi inceleyin.",
+            "abf59262fb": "Ajanı başlatmadan önce istemi inceleyin.",
             "5c88c6db07": "{{value0}} üzerinde açın",
             "192e686e57": "{{value0}} üzerinde açın",
             "b6ce28da5b": "{{value0}} #{{value1}} zaten açık",
@@ -7812,13 +7812,13 @@
             "bf5082de46": "{{value0}} kopyalandı",
             "pushRecovery": {
               "783a808870": "Kapat",
-              "4b37ae99b0": "Bu gönderme başarısızlığını düzeltmek için varsayılan AI aracısını başlatın",
+              "4b37ae99b0": "Bu gönderme başarısızlığını düzeltmek için varsayılan AI ajanını başlatın",
               "30b8d4f181": "Gönderme başarısızlığını AI ile düzeltin",
-              "dd43c47089": "Bu gönderme başarısızlığı için aracı seçin",
-              "ec7bfced55": "Gönderme başarısızlığını düzeltecek aracıyı seçin",
+              "dd43c47089": "Bu gönderme başarısızlığı için ajan seçin",
+              "ec7bfced55": "Gönderme başarısızlığını düzeltecek ajanı seçin",
               "9e5ccd00aa": "Gönderme başarısızlığı bağlamı kullanılamıyor",
               "054ead86b1": "Gönderme Başarısızlığını AI ile Düzeltin",
-              "15b7f210d7": "Başlatmadan önce aracıyı seçip tam komut girdisini düzenleyin.",
+              "15b7f210d7": "Başlatmadan önce ajanı seçip tam komut girdisini düzenleyin.",
               "011f9713fc": "Gönderme engellendi",
               "a9bf7c171a": "Gönderme Başarısız Oldu",
               "60bd988f0b": "AI Düzeltmesi",
@@ -7833,11 +7833,11 @@
             "e868cec4e1": "Üretiliyor…",
             "b355e740b2": "{{value0}} ayrıntı üretimini durdurun",
             "527e130b6f": "Üretimi durdurun",
-            "e48caaf0dd": "Çakışmalar için AI aracısı başlatıldı.",
+            "e48caaf0dd": "Çakışmalar için AI ajanı başlatıldı.",
             "5acbcedc1a": "{{value0}} oluşturun",
             "b94112eb9e": "Commit iletisi",
-            "15b7f210d7": "Aracıyı başlatmadan önce istemi inceleyin.",
-            "901140f47d": "Aracıyı başlatmadan önce istemi inceleyin.",
+            "15b7f210d7": "Ajanı başlatmadan önce istemi inceleyin.",
+            "901140f47d": "Ajanı başlatmadan önce istemi inceleyin.",
             "812cb992ee": "{{value0}} üzerinde açın",
             "05838cfdeb": "{{value0}} çakışması",
             "d206117f90": "{{value0}} çakışması ({{value1}})",
@@ -7862,7 +7862,7 @@
             "c06193ef57": "{{value0}} kopyalanamadı",
             "d172a4f068": "Commit hash'i",
             "e283b50179": "Commit iletisi",
-            "f394c6128a": "Bu commit'i açıklayacak aracı yok",
+            "f394c6128a": "Bu commit'i açıklayacak ajan yok",
             "04a5d7239b": "Bu deponun desteklenen web remote'u yok",
             "15b6e834ac": "Commit tarayıcıda açılamadı",
             "d37e68f61d": "Dal inceleme için hazırlanıyor…",
@@ -7935,10 +7935,10 @@
             "054ead86b1": "İşleme Başarısızlığını AI ile Düzeltin",
             "9e5ccd00aa": "İşleme başarısızlığı bağlamı kullanılamıyor",
             "f0a2dc9e46": "Başlatmayı özelleştirin...",
-            "ec7bfced55": "İşleme başarısızlığını düzeltecek aracıyı seçin",
-            "dd43c47089": "Bu işleme başarısızlığı için aracı seçin",
+            "ec7bfced55": "İşleme başarısızlığını düzeltecek ajanı seçin",
+            "dd43c47089": "Bu işleme başarısızlığı için ajan seçin",
             "30b8d4f181": "İşleme başarısızlığını AI ile düzeltin",
-            "4b37ae99b0": "Bu işleme başarısızlığını düzeltmek için varsayılan AI aracısını başlatın",
+            "4b37ae99b0": "Bu işleme başarısızlığını düzeltmek için varsayılan AI ajanını başlatın",
             "318e2a7f88": "AI üretiminin bitmesini bekleyin.",
             "f76307c1f7": "Taban dal seçin.",
             "4f76c0a9de": "Taban dal head daldan farklı olmalıdır.",
@@ -7950,7 +7950,7 @@
             "a6eda33521": "{{value0}} başlığı",
             "aee92f8684": "Üret",
             "e1970d327d": "Yeni {{value0}}",
-            "f4c766f1ca": "Bu çalıştırma için aracıyı ve komut şablonunu seçin.",
+            "f4c766f1ca": "Bu çalıştırma için ajanı ve komut şablonunu seçin.",
             "1a6a6e0bc5": "Hosted Review Ayrıntılarını Üretin",
             "6b122529d4": "Commit İletisi Üretin",
             "19652ddd76": "Çakışmaları AI ile Çözün",
@@ -8024,7 +8024,7 @@
             "d6fb1df5fe": "{{value0}} zaten açık"
           },
           "SourceControlAgentActionDialog": {
-            "8e856842d1": "Seçilen aracı başlatılamadı.",
+            "8e856842d1": "Seçilen ajan başlatılamadı.",
             "c075d00de1": "Çalışma alanı bağlantısı çözülemedi.",
             "38b899cc02": "Tüm depolar",
             "808cfe0a3b": "Bu depo",
@@ -8035,23 +8035,23 @@
             "7ec6abbf2a": "Sıfırla",
             "bc8dc39f4b": "CLI bağımsız değişkenleri",
             "b99c33cec5": "Ayarlar",
-            "15c5d85706": "Aracı",
+            "15c5d85706": "Ajan",
             "3e8f21954f": "hata",
             "74168d7ada": "boşta",
             "013c9ac04a": "Şunun için kaydet:",
             "1bb611240f": "Orca'nın varsayılan istemi için {basePrompt} kullanın.",
-            "23280cbab1": "Bu şablon {basePrompt} içermiyor; aracı Orca'nın varsayılan istemini almaz.",
-            "5421a96acb": "Kaydedip aracıyı başlatın",
+            "23280cbab1": "Bu şablon {basePrompt} içermiyor; ajan Orca'nın varsayılan istemini almaz.",
+            "5421a96acb": "Kaydedip ajanı başlatın",
             "6cefcdfba1": "Bunu sonra Source Control AI ayarlarında değiştirebilirsiniz.",
             "c29f9cf266": "Bu istemi kaydedin ve gelecek sefer bu incelemeyi göstermeyin",
             "d8f40128ee": "{basePrompt}, Orca'nın varsayılan istemidir.",
             "f4f3c9ca4a": "İstem şablonu",
             "1bc0bdbb5e": "Başlatma:",
-            "1d47db9bf0": "Etkin aracı yok",
-            "c7ff8cef11": "Aracılar algılanıyor...",
+            "1d47db9bf0": "Etkin ajan yok",
+            "c7ff8cef11": "Ajanlar algılanıyor...",
             "b0da3a4d3e": "Başlatma tarifi zaten kaydedildi",
-            "bff4795a6d": "Kaydedilen tarifi güncellemek için aracıyı, bağımsız değişkenleri veya istem şablonunu değiştirin.",
-            "5c75b24735": "Orca başlatmadan önce aracının ne alacağını özelleştirin.",
+            "bff4795a6d": "Kaydedilen tarifi güncellemek için ajanı, bağımsız değişkenleri veya istem şablonunu değiştirin.",
+            "5c75b24735": "Orca başlatmadan önce ajanın ne alacağını özelleştirin.",
             "repoAgentOverrideNote": "Bu depo genel varsayılanınızı ({{global}}) geçersiz kılar ve şu anda {{effective}} çalıştırır. Burada ne çalışacağını değiştirmek için bu depoya kaydedin."
           },
           "SourceControlTextGenerationDialog": {
@@ -8064,10 +8064,10 @@
             "1f6fcfb6cf": "Komut şablonu",
             "4eab815004": "CLI bağımsız değişkenleri",
             "914c8f6ac2": "Özel komut",
-            "9c14186dd2": "Aracı",
+            "9c14186dd2": "Ajan",
             "25fcd8e49a": "Varsayılanları kaydedin",
             "d91b0a189d": "Tarifi kaydedin",
-            "cce2cbd01d": "Aracı seçin"
+            "cce2cbd01d": "Ajan seçin"
           },
           "activity": {
             "bar": {
@@ -8161,7 +8161,7 @@
                 "d91f2a6c39": "Sıradaki {{value0}} yorumu AI'a gönderin",
                 "a6de3e5a20": "Sıradaki yorumları temizleyin",
                 "49ea0937e4": "Çözüm listesine yorum ekleyin",
-                "f8a2c91d04": "Aracı için sıraya alın",
+                "f8a2c91d04": "Ajan için sıraya alın",
                 "e8b4c1a903": "Çözüldü · {{value0}}",
                 "c3a8e5d710": "İnceleme gerekli · {{value0}}",
                 "a7f0c7e8d1": "Sıra",
@@ -8368,7 +8368,7 @@
           "index": {
             "441733b630": "Bağlantı Noktaları",
             "06219e4cb1": "Ara",
-            "aiVaultSessionHistory": "Aracılar",
+            "aiVaultSessionHistory": "Ajanlar",
             "70893f017b": "Yan",
             "7b415c39e9": "Üst",
             "864111caa2": "Etkinlik Çubuğu Konumu",
@@ -8406,12 +8406,12 @@
                   "failure": {
                     "launch": {
                       "216f762bd7": "Çalışma alanı bağlantısı çözülemedi.",
-                      "a8b97d2318": "İşleme başarısızlığı için AI aracısı başlatıldı.",
-                      "5540ff50cc": "Aracı başlatma komutu oluşturulamadı.",
-                      "9bbd9077a2": "Etkin AI aracısı yok. Aracıları Ayarlarda yapılandırın.",
-                      "d481ab22f9": "Kayıtlı AI aracısı kullanılamıyor. Başka aracı seçmek için Başlatmayı özelleştir'i kullanın.",
+                      "a8b97d2318": "İşleme başarısızlığı için AI ajanı başlatıldı.",
+                      "5540ff50cc": "Ajan başlatma komutu oluşturulamadı.",
+                      "9bbd9077a2": "Etkin AI ajanı yok. Ajanları Ayarlarda yapılandırın.",
+                      "d481ab22f9": "Kayıtlı AI ajanı kullanılamıyor. Başka ajan seçmek için Başlatmayı özelleştir'i kullanın.",
                       "f2b47026e8": "İşleme başarısızlığı istemi boş. Source Control AI ayarlarını güncelleyin.",
-                      "4f4e0418a0": "Aracı istemi oluşturulamadı."
+                      "4f4e0418a0": "Ajan istemi oluşturulamadı."
                     }
                   }
                 },
@@ -8419,12 +8419,12 @@
                   "failure": {
                     "launch": {
                       "216f762bd7": "Çalışma alanı bağlantısı çözülemedi.",
-                      "4f4e0418a0": "Aracı istemi oluşturulamadı.",
+                      "4f4e0418a0": "Ajan istemi oluşturulamadı.",
                       "f2b47026e8": "Gönderme başarısızlığı istemi boş. Source Control AI ayarlarını güncelleyin.",
-                      "d481ab22f9": "Kayıtlı AI aracısı kullanılamıyor. Başka aracı seçmek için Başlatmayı özelleştir'i kullanın.",
-                      "9bbd9077a2": "Etkin AI aracısı yok. Aracıları Ayarlarda yapılandırın.",
-                      "5540ff50cc": "Aracı başlatma komutu oluşturulamadı.",
-                      "a8b97d2318": "Gönderme başarısızlığı için AI aracısı başlatıldı."
+                      "d481ab22f9": "Kayıtlı AI ajanı kullanılamıyor. Başka ajan seçmek için Başlatmayı özelleştir'i kullanın.",
+                      "9bbd9077a2": "Etkin AI ajanı yok. Ajanları Ayarlarda yapılandırın.",
+                      "5540ff50cc": "Ajan başlatma komutu oluşturulamadı.",
+                      "a8b97d2318": "Gönderme başarısızlığı için AI ajanı başlatıldı."
                     }
                   }
                 },
@@ -8437,11 +8437,11 @@
                       "empty": "İşleme başarısızlığı istemi boş. Source Control AI ayarlarını güncelleyin."
                     },
                     "216f762bd7": "Çalışma alanı bağlantısı çözülemedi.",
-                    "4f4e0418a0": "Aracı istemi oluşturulamadı.",
-                    "d481ab22f9": "Kayıtlı AI aracısı kullanılamıyor. Başka aracı seçmek için Başlatmayı özelleştir'i kullanın.",
-                    "9bbd9077a2": "Etkin AI aracısı yok. Aracıları Ayarlarda yapılandırın.",
-                    "5540ff50cc": "Aracı başlatma komutu oluşturulamadı.",
-                    "success": "{{value0}} başarısızlığı için AI aracısı başlatıldı."
+                    "4f4e0418a0": "Ajan istemi oluşturulamadı.",
+                    "d481ab22f9": "Kayıtlı AI ajanı kullanılamıyor. Başka ajan seçmek için Başlatmayı özelleştir'i kullanın.",
+                    "9bbd9077a2": "Etkin AI ajanı yok. Ajanları Ayarlarda yapılandırın.",
+                    "5540ff50cc": "Ajan başlatma komutu oluşturulamadı.",
+                    "success": "{{value0}} başarısızlığı için AI ajanı başlatıldı."
                   }
                 }
               },
@@ -8588,7 +8588,7 @@
                   "4cbd0cd9d2": "İşleme sürüyor…",
                   "e7876a2bde": "İleti üretmek için en az bir dosyayı hazırlayın.",
                   "0904be2505": "Yeniden üretmek için iletiyi temizleyin.",
-                  "1ea9ba37aa": "Ayarlar -> Git -> Source Control AI bölümünden aracı seçin."
+                  "1ea9ba37aa": "Ayarlar -> Git -> Source Control AI bölümünden ajan seçin."
                 }
               }
             }
@@ -8660,14 +8660,14 @@
           },
           "AiVaultPanel": {
             "valueCopied": "{{value0}} kopyalandı",
-            "agents": "Aracılar",
+            "agents": "Ajanlar",
             "clearSearch": "Aramayı temizle",
             "resumeCommandCopied": "Devam komutu kopyalandı",
             "valueCopyFailed": "{{value0}} kopyalanamadı",
             "openWorkspaceBeforeResuming": "Oturuma devam etmeden önce çalışma alanı açın.",
             "localWorkspacesOnly": "Geçmişten devam yalnızca yerel çalışma alanlarında kullanılabilir.",
             "agentSessionQueued": "{{value0}} oturumu sıraya alındı",
-            "sessionHistory": "Aracı Oturum Geçmişi",
+            "sessionHistory": "Ajan Oturum Geçmişi",
             "shownRecent": "{{value0}} gösteriliyor · {{value1}} son",
             "sessionsShownCompact": "{{value0}} gösteriliyor",
             "resumePastSessions": "Geçmiş oturumlara devam edin",
@@ -8675,9 +8675,9 @@
             "searchSessions": "Oturum arayın",
             "remoteBrowseLocalHistory": "Uzak çalışma alanları yerel geçmişe göz atabilir. Devam eylemleri yerel çalışma alanlarından çalışır.",
             "transcriptsSkipped": "{{count}} konuşma metni atlandı",
-            "noAgentSessionsFound": "Aracı oturumu bulunamadı",
+            "noAgentSessionsFound": "Ajan oturumu bulunamadı",
             "noSessionsMatchFilters": "Mevcut filtrelerle eşleşen oturum yok",
-            "noAgentsSelected": "Aracı seçilmedi",
+            "noAgentsSelected": "Ajan seçilmedi",
             "sessionId": "Oturum Kimliği",
             "logPath": "Günlük yolu",
             "originalPaneUnavailable": "Özgün bölme artık kullanılamıyor.",
@@ -8694,12 +8694,12 @@
           },
           "AiVaultPanelControls": {
             "allScope": "Tümü",
-            "agents": "Aracılar",
+            "agents": "Ajanlar",
             "selectAllAgents": "Tümünü seç",
             "clearAgents": "Temizle",
             "created": "Oluşturuldu",
             "folder": "Klasör",
-            "agent": "Aracı",
+            "agent": "Ajan",
             "workspaceScope": "Çalışma Alanı",
             "globalScope": "Genel",
             "projectScope": "Proje",
@@ -8733,7 +8733,7 @@
             "copyDetailValue": "{{value0}} öğesini kopyala",
             "unknown": "Bilinmiyor",
             "system": "Sistem",
-            "agentRole": "Aracı",
+            "agentRole": "Ajan",
             "systemRole": "Sistem",
             "prompt": "İstem",
             "copyPrompt": "İstemi kopyala",
@@ -8747,7 +8747,7 @@
             "recoverableEmptyOpenLogHint": "Kurtarmak için günlüğü açın.",
             "emptyConversationDetail": "Bu oturumun kaydedilmiş konuşması yok ve devam edilemez.",
             "queuedMessages": "{{value0}} sıradaki ileti",
-            "subagentTranscripts": "{{value0}} alt-aracı konuşma metni",
+            "subagentTranscripts": "{{value0}} alt-ajan konuşma metni",
             "messageCount": "{{value0}} ileti",
             "workingDir": "Çalışma dizini",
             "unknownLocation": "Bilinmeyen konum",
@@ -8797,7 +8797,7 @@
           },
           "AiVaultSessionRow": {
             "recoverableBadge": "Kaydedilmedi",
-            "agentRole": "Aracı",
+            "agentRole": "Ajan",
             "systemRole": "Sistem",
             "delete": "Sil",
             "showDetails": "Ayrıntıları Göster",
@@ -8821,8 +8821,8 @@
             "toolRole": "Araç",
             "jumpToOriginalPane": "Özgün Bölmeye Atlayın",
             "jumpToWorktree": "Çalışma Ağacına Atlayın",
-            "subagentCountSingular": "1 alt-aracı",
-            "subagentCountPlural": "{{value0}} alt-aracı",
+            "subagentCountSingular": "1 alt-ajan",
+            "subagentCountPlural": "{{value0}} alt-ajanlar",
             "deleteReasonNonLocalHost": "Yalnızca bu cihazdaki oturumlar silinebilir.",
             "deleteReasonSyntheticPath": "Bu oturum Orca'dan silinemez.",
             "deleteReasonUnsupportedAgent": "{{value0}} oturumları Orca'dan silinemez.",
@@ -8888,7 +8888,7 @@
             "noActiveWorktreeTarget": "Kullanılabilir etkin çalışma ağacı yok."
           },
           "AiVaultSessionSubagents": {
-            "subagentsCount": "Alt-aracılar ({{value0}})",
+            "subagentsCount": "Alt-ajanlar ({{value0}})",
             "messageCount": "{{value0}} ileti",
             "viewLog": "Günlüğü Görüntüle"
           },
@@ -9210,14 +9210,14 @@
           "d737791433": "AI için not ekleyin",
           "b1bfc04034": "Seçili metin",
           "f37b98999e": "Bu not",
-          "bb629de58a": "Aracı için notları kopyalayın",
+          "bb629de58a": "Ajan için notları kopyalayın",
           "322afab6ff": "Notları inceleyin",
           "0f9969a159": "İlk inceleme notuna atlayın",
           "b42c41bd0d": "Sonraki eşleşme",
           "1febd97f5c": "Önceki eşleşme",
           "ec77985138": "Markdown önizlemede bulun",
           "517aea303b": "Önizlemede bulun",
-          "f961e94057": "Aracı için notu kopyalayın",
+          "f961e94057": "Ajan için notu kopyalayın",
           "94b520a96a": "Not kopyalandı",
           "13f94d760c": "Not ekleyin",
           "ddf087d12e": "Gönderilmemiş tüm notlar",
@@ -9265,7 +9265,7 @@
         },
         "NotesSendMenu": {
           "44dc5e60a6": "Notları gönderin",
-          "433928cd9f": "{{value0}} öğesini aracıya gönderin"
+          "433928cd9f": "{{value0}} öğesini ajana gönderin"
         },
         "PdfFind": {
           "cd65b1d6b0": "Kapat",
@@ -9283,12 +9283,12 @@
           "fa5d096b00": "Uzaklaştır"
         },
         "ReviewNotesSendMenuContent": {
-          "a49800405b": "Yeni aracı",
-          "e84705f223": "Etkin aracı oturumu",
+          "a49800405b": "Yeni ajan",
+          "e84705f223": "Etkin ajan oturumu",
           "03378aea75": "Notları gönder:",
-          "f5096c6e4e": "Notlar etkin aracıya gönderilemedi.",
-          "bb9c69a0c9": "Notlar etkin aracıya gönderildi.",
-          "50f7e753ea": "Notlar etkin aracıya gönderiliyor..."
+          "f5096c6e4e": "Notlar etkin ajana gönderilemedi.",
+          "bb9c69a0c9": "Notlar etkin ajana gönderildi.",
+          "50f7e753ea": "Notlar etkin ajana gönderiliyor..."
         },
         "RichMarkdownAnnotationOverlay": {
           "069b5677b8": "Seçili metin",
@@ -9322,12 +9322,12 @@
         },
         "RichMarkdownReviewNoteLayer": {
           "f3ef92952b": "Bu not",
-          "9cde7ad994": "Aracı için notu kopyalayın",
+          "9cde7ad994": "Ajan için notu kopyalayın",
           "117432e2c6": "Not kopyalandı",
           "3ababd949d": "Notları inceleyin"
         },
         "RichMarkdownReviewRailActions": {
-          "636394af72": "Aracı için notları kopyalayın",
+          "636394af72": "Ajan için notları kopyalayın",
           "a807596997": "Notlar kopyalandı",
           "8aaf2c4c69": "İnceleme notlarını göster",
           "af02dc2456": "İnceleme notlarını gizle"
@@ -9513,7 +9513,7 @@
           "07eccfa397": "Bu denetim için ayrıntı yok.",
           "a916648574": "Ayrıntıları açın",
           "834cb3f23d": "AI ile Düzeltin",
-          "c8f1a2d4e7": "Başlatmadan önce aracıyı seçip tam komut girdisini düzenleyin.",
+          "c8f1a2d4e7": "Başlatmadan önce ajanı seçip tam komut girdisini düzenleyin.",
           "8f2d0f5a91": "Geçti",
           "91a4c7e2b0": "İptal edildi",
           "2f6d8a1c45": "Zaman aşımına uğradı",
@@ -9521,9 +9521,9 @@
           "3d9f2b8e14": "Bekliyor",
           "5e2a9c3f88": "Dosyayı bu satırda aç",
           "b3e7f9a1c2": "Denetim düzeltme bağlamı kullanılamıyor",
-          "d5a8c2f1b9": "Bu denetimi düzeltmek için varsayılan AI aracısını başlatın",
-          "e2b4d7c8a1": "Bu denetim için bir aracı seçin",
-          "f1c9e3a6d4": "Denetimi düzeltmek için aracı seçin",
+          "d5a8c2f1b9": "Bu denetimi düzeltmek için varsayılan AI ajanını başlatın",
+          "e2b4d7c8a1": "Bu denetim için bir ajan seçin",
+          "f1c9e3a6d4": "Denetimi düzeltmek için ajan seçin",
           "actionRequired": "Eylem gerekli",
           "copyOutput": "Çıktıyı kopyala"
         },
@@ -9544,7 +9544,7 @@
                     "4f2d9a8c17": "AI eylemi başlatmadan önce bir depo seçin.",
                     "7c3e1b5d42": "AI düzeltmesi başlatmadan önce bir PR veya MR açın.",
                     "9b2f6d4a81": "Bu denetim başarısız değil.",
-                    "2ef90c9819": "Bu denetim için bir AI aracısı başlatıldı."
+                    "2ef90c9819": "Bu denetim için bir AI ajanı başlatıldı."
                   }
                 }
               }
@@ -9672,7 +9672,7 @@
           "aa59462502": "Depo",
           "571c5818c1": "Ev",
           "0bc1379f4c": "Tüm kaynaklar",
-          "38e0951c3a": "Aracı Becerileri",
+          "38e0951c3a": "Ajan Becerileri",
           "39b6998ddb": "Tüm sağlayıcılar",
           "a68dee6a32": "Beceri ara",
           "e46e162e2e": "kaynak",
@@ -9686,7 +9686,7 @@
           "cd7893fbc1": "Beceriler taranıyor",
           "c13b82793c": "Kurulumları yönetin",
           "aee7b99cc6": "Bağlantıdan kurun",
-          "filterProvider": "Aracıya göre filtreleyin",
+          "filterProvider": "Ajana göre filtreleyin",
           "filterSource": "Kaynağa göre filtreleyin",
           "clearFilters": "Filtreleri temizleyin",
           "closeSkills": "Becerileri kapatın",
@@ -9700,7 +9700,7 @@
         "SkillFreshnessNudge": {
           "titleOne": "Kurulu bir Orca becerisi güncel değil",
           "titleMany": "{{value0}} kurulu Orca becerisi güncel değil",
-          "description": "Aracılar bu Orca sürümünün güncel yönergelerini izlesin diye {{value0}} öğesini güncelleyin.",
+          "description": "Ajanlar bu Orca sürümünün güncel yönergelerini izlesin diye {{value0}} öğesini güncelleyin.",
           "updateOne": "Beceriyi güncelleyin",
           "updateMany": "Becerileri güncelleyin"
         },
@@ -10105,9 +10105,9 @@
           "showMore": "Daha fazla göster"
         },
         "install": {
-          "agentsLabel": "Aracılar",
+          "agentsLabel": "Ajanlar",
           "agentNotInstalled": "Kurulu değil",
-          "agentsNone": "Aracı seçilmedi",
+          "agentsNone": "Ajan seçilmedi",
           "rowUpdate": "Güncelle",
           "rowNew": "Yeni",
           "selectAll": "Tümünü seç",
@@ -10129,7 +10129,7 @@
           "reconnectBeforeVersionChange": "Sürümleri değiştirmeden önce Orca hesabınızı yeniden bağlayın.",
           "removeFailed": "Orca bu beceriyi güvenle kaldıramadı.",
           "agentsCanonical": "{{value1}} öğesini okuyan {{value0}} için her zaman kurulu.",
-          "agentsNoneChosen": "Ek aracı yok",
+          "agentsNoneChosen": "Ek ajan yok",
           "agentsSummary": "Ayrıca: {{value0}}",
           "bundleDestinationSummary": "{{value0}} yeni · {{value1}} zaten kurulu · {{value2}} karar bekliyor",
           "trustNote": "Beceriler yazarlarından yönergeler ve koddur. Güvendiğinizi kurun.",
@@ -10146,18 +10146,18 @@
           "reviewSupportingFiles": "Destek dosyaları içerir",
           "reviewInstructions": "Bu beceri hakkında",
           "supportingFileWarning": "Seçili beceriler SKILL.md dışında {{fileCount}} içeriyor.",
-          "agentAccessWarning": "Beceriler aracınızın izleyebileceği yönergeler içerir. Yalnızca bu paylaşım bağlantısının kaynağına güveniyorsanız devam edin.",
+          "agentAccessWarning": "Beceriler ajanınızın izleyebileceği yönergeler içerir. Yalnızca bu paylaşım bağlantısının kaynağına güveniyorsanız devam edin.",
           "fileBinary": "ikili",
           "fileRunnable": "çalıştırılabilir",
           "agentsCountBadge": "{{count}} seçildi",
-          "targetAgentsHeader": "Hedef Aracılar",
+          "targetAgentsHeader": "Hedef Ajanlar",
           "deselectAll": "İsteğe bağlıları seçimden çıkarın",
-          "canonicalHeader": "Standart Aracılar (Her Zaman Dahil)",
-          "canonicalExplanation": "Bu aracılar {{root}} öğesini doğal olarak okur, Orca varsayılan olarak oraya kurar:",
-          "additionalAgentsHeader": "Ek Aracı Dizinleri"
+          "canonicalHeader": "Standart Ajanlar (Her Zaman Dahil)",
+          "canonicalExplanation": "Bu ajanlar {{root}} öğesini doğal olarak okur, Orca varsayılan olarak oraya kurar:",
+          "additionalAgentsHeader": "Ek Ajan Dizinleri"
         },
         "filter": {
-          "allAgents": "Tüm aracılar",
+          "allAgents": "Tüm ajanlar",
           "sharedAgent": "Paylaşılan (.agents)"
         },
         "SkillsSelectionHeader": {
@@ -10169,7 +10169,7 @@
           "deleteTitle": "Silinecek becerileri seçin"
         },
         "SkillDetailDialog": {
-          "agents": "Aracılar",
+          "agents": "Ajanlar",
           "updated": "Güncellendi",
           "copy": "Kopyala"
         },
@@ -10217,7 +10217,7 @@
           "bundleDescription": "Her uyarı düzeyini kapsayan bir önizleme paketi.",
           "instructionsOnlyDescription": "Yönergeler tamamen SKILL.md içinde.",
           "supportingFilesDescription": "Ana yönergeler dışında okunabilir başvuru dosyaları içerir.",
-          "runnableFilesDescription": "Aracının erişiminizle çalıştırabileceği betikler içerir.",
+          "runnableFilesDescription": "Ajanın erişiminizle çalıştırabileceği betikler içerir.",
           "binaryFilesDescription": "Opak öğeler ve yürütülebilir ikili dosya içerir."
         },
         "SkillDelete": {
@@ -10265,7 +10265,7 @@
         "AutomationDetail": {
           "host": "Ana bilgisayar",
           "007c8ad874": "İstem",
-          "2df8970cd5": "Aracı",
+          "2df8970cd5": "Ajan",
           "15ea446b93": "Oturum",
           "b09b2384fd": "Duraklatıldı",
           "eaa02014f8": "Etkin",
@@ -10285,11 +10285,11 @@
           "91a4155e95": "Otomasyonu duraklatın",
           "4b1ea02d2e": "Otomasyonu düzenleyin",
           "2fb1605beb": "Şimdi Çalıştır",
-          "221916d93c": "Aracı işlerini zamanlamaya başlamak için bir otomasyon oluşturun."
+          "221916d93c": "Ajan işlerini zamanlamaya başlamak için bir otomasyon oluşturun."
         },
         "AutomationEditorDialog": {
           "fb1896a5e7": "İptal",
-          "57b722cbba": "Aracı",
+          "57b722cbba": "Ajan",
           "a2e688226d": "Çalışma ağacı",
           "b28b140eaf": "Çalışma Alanı",
           "02d351877e": "Proje",
@@ -10315,7 +10315,7 @@
           "0a75e5e2fa": "Hermes otomasyonu oluşturun",
           "03142e7721": "Hermes otomasyonunu düzenleyin",
           "17086b48ee": "Otomasyonu düzenleyin",
-          "4c8e1a72b9": "Yinelenen bir aracı görevi"
+          "4c8e1a72b9": "Yinelenen bir ajan görevi"
         },
         "AutomationMissedRunGraceField": {
           "521f77cd58": "1 saat",
@@ -10438,7 +10438,7 @@
           "08efc3ae12": "Hermes otomasyonu güncellendi.",
           "e431bb85d4": "Bu Hermes otomasyonuyla aynı hostta bir çalışma alanı seçin.",
           "32534e7c9c": "Kaydetmeden önce kullanılabilir bir çalışma alanı seçin.",
-          "2360ffc956": "Kaydetmeden önce etkin bir aracı seçin.",
+          "2360ffc956": "Kaydetmeden önce etkin bir ajan seçin.",
           "6e91dab317": "Kaydetmeden önce geçerli bir gelişmiş zamanlama girin.",
           "64bdb2304f": "Kaydetmeden önce desteklenen bir zamanlama seçin.",
           "2430fecf53": "Kaydetmeden önce bir çalıştırma konumu seçip bir istem girin.",
@@ -10620,9 +10620,9 @@
           "failed": "Başarısız oldu",
           "filters": "Filtreler",
           "all": "Tümü",
-          "agent": "Aracı",
-          "926e785e4d": "Aracı arayın...",
-          "491043ee45": "Aramanızla eşleşen aracı yok.",
+          "agent": "Ajan",
+          "926e785e4d": "Ajan arayın...",
+          "491043ee45": "Aramanızla eşleşen ajan yok.",
           "succeeded": "Başarılı",
           "neverRan": "Hiç çalışmadı",
           "clear": "Filtreleri temizleyin",
@@ -10940,7 +10940,7 @@
             "caa0f39811": "Destekler:",
             "97957ad3a3": "Kullanımlarını gerçek zamanlı görmek ve hesaplar arasında kolayca geçiş yapmak için AI sağlayıcı hesaplarınızı bağlayın.",
             "9a542f46c7": "Durum çubuğundan gizleyin",
-            "84c3b15dca": "Aracı kullanım sınırları",
+            "84c3b15dca": "Ajan kullanım sınırları",
             "d663430cf9": "Kullanım izlemeyi yapılandırın"
           },
           "SkillUpdateStatusSegment": {
@@ -10997,7 +10997,7 @@
             "66870929fb": "Issue",
             "fb2069acb7": "İncele",
             "b9b4a3a25d": "Dal",
-            "a8d9e0de79": "Aracılar",
+            "a8d9e0de79": "Ajanlar",
             "39801484e0": "Başarısız oldu",
             "33653dbac2": "Siliniyor",
             "52b629eb84": "Güncellendi",
@@ -11097,7 +11097,7 @@
             "a9a318b7a3": "Yenileme başarısız oldu — önbelleğe alınmış veri gösteriliyor",
             "7ad719c4bf": "Sınırlı",
             "e740f92596": "Yenileme başarısız oldu",
-            "8418ec448d": "{{value0}} kullanımı yenilenemedi. Aracı oturumları hâlâ oturum açmış olabilir.",
+            "8418ec448d": "{{value0}} kullanımı yenilenemedi. Ajan oturumları hâlâ oturum açmış olabilir.",
             "45198c7d95": "1 oran sınırı sıfırlama kullanılabilir",
             "bce421cba3": "{{value0}} oran sınırı sıfırlama kullanılabilir",
             "7ec6e030a0": "Sonraki şimdi doluyor",
@@ -11110,7 +11110,7 @@
             "bf2e739f18": "Oturum açılamıyor",
             "f8b8dbed85": "Kullanım bilgisi yok",
             "3d3c9c0c1f": "Claude kullanımı, canlı Claude terminali kimlik bilgilerini döndürdükten sonra yenilenir.",
-            "42fdd4da1d": "Claude oturumu yenileniyor. Aracı oturumları hâlâ oturum açmış olabilir.",
+            "42fdd4da1d": "Claude oturumu yenileniyor. Ajan oturumları hâlâ oturum açmış olabilir.",
             "c06c1d215d": "Claude kullanımı yenilenemedi çünkü ağ isteği başarısız oldu.",
             "cabdc2a9e0": "Claude oturum kimlik bilgileri okunamadı.",
             "a7517cccb6": "Claude kullanımı şu anda kullanılamıyor.",
@@ -11139,7 +11139,7 @@
             "compact": "Kompakt",
             "openDetails": "Kullanım ayrıntılarını açın",
             "notSignedIn": "oturum açılmadı",
-            "allAgents": "tüm aracılar",
+            "allAgents": "tüm ajanlar",
             "usageDetails": "Kullanım ayrıntıları ve geçmişi",
             "loadingUsage": "Kullanım yükleniyor…",
             "usageUnavailable": "Kullanım bilgisi yok",
@@ -11187,7 +11187,7 @@
             "inactive": "Etkin değil",
             "ariaLabel": "{{title}}, {{status}}",
             "onDescription": "Bu bilgisayarı sürekli uyanık tutun",
-            "autoDescription": "Bir aracı çalışırken uyanık kalın",
+            "autoDescription": "Bir ajan çalışırken uyanık kalın",
             "offDescription": "Normal sistem uyku davranışına izin verin"
           },
           "RuntimeHostStatusRow": {
@@ -11517,11 +11517,11 @@
         "wall": {
           "AgentCapabilitiesSetupAction": {
             "b8dc9dd8a2": "Kurulu",
-            "1b51644c2d": "Aracıların imleci hareket ettirerek, tıklayarak ve yazarak masaüstünü her uygulamada denetlemesine izin verin.",
-            "5e8fe5a72d": "Aracılara Orca'nın tarayıcısına doğrudan erişim verin; sayfaları test edebilsin, ekran görüntüsü alabilsin ve gördüklerine göre hareket edebilsin.",
-            "e638da007a": "Aracı Tarayıcı Kullanımı",
-            "c61c91e642": "Aracıların büyük, çok adımlı görevleri tamamlanmaya doğru ilerletmek için Orca üzerinden koordine olmasına izin verin.",
-            "ac07f8887f": "Aracı Orkestrasyonu",
+            "1b51644c2d": "Ajanların imleci hareket ettirerek, tıklayarak ve yazarak masaüstünü her uygulamada denetlemesine izin verin.",
+            "5e8fe5a72d": "Ajanlara Orca'nın tarayıcısına doğrudan erişim verin; sayfaları test edebilsin, ekran görüntüsü alabilsin ve gördüklerine göre hareket edebilsin.",
+            "e638da007a": "Ajan Tarayıcı Kullanımı",
+            "c61c91e642": "Ajanların büyük, çok adımlı görevleri tamamlanmaya doğru ilerletmek için Orca üzerinden koordine olmasına izin verin.",
+            "ac07f8887f": "Ajan Orkestrasyonu",
             "e9eb197e12": "Computer Use izinleri açıldı",
             "3a59452a67": "Beceri komutu kopyalanıp inceleme için aşağıya eklendi.",
             "c605f51f2b": "Yetenek kurulumu hazır",
@@ -11535,7 +11535,7 @@
             "be8917699e": "Model",
             "4d9b6d84df": "desteklenmiyor. Claude, Codex veya Custom seçin.",
             "560d4feb00": "Özel",
-            "29d119fe95": "Aracı",
+            "29d119fe95": "Ajan",
             "f9382b48a1": "AI yazarı etkinleştirin",
             "1c0cb4fabb": "AI yazarı",
             "bd14e9c42a": "Yapılandırılmadı",
@@ -11552,7 +11552,7 @@
             "4fa59ca545": "✓ Güncellendi"
           },
           "BrowserUseSkillSetupCard": {
-            "cbc45022d4": "Aracıların Orca'nın tarayıcısında sayfalarda gezinmesini ve sayfaları doğrulamasını sağlar.",
+            "cbc45022d4": "Ajanların Orca'nın tarayıcısında sayfalarda gezinmesini ve sayfaları doğrulamasını sağlar.",
             "d5bb1cd4ba": "Browser Use becerisi"
           },
           "ComputerUseAnimatedVisual": {
@@ -11717,19 +11717,19 @@
                       "ec0a363633": "Çoklu görev",
                       "62bac8f43c": "Aynı anda 2 farklı çalışma ağacında çalışın. Her biri yalıtılmıştır (aynı projede bile). Aynı anda 2 özellik üzerinde çalışmak için idealdir.",
                       "908898c3ee": "Orca'nın tarayıcısını kullanın",
-                      "43781563c3": "Orca'dan ayrılmadan web uygulamanıza göz atın. Herhangi bir öğeyi alıp tam kaynağını ve stillerini tek tıkla aracıya gönderin.",
+                      "43781563c3": "Orca'dan ayrılmadan web uygulamanıza göz atın. Herhangi bir öğeyi alıp tam kaynağını ve stillerini tek tıkla ajana gönderin.",
                       "29aa2c2077": "Bildirimleri açın",
-                      "71bd9a8c95": "Aracı bittiği, müdahale gerektiği veya engellendiği an haberdar olun.",
-                      "46db810da8": "Varsayılan aracınızı seçin",
-                      "b8e5bae17f": "Tercih ettiğiniz aracı zaten seçiliyken yeni işe daha hızlı başlayın.",
+                      "71bd9a8c95": "Ajan bittiği, müdahale gerektiği veya engellendiği an haberdar olun.",
+                      "46db810da8": "Varsayılan ajanınızı seçin",
+                      "b8e5bae17f": "Tercih ettiğiniz ajan zaten seçiliyken yeni işe daha hızlı başlayın.",
                       "fee5557b02": "Orca CLI'yi Etkinleştir",
-                      "7bcb4097fa": "Orca kabuk komutunu kaydedin ve tarayıcı, bilgisayar ve orkestrasyon iş akışları için aracı becerilerini kurun.",
+                      "7bcb4097fa": "Orca kabuk komutunu kaydedin ve tarayıcı, bilgisayar ve orkestrasyon iş akışları için ajan becerilerini kurun.",
                       "ad342dd4c6": "Entegrasyonları bağlayın",
-                      "06fe30fdb0": "Tek tıkla görevden aracı başlatın ve PR durumunu görünür tutun.",
+                      "06fe30fdb0": "Tek tıkla görevden ajan başlatın ve PR durumunu görünür tutun.",
                       "eddc532e58": "Çalışma alanı kurulumunu otomatikleştirin",
-                      "56049b74c2": "Her yeni çalışma ağacı aracılar için hazır olsun diye kurulum komutlarını otomatik çalıştırın.",
+                      "56049b74c2": "Her yeni çalışma ağacı ajanlar için hazır olsun diye kurulum komutlarını otomatik çalıştırın.",
                       "2cf795433b": "Birden fazla depoda çalışmaya başlayın",
-                      "42525ba8a4": "Klasör aramadan aracı işine başlayabilmeniz için önemli depolarınızı Orca'ya getirin."
+                      "42525ba8a4": "Klasör aramadan ajan işine başlayabilmeniz için önemli depolarınızı Orca'ya getirin."
                     }
                   }
                 }
@@ -11789,7 +11789,7 @@
               "steps": {
                 "name": "Orkestrasyon",
                 "subtitle": "Orkestrasyon",
-                "description": "Aracıların daha büyük görevleri yürütmek için Orca çalışma alanlarını yönetmesini ve koordine etmesini sağlayın."
+                "description": "Ajanların daha büyük görevleri yürütmek için Orca çalışma alanlarını yönetmesini ve koordine etmesini sağlayın."
               },
               "StatusesPage": {
                 "139e3d7458": "Güncellendi",
@@ -11847,9 +11847,9 @@
             "list_pair": " ve ",
             "code_host_tasks_summary": "görev olarak kullanılabilir sorunlar · ekibiniz işleri orada planlıyorsa Linear veya Jira ekleyin",
             "code_host_tasks_caption": "Kod hostunuzun sorunları da görev olarak çalışır.",
-            "review_step_title": "Aracılar çalışırken PR durumunu görün",
+            "review_step_title": "Ajanlar çalışırken PR durumunu görün",
             "review_step_description": "Orca PR veya MR durumunu, denetimleri ve incelemeleri gösterebilsin diye bir inceleme sağlayıcı bağlayın.",
-            "task_step_title": "Orca'dan ayrılmadan görevlerinizde aracı başlatın"
+            "task_step_title": "Orca'dan ayrılmadan görevlerinizde ajan başlatın"
           },
           "connect": {
             "integration": {
@@ -11878,7 +11878,7 @@
             "22e62f3bab": "Claude Code oturumu başladı"
           },
           "CliSkillSetupTerminal": {
-            "1953e90447": "Aracılarınız için Orca CLI orkestrasyon becerisini kurmak üzere Enter'a basın.",
+            "1953e90447": "Ajanlarınız için Orca CLI orkestrasyon becerisini kurmak üzere Enter'a basın.",
             "43b60ec5c3": "Orca CLI ve orkestrasyon becerisi kurulum terminali",
             "84e9576dac": "Beceri kurulumu",
             "5c3aee22c0": "Komutu kopyalayın",
@@ -11896,7 +11896,7 @@
           "FeatureTipsModal": {
             "c169298e4d": "Bitti",
             "3c6c478462": "X bitince inceleme görevini gönderin.”",
-            "864e2db28f": "“İçindeki aracı",
+            "864e2db28f": "“İçindeki ajan",
             "7fc6f02099": "ve her biri için PR oluşturun.”",
             "55846c7f95": "“Bu PR'yi ikiye bölün",
             "4795ac2d4a": "Şunu sormayı deneyin:",
@@ -12078,9 +12078,9 @@
           "42d3e0bdf7": "Kullanım analizi sağlayıcısı: {{value0}}",
           "c79f073d4c": "Kullanım Analizi",
           "a58aba506f": "Oluşturulan PR'ler",
-          "1c96f433e2": "Aracıların çalışma süresi",
-          "9dbec9e675": "Başlatılan aracılar",
-          "73ed07859c": "İzlemeye başlamak için ilk aracınızı başlatın",
+          "1c96f433e2": "Ajanların çalışma süresi",
+          "9dbec9e675": "Başlatılan ajanlar",
+          "73ed07859c": "İzlemeye başlamak için ilk ajanınızı başlatın",
           "b2cf4310ce": "Genel bakış",
           "eee19cfade": "genel bakış",
           "trackingSince": "{{value0}} tarihinden beri izleniyor"
@@ -12090,7 +12090,7 @@
           "444585cb41": "verili",
           "ecb0cd8a4c": "etkin -",
           "33f7b043d2": "Sağlayıcılar",
-          "60002bb22f": "Henüz yerel Claude, Codex veya OpenCode kullanımı bulunamadı. Sonraki aracı oturumu token günlükleri yazdıktan sonra genel bakış dolar.",
+          "60002bb22f": "Henüz yerel Claude, Codex veya OpenCode kullanımı bulunamadı. Sonraki ajan oturumu token günlükleri yazdıktan sonra genel bakış dolar.",
           "70f36452d4": "Önbellek payı",
           "327603fe8b": "Etkin günler",
           "0eaf937335": "Tahm. maliyet",
@@ -12098,7 +12098,7 @@
           "2d13e57f72": "OpenCode'u etkinleştirin",
           "2f1ee2878b": "Codex'i etkinleştirin",
           "0ea0cae435": "Claude'u etkinleştirin",
-          "6c00c46815": "Yerel aracı günlüklerini tarayıp birleşik token defterini oluşturmak için bir sağlayıcı etkinleştirin.",
+          "6c00c46815": "Yerel ajan günlüklerini tarayıp birleşik token defterini oluşturmak için bir sağlayıcı etkinleştirin.",
           "49405ccc8d": "Token izlemeyi başlatın",
           "ca6bc5fded": "Yenile",
           "e06d1baf5c": "Kullanım genel bakışını yenileyin",
@@ -12125,7 +12125,7 @@
             "8efeae0b22": "izleme",
             "5acbe1fdf2": "süre",
             "ef8bbf7739": "pr'ler",
-            "ce8533f02e": "aracılar",
+            "ce8533f02e": "ajanlar",
             "0bba8ca244": "istatistikler",
             "0e2a0b6431": "kullanım",
             "372debfac0": "istatistikler",
@@ -12523,10 +12523,10 @@
         "quick": {
           "commands": {
             "TerminalQuickCommandActionToggle": {
-              "b0d58e37ed": "Aracı İstemi",
+              "b0d58e37ed": "Ajan İstemi",
               "b5ea4d64f6": "Terminal Komutu",
               "terminal_short": "Terminal",
-              "agent_short": "Aracı"
+              "agent_short": "Ajan"
             },
             "TerminalQuickCommandAppendEnterSwitch": {
               "e4e5fed3b3": "Enter eklemeyi aç/kapat",
@@ -12537,10 +12537,10 @@
             "TerminalQuickCommandDialog": {
               "925b8e0f6e": "Gelişmiş",
               "e604bd40d6": "Becerileri, dosya yollarını ve yerleşik komutları destekler, örneğin",
-              "577a342c7d": "Aracıdan bu çalışma alanını incelemesini isteyin",
+              "577a342c7d": "Ajandan bu çalışma alanını incelemesini isteyin",
               "026cfb232a": "İstem komutlarını desteklemez",
-              "346d409ab2": "Aracı seçin",
-              "0adba8fa0c": "Aracı",
+              "346d409ab2": "Ajan seçin",
+              "0adba8fa0c": "Ajan",
               "ec8f081919": "Eylem",
               "ed04233b3e": "Kaydedilen öğeler tek tıkla çalıştırma için sekme çubuğu menüsünde görünür.",
               "ca414324ee": "Komut Metni",
@@ -12578,12 +12578,12 @@
             "1d1a7a9c1f": "İptal",
             "6b9a6975f8": "Terminalde hâlâ çalışan bir işlem var. Terminali kapatırsanız işlem sonlandırılır.",
             "78b79d854d": "Terminal kapatılsın mı?",
-            "stop_agent_title": "Bu aracı durdurulsun mu?",
+            "stop_agent_title": "Bu ajan durdurulsun mu?",
             "stop_command_title": "Çalışan komut durdurulsun mu?",
-            "stop_agent_description": "Bu terminali kapatmak aracının mevcut işini durdurur.",
+            "stop_agent_description": "Bu terminali kapatmak ajanın mevcut işini durdurur.",
             "stop_command_description": "Bu terminali kapatmak içinde çalışan komutu durdurur.",
             "dont_ask_again": "Çalışan terminaller için bir daha sormayın",
-            "stop_agent_confirm": "Aracıyı Durdurun",
+            "stop_agent_confirm": "Ajanı Durdurun",
             "stop_command_confirm": "Durdurun ve Kapatın"
           },
           "MobileDriverOverlay": {
@@ -12603,10 +12603,10 @@
           },
           "TerminalAgentSessionForkDialog": {
             "17fc841e59": "Bağlamı kopyalayın",
-            "0c8a8629b1": "Çatal kendi çalışma alanı olarak görünür, iç içe alt öğe olarak değil. Yeni aracı, sınırlı bir konuşma metnini düzenlenebilir taslak olarak alır.",
+            "0c8a8629b1": "Çatal kendi çalışma alanı olarak görünür, iç içe alt öğe olarak değil. Yeni ajan, sınırlı bir konuşma metnini düzenlenebilir taslak olarak alır.",
             "620461df22": "Üst düzey çatal",
-            "619b5a35d2": "Üst düzey bir çalışma alanı çatalı oluşturun ve yakalanan bağlamla yeni bir aracı sekmesi başlatın.",
-            "64e292e8e3": "Aracı Oturumunu Çatallayın",
+            "619b5a35d2": "Üst düzey bir çalışma alanı çatalı oluşturun ve yakalanan bağlamla yeni bir ajan sekmesi başlatın.",
+            "64e292e8e3": "Ajan Oturumunu Çatallayın",
             "9d25de2920": "Çatal oluşturun",
             "2b10412cfc": "Oluşturuluyor..."
           },
@@ -12620,7 +12620,7 @@
             "06c2b0f043": "Bölme Boyutlarını Eşitleyin",
             "98bccf4fa2": "Terminali Aşağı Bölün",
             "20e565d865": "Terminali Sağa Bölün",
-            "8a7ddb8b8a": "Aracı Oturumunu Çatallayın…",
+            "8a7ddb8b8a": "Ajan Oturumunu Çatallayın…",
             "0a82b0608c": "Hızlı Komut Ekleyin…",
             "9528a65ef8": "Hızlı komut yok",
             "3ce594a4a0": "Genel",
@@ -12718,7 +12718,7 @@
           "stale": {
             "agent": {
               "row": {
-                "ad991ece5c": "Aracının bölmesi artık kullanılamıyor."
+                "ad991ece5c": "Ajanın bölmesi artık kullanılamıyor."
               }
             }
           },
@@ -12732,7 +12732,7 @@
                   "38e41edc6e": "Bu çalışma alanı git çalışma ağacına çatallanamaz.",
                   "f867385bb5": "Bu çatalın kaynak çalışma alanı bulunamadı.",
                   "046e8d853c": "Çatallanacak terminal bağlamı yok",
-                  "c00421d320": "Çatal bağlamı kopyalandı. Çatalı başlatmak için bir aracı başlatıp yapıştırın.",
+                  "c00421d320": "Çatal bağlamı kopyalandı. Çatalı başlatmak için bir ajan başlatıp yapıştırın.",
                   "f62b40e2c7": "Kopyalanacak terminal bağlamı yok",
                   "373a3103e7": "Bağlam kopyalandı",
                   "3fc568a49d": "Bağlam kopyalanamadı."
@@ -12846,7 +12846,7 @@
           "10d27b4cba": "Başlayın",
           "da1d5e5ed0": "Şunda kullanılabilir:",
           "ec0607bf66": "Desteklenen mobil platformlar",
-          "b4ccce5cb7": "Orca'yı telefonunuzdan denetleyin. Masanızdan uzaktayken aracıları izleyin, değişiklikleri inceleyin ve görevleri başlatın.",
+          "b4ccce5cb7": "Orca'yı telefonunuzdan denetleyin. Masanızdan uzaktayken ajanları izleyin, değişiklikleri inceleyin ve görevleri başlatın.",
           "cd4e5e816f": "Çalışma alanlarınız cebinizde.",
           "a6cffbbb0b": "Kod oluşturun",
           "e59a252eca": "Kodu yeniden oluşturun",
@@ -12930,8 +12930,8 @@
             "0bc1881bc4": "Bağlı · 40 worktrees · 5 etkin",
             "2f1a1d10c4": "Masaüstleri",
             "156db8a68a": "Oluşturulan PR'ler",
-            "4a40af029b": "Aracı süresi",
-            "00a6903322": "Başlatılan aracılar",
+            "4a40af029b": "Ajan süresi",
+            "00a6903322": "Başlatılan ajanlar",
             "c0e2e9dcd9": "Yeniden hoş geldiniz",
             "af761a0c0d": "Ayarlar"
           },
@@ -13076,11 +13076,11 @@
             "revealInFileExplorer": "Dosya Gezgininde Göster"
           },
           "QuickLaunchButton": {
-            "348a04c1ad": "Aracı ayarları…",
+            "348a04c1ad": "Ajan ayarları…",
             "ec2adf093e": "{{value0}} öğesini yeni terminalde başlatın",
             "465e432ef1": "{{value0}} için başlatma komutu oluşturulamadı.",
-            "e518f544b1": "Aracı algılanamadı",
-            "8dea9b5cdf": "Etkin aracı yok"
+            "e518f544b1": "Ajan algılanamadı",
+            "8dea9b5cdf": "Etkin ajan yok"
           },
           "RecentTabSwitcher": {
             "329638ff6f": "Sekme Değiştirin",
@@ -13136,7 +13136,7 @@
             "d62d63b807": "Dosya oluşturun",
             "25dc1cd653": "Dosyayı açın",
             "7cdf8ee0c8": "URL Açın",
-            "b27864279e": "Aracıyı başlatın",
+            "b27864279e": "Ajanı başlatın",
             "8f0a1c4d92": "Sekmeye geçin",
             "2c38630a01": "Çalışma alanı artık yok",
             "4f0d9a71c2": "Sekme artık yok",
@@ -13145,7 +13145,7 @@
             "chooseAction": "Bir eylem seçin.",
             "searchProvider": "{{value0}} arayın",
             "openPage": "Sayfayı açın",
-            "omniboxPlaceholderWithHistory": "Açık sekmeleri, geçmişi, dosyaları, URL'leri, aracıları arayın…"
+            "omniboxPlaceholderWithHistory": "Açık sekmeleri, geçmişi, dosyaları, URL'leri, ajanları arayın…"
           },
           "TabBarQuickCommandsButton": {
             "a2c7a33831": "Komut",
@@ -13224,7 +13224,7 @@
             "splitTerminal": "Terminali bölün"
           },
           "TerminalTabLeadingIcon": {
-            "7ab2964bea": "Okunmamış aracı tamamlaması"
+            "7ab2964bea": "Okunmamış ajan tamamlaması"
           },
           "TabBarQuickCommandAddActions": {
             "45a2f36d51": "Komut",
@@ -13294,10 +13294,10 @@
         "71c11aff84": "Tüm denetimleri yeniden çalıştırın",
         "e31651a224": "Başarısız denetimleri yeniden çalıştırın",
         "1b56e28faa": "Yeniden çalıştır",
-        "f4b1292569": "Bu denetimlerde varsayılan AI aracısını başlatın",
+        "f4b1292569": "Bu denetimlerde varsayılan AI ajanını başlatın",
         "9a1004fc76": "Denetimleri yenileyin",
-        "03e542fcfe": "Bozuk denetimler için AI aracısı başlatılamadı: {{value0}}",
-        "28986b3747": "Bozuk denetimler için AI aracısı başlatıldı.",
+        "03e542fcfe": "Bozuk denetimler için AI ajanı başlatılamadı: {{value0}}",
+        "28986b3747": "Bozuk denetimler için AI ajanı başlatıldı.",
         "1690fd7f4a": "Düzeltilecek bozuk denetim yok.",
         "9e7c221b8d": "Denetimler yeniden çalıştırılamadı",
         "e463ec935f": "Denetim yeniden çalıştırmaları istendi",
@@ -13471,7 +13471,7 @@
             "f2d0c22d67": "{{value0}} ek açıklamasını silin",
             "11c5084aa2": "Ek açıklamaları temizleyin",
             "734e4343ec": "Tarayıcı ek açıklamalarını temizleyin",
-            "95af781091": "Aracıya geri bildirim gönderin",
+            "95af781091": "Ajana geri bildirim gönderin",
             "ac39b9366b": "Gönder",
             "a3508d7e6e": "{{value0}} ek açıklama{{value1}} hazır. Başka öğe seçin veya tüm geri bildirimi kopyalayın.",
             "f796c774a4": "Göz atmaya başlamak için yukarıya bir URL yazın.",
@@ -13508,7 +13508,7 @@
             "90d021f2ad": "Ekle",
             "0cb3bd6221": "Ek açıklama amacı",
             "8f87e6c2e5": "Amaç",
-            "532bac48c5": "Aracının burada neyi değiştirmesi gerektiğini açıklayın...",
+            "532bac48c5": "Ajanın burada neyi değiştirmesi gerektiğini açıklayın...",
             "d2a7092e6e": "Ek açıklama yorumu",
             "b472c5fe03": "Tarayıcı ek açıklaması ekleyin",
             "b5ba6085de": "Soru",
@@ -13524,7 +13524,7 @@
             "168350ae6a": "Öğeye tıklayın veya üzerine gelin, ardından kopyalamak için C'ye, ekran görüntüsü için S'ye basın.",
             "e852e20cea": "Kopyalandı — ekran görüntüsü için S'ye basın veya başka öğe seçin",
             "a5dcd0fd1d": "onaylanıyor",
-            "777b5bc4ec": "Aracı için geri bildirim eklemek üzere bir öğeye tıklayın.",
+            "777b5bc4ec": "Ajan için geri bildirim eklemek üzere bir öğeye tıklayın.",
             "b733a91bd9": "Seçili öğe için geri bildirim ekleyin.",
             "4328a0a062": "Yakalama başarısız oldu: {{value0}}",
             "26615e116b": "hata",
@@ -13703,8 +13703,8 @@
         "a18d01cda3": "Henüz bildirilen denetim yok",
         "3912daf310": "Bu pull request'in henüz bildirilen denetimi yok.",
         "45877f5089": "Denetim bulunamadı",
-        "85e62c5266": "Bozuk denetimler için AI aracısı başlatıldı.",
-        "ddfd42f460": "Aracıyı başlatmadan önce istemi inceleyin.",
+        "85e62c5266": "Bozuk denetimler için AI ajanı başlatıldı.",
+        "ddfd42f460": "Ajanı başlatmadan önce istemi inceleyin.",
         "a053bdd082": "Bozuk Denetimleri AI ile Düzeltin",
         "1b14d0a69c": "GitHub'da açın",
         "1550675e5f": "Bu denetim için satır içi çıktı yok.",
@@ -13718,9 +13718,9 @@
         "54cddd1858": "Tüm denetimleri yeniden çalıştırın",
         "68605516dd": "Başarısız denetimleri yeniden çalıştırın",
         "522d9353e1": "Yeniden çalıştır",
-        "0fa8b8faec": "Bu denetimlerde varsayılan AI aracısını başlatın",
+        "0fa8b8faec": "Bu denetimlerde varsayılan AI ajanını başlatın",
         "5d0f42766d": "Denetimleri yenileyin",
-        "98583589c6": "Bozuk denetimler için AI aracısı başlatılamadı: {{value0}}",
+        "98583589c6": "Bozuk denetimler için AI ajanı başlatılamadı: {{value0}}",
         "51c65c0265": "Düzeltilecek bozuk denetim yok.",
         "788a782bb0": "Denetimler yeniden çalıştırılamadı",
         "18f2af42ac": "Denetim yeniden çalıştırmaları istendi",
@@ -13842,16 +13842,16 @@
       },
       "onboarding": {
         "AgentStep": {
-          "e6a369bd04": "Popüler aracılar",
+          "e6a369bd04": "Popüler ajanlar",
           "d7b3ef168b": "Sisteminizde algılandı",
           "9c163bb0e0": "Kurulum yönergeleri",
           "69af7e9c1c": "henüz PATH'inizde değil. Orca onu varsayılanınız yapar ve istediğiniz zaman kurabilirsiniz.",
-          "1eee1c7bd8": "PATH'inizde aracı algılanamadı. Daha sonra kurmak için birini seçin veya boş terminalle devam edin.",
-          "hideAgents": "Aracıları gizleyin",
-          "showMoreAgents": "{{value0}} aracı daha gösterin→",
+          "1eee1c7bd8": "PATH'inizde ajan algılanamadı. Daha sonra kurmak için birini seçin veya boş terminalle devam edin.",
+          "hideAgents": "Ajanları gizleyin",
+          "showMoreAgents": "{{value0}} ajan daha gösterin→",
           "yoloPermissionsLabel": "Yolo / İzinleri Tehlikeli Şekilde Atlayın",
-          "yoloPermissionsInfo": "Aracı izin bilgisi",
-          "yoloPermissionsTooltip": "Daha az kesinti için aracı izin denetimlerini atlayın"
+          "yoloPermissionsInfo": "Ajan izin bilgisi",
+          "yoloPermissionsTooltip": "Daha az kesinti için ajan izin denetimlerini atlayın"
         },
         "FeatureSetupInlineTerminal": {
           "789b59936e": "Komutu çalıştırmak için Enter'a basın ve istenirse npx'i onaylayın. Bunu daha sonra Ayarlar'da da kurabilirsiniz.",
@@ -13896,7 +13896,7 @@
           "ac80d97e02": "Özel Dosyayı Değiştir",
           "56b836215c": "Bildirim izni denetleniyor…",
           "fd84d3e9b8": "Bildirimler etkin",
-          "4f7bce5644": "Aracılar bittiğinde veya terminaller müdahale gerektirdiğinde macOS sizi uyarır.",
+          "4f7bce5644": "Ajanlar bittiğinde veya terminaller müdahale gerektirdiğinde macOS sizi uyarır.",
           "95d99b52fa": "Orca için bildirimlere izin verin",
           "94562ba367": "macOS izin istiyor. İletişim kutusunda İzin Ver'e tıklayın, bu adım otomatik güncellenir.",
           "4f6a1da718": "Sistem Ayarları'nı Aç",
@@ -13910,12 +13910,12 @@
           "277ba45540": "Orca karşılama",
           "97c42cda00": "GitHub CLI'yi kurun:",
           "ae3b00ca82": "GitHub görevlerini kurun",
-          "ff92d15436": "Aracılar bittiğinde veya yardıma ihtiyaç duyduğunda Orca size bildirir.",
+          "ff92d15436": "Ajanlar bittiğinde veya yardıma ihtiyaç duyduğunda Orca size bildirir.",
           "b054332836": "Bildirimleri kurun",
           "04ae28d8ca": "Saatlerce bakacağınız görünümü seçin.",
           "f396db9f20": "Evinizde hissettirsin",
-          "322fc50a18": "Orca her CLI aracısıyla çalışır. En çok kullanacağınızı seçin. İstediğiniz zaman değiştirin.",
-          "198b148b3c": "Varsayılan aracınızı seçin",
+          "322fc50a18": "Orca her CLI ajanıyla çalışır. En çok kullanacağınızı seçin. İstediğiniz zaman değiştirin.",
+          "198b148b3c": "Varsayılan ajanınızı seçin",
           "a5e5da02f7": "entegrasyonlar",
           "984338477a": "tema",
           "windowsTerminalTitle": "Windows terminal varsayılanlarını ayarlayın",
@@ -14041,7 +14041,7 @@
             "b299f201b9": "kaldırılması güvenli",
             "2b31bf68de": "etkin değil",
             "ac5ba84cc1": "seçili",
-            "8b74d4ea6e": "Çalışma ağaçları ve git durumu taranıyor, ardından silme önermeden önce açık sekme, terminal, canlı aracı ve uzak kullanılabilirlik sinyalleri birleştiriliyor.",
+            "8b74d4ea6e": "Çalışma ağaçları ve git durumu taranıyor, ardından silme önermeden önce açık sekme, terminal, canlı ajan ve uzak kullanılabilirlik sinyalleri birleştiriliyor.",
             "7eee951968": "Çalışma alanları taranıyor",
             "191f0bc98e": "Kapat",
             "7ae2ad30f4": "Yenile",
@@ -14115,7 +14115,7 @@
             "editorTabsCount": "Düzenleyici sekmeleri: {{value0}}",
             "browserTabsCount": "Tarayıcı sekmeleri: {{value0}}",
             "diffNotesCount": "Fark notları: {{value0}}",
-            "completedAgentsCount": "Tamamlanan aracılar: {{value0}}",
+            "completedAgentsCount": "Tamamlanan ajanlar: {{value0}}",
             "contextCount": "Bağlam: {{value0}}",
             "mainWorkspaceBlocker": "Ana çalışma alanı",
             "folderProjectBlocker": "Klasör projesi",
@@ -14126,7 +14126,7 @@
             "dirtyEditorBufferBlocker": "Kaydedilmemiş düzenleyici arabelleği",
             "volatileLocalContextBlocker": "Geçici yerel bağlam",
             "recentVisibleContextBlocker": "Son ziyaret edilen sekmeler",
-            "liveAgentBlocker": "Etkin aracı",
+            "liveAgentBlocker": "Etkin ajan",
             "sshDisconnectedBlocker": "Uzak kullanılamıyor",
             "gitStatusErrorBlocker": "Git durumu kullanılamıyor",
             "dirtyFilesBlocker": "Değişen dosyalar",
@@ -14159,14 +14159,14 @@
           "signInCopy": "Hesabınız üzerinden paylaşılan artefaktları görüntülemek ve yönetmek için oturum açın.",
           "signIn": "Orca'da oturum açın",
           "empty": "Paylaşılan artefakt yok",
-          "emptyCopy": "HTML veya Markdown dosyası açıp Artefakt olarak paylaş'ı seçin veya aracınızdan paylaşmasını isteyin.",
+          "emptyCopy": "HTML veya Markdown dosyası açıp Artefakt olarak paylaş'ı seçin veya ajanınızdan paylaşmasını isteyin.",
           "openArtifact": "Artefaktı açın",
           "deleteArtifact": "Artefaktı silin",
           "moreAvailable": "Kullanılabilir başka artefaktlar var",
           "moreAvailableCopy": "Devam etmek için sonraki sayfayı yükleyin.",
           "loadMoreFailed": "Daha fazla artefakt yüklenemedi.",
           "publishingOff": "Yayımlama kapalı",
-          "publishingOffCopy": "Bu cihazda henüz hiçbir şey herkese açık artefakt bağlantısı oluşturamaz. Ayarlar → Artefaktlar'da yayımlamaya izin verin, ardından açık bir HTML veya Markdown dosyasından paylaşın veya aracınızdan isteyin.",
+          "publishingOffCopy": "Bu cihazda henüz hiçbir şey herkese açık artefakt bağlantısı oluşturamaz. Ayarlar → Artefaktlar'da yayımlamaya izin verin, ardından açık bir HTML veya Markdown dosyasından paylaşın veya ajanınızdan isteyin.",
           "openArtifactsSettings": "Ayarlar → Artefaktlar'ı açın",
           "retry": "Yeniden Dene",
           "reconnectHeading": "Orca'da yeniden oturum açın",
@@ -14404,20 +14404,20 @@
       },
       "activity": {
         "ActivityPrototypePage": {
-          "cf780197a1": "Etkinliğini görüntülemek için bir aracı seçin",
+          "cf780197a1": "Etkinliğini görüntülemek için bir ajan seçin",
           "e3db9892f6": "Henüz etkinlik yok.",
           "1b633f5c1e": "Terminal bağlanıyor...",
           "8de7c5beaa": "Terminal kullanılamıyor",
           "866083500b": "Yeniden boyutlandırmak için sürükleyin",
           "443690186e": "Etkinlik iş parçacığı listesini yeniden boyutlandırın",
-          "7cd632006b": "Bu filtrelerle eşleşen aracı etkinliği yok.",
+          "7cd632006b": "Bu filtrelerle eşleşen ajan etkinliği yok.",
           "a2b4437bfb": "{{value0}} etkinliği",
           "023ff75afe": "Tümünü okundu işaretleyin",
           "f70e4bec47": "Kompakt mod",
           "a472a14700": "Diğer seçenekler",
           "db8a1878b5": "İş parçacığı listesi seçenekleri",
           "d1a88df9a8": "Yalnızca okunmamış iş parçacıklarını gösterin",
-          "f6396e1f85": "Aracı",
+          "f6396e1f85": "Ajan",
           "b29191b3e0": "Çalışma ağacı",
           "8c3b621ddf": "Proje",
           "4a3986b200": "Durum",
@@ -14429,12 +14429,12 @@
           "beb2c19173": "Okunmamış",
           "5651b216c6": "Bilinmeyen proje",
           "22b22034bc": "Etkinlikte bağımsız terminal kullanılamıyor.",
-          "afdc2139a8": "Aracı terminali kapandı. Devam etmek için bu çalışma alanında yeni bir terminal açın.",
+          "afdc2139a8": "Ajan terminali kapandı. Devam etmek için bu çalışma alanında yeni bir terminal açın.",
           "clearCompleted": "Tamamlananları temizleyin",
           "none": "Yok",
           "search": "Ara",
           "showUnreadOnly": "Yalnızca okunmamışları gösterin",
-          "showChildAgents": "Alt aracıları gösterin",
+          "showChildAgents": "Alt ajanları gösterin",
           "activityOptions": "Etkinlik seçenekleri",
           "threadListOptionsFiltered": "İş parçacığı listesi seçenekleri, filtreler etkin",
           "showSearch": "Aramayı gösterin",
@@ -14454,8 +14454,8 @@
           "viewSection": "Görüntüle"
         },
         "clearCompleted": {
-          "clearedOne": "1 tamamlanan aracı temizlendi",
-          "clearedMany": "{{count}} tamamlanan aracı temizlendi",
+          "clearedOne": "1 tamamlanan ajan temizlendi",
+          "clearedMany": "{{count}} tamamlanan ajan temizlendi",
           "undo": "Geri al"
         },
         "standaloneWorktree": {
@@ -14464,8 +14464,8 @@
         },
         "ActivityTitlebarControls": {
           "f915168c8e": "okunmamış",
-          "d6a8de3934": "aracılar",
-          "dc708f3eff": "Aracıları kapatın"
+          "d6a8de3934": "ajanlar",
+          "dc708f3eff": "Ajanları kapatın"
         },
         "ActivityScopeFilterControls": {
           "hiddenCount": "{{value0}} gizli",
@@ -14493,9 +14493,9 @@
         "0ee17638fe": "Çalışma alanı adı",
         "2688050e4b": "Ad",
         "f0470c7383": "Gelişmiş",
-        "ba64270bdb": "Aracıları yapılandırın",
-        "ab63f25397": "Aracı ayarlarını açın",
-        "01d1e8f601": "Aracı",
+        "ba64270bdb": "Ajanları yapılandırın",
+        "ab63f25397": "Ajan ayarlarını açın",
+        "01d1e8f601": "Ajan",
         "0c5d6a479c": "[İsteğe bağlı]",
         "b5a0796911": "Bağlan",
         "dccd26d4e4": "Proje seçin",
@@ -14534,8 +14534,8 @@
         "sshReconnectionFailed": "SSH yeniden bağlanamadı",
         "notConnected": "Bağlı değil",
         "notePasteTooLarge": "Yapıştırma not alanı için çok büyük.",
-        "waitForSetupBeforeAgent": "Aracıyı başlatmadan önce kurulumun tamamlanmasını bekle",
-        "waitForSetupBeforeAgentHelp": "Kurulum, aracının başlatma sırasında ihtiyaç duyduğu bağımlılıkları, MCP sunucularını veya yapılandırma dosyalarını kuruyorsa bunu açın.",
+        "waitForSetupBeforeAgent": "Ajanı başlatmadan önce kurulumun tamamlanmasını bekle",
+        "waitForSetupBeforeAgentHelp": "Kurulum, ajanın başlatma sırasında ihtiyaç duyduğu bağımlılıkları, MCP sunucularını veya yapılandırma dosyalarını kuruyorsa bunu açın.",
         "destroyDisabled": "yok etme devre dışı",
         "destroyConfigured": "yok etme yapılandırıldı",
         "noDestroyConfigured": "yok etme yok",
@@ -14878,10 +14878,10 @@
                       "c6705092ba": "PATH'i Düzelt",
                       "7c1b6bdb1e": "Etkinleştir",
                       "51074ccb05": "CLI durumu yüklenemedi.",
-                      "35dea1ae12": "Aracı denetimi hazır.",
+                      "35dea1ae12": "Ajan denetimi hazır.",
                       "9dff3a6338": "Beceri kuruldu. Kurulumu tamamlamak için Orca CLI'yi etkinleştirin.",
                       "15986a1080": "Orca CLI hazır. Kurulumu tamamlamak için beceriyi kurun.",
-                      "4c26913def": "Hâlâ kurulmadı. Aracı denetimini etkinleştirmek için iki adımı da tamamlayın.",
+                      "4c26913def": "Hâlâ kurulmadı. Ajan denetimini etkinleştirmek için iki adımı da tamamlayın.",
                       "c94ff11e91": "Kurulum durumu yeniden denetlenemedi.",
                       "2b519eed94": "Orca CLI PATH içine kaydedildi."
                     }
@@ -14898,10 +14898,10 @@
             }
           },
           "MobileEmulatorAgentSetupGuide": {
-            "2fda9ff015": "Aracı denetimini kurun",
-            "0ac0fef514": "Aracı denetimi hazır.",
-            "2bdfff8763": "Aracı denetimi (isteğe bağlı).",
-            "72736b051f": "Aracıların bu simülatörü sürmesini istediğinizde Orca CLI + beceri kurun.",
+            "2fda9ff015": "Ajan denetimini kurun",
+            "0ac0fef514": "Ajan denetimi hazır.",
+            "2bdfff8763": "Ajan denetimi (isteğe bağlı).",
+            "72736b051f": "Ajanların bu simülatörü sürmesini istediğinizde Orca CLI + beceri kurun.",
             "d10ae98046": "Bitti",
             "3756cbeca7": "Şimdi değil",
             "6d950431d2": "Gizle",
@@ -14910,18 +14910,18 @@
           },
           "MobileEmulatorAgentSetupGuideSteps": {
             "9b49d892e3": "Orca CLI'yi Etkinleştir",
-            "3d8dc52c93": "Aracı kabuklarında öykünücü denetimi için orca komutunu kaydeder.",
+            "3d8dc52c93": "Ajan kabuklarında öykünücü denetimi için orca komutunu kaydeder.",
             "21f5687c07": "Orca CLI becerisi",
-            "64fb057667": "Aracılara bu çalışma ağacı için orca öykünücü komutlarını öğretir.",
+            "64fb057667": "Ajanlara bu çalışma ağacı için orca öykünücü komutlarını öğretir.",
             "5c59ea96ca": "Mobil öykünücü Orca CLI beceri kurulumu",
             "bff5341ac3": "Mobil öykünücü Orca CLI beceri kurulum terminali",
             "3d34423e88": "Orca CLI kaydediliyor",
-            "3be27641c9": "böylece öykünücü komutları aracı kabuklarından çalışabilir.",
+            "3be27641c9": "böylece öykünücü komutları ajan kabuklarından çalışabilir.",
             "3941719a56": "Beceri kurulumu açılmadan önce Orca CLI denetleniyor."
           },
           "MobileEmulatorTabIntroCallout": {
             "1924982130": "Kapat",
-            "5789936d9a": "Aracılar ekranı sürerken iOS simülatörlerini önizleyin.",
+            "5789936d9a": "Ajanlar ekranı sürerken iOS simülatörlerini önizleyin.",
             "8014b4b80b": "Sakla",
             "6e051a40b7": "Gizle"
           },
@@ -14958,7 +14958,7 @@
         "1628fd7dfa": "Etkin çalışma ağacı, ayar, eylem veya açık sekme yok",
         "b781ae05e3": "Çalışma ağaçları, ayarlar, sekmeler ve eylemler arasında aramak için yazın.",
         "f60f8730be": "Geçilecek başka çalışma ağacı yok",
-        "c4afa68159": "Çalışma ağacı, ayar, eylem, sekme başlığı, aracı istemi, URL, PR veya bağlantı noktası deneyin.",
+        "c4afa68159": "Çalışma ağacı, ayar, eylem, sekme başlığı, ajan istemi, URL, PR veya bağlantı noktası deneyin.",
         "dbd9d87eec": "Aramanızla eşleşen sonuç yok",
         "2c38630a01": "Çalışma alanı artık yok",
         "7726ce9970": "Mobil öykünücü sekmesi artık yok",
@@ -14994,9 +14994,9 @@
             "0ee79e0674": "Durum Çubuğuna Taşıyın"
           },
           "FloatingTerminalOrchestrationDialog": {
-            "f726054620": "Aracıların bağlam devretmesini ve Orca üzerinden çalışmayı koordine etmesini sağlar.",
+            "f726054620": "Ajanların bağlam devretmesini ve Orca üzerinden çalışmayı koordine etmesini sağlar.",
             "1cd3f8af64": "Orkestrasyon becerisi",
-            "6f0aed26b8": "Aracılar Orca üzerinden koordine olabilsin diye Orca CLI ve orkestrasyon becerisini kurun.",
+            "6f0aed26b8": "Ajanlar Orca üzerinden koordine olabilsin diye Orca CLI ve orkestrasyon becerisini kurun.",
             "05d7aabc20": "Kurulu değil",
             "630c0ac8c8": "Kurulu",
             "dfd021ce46": "Denetleniyor...",
@@ -15014,7 +15014,7 @@
             "690b6fb98a": "Kaydedilmemiş Değişiklikler",
             "bbc177f98f": "Etkinleştir",
             "adc281394d": "Kapat",
-            "8cf80db43b": "Aracılar Orca üzerinden koordine olabilsin diye Orca CLI ve aracı becerisini kurun.",
+            "8cf80db43b": "Ajanlar Orca üzerinden koordine olabilsin diye Orca CLI ve ajan becerisini kurun.",
             "2a3c5ddf5e": "Orkestrasyonu etkinleştirin",
             "d6b563ae24": "Düzenleyici yükleniyor...",
             "8b14ba6c17": "Yeni Tarayıcı Sekmesi",
@@ -15120,10 +15120,10 @@
         "markup": {
           "cancel": "İptal",
           "clear": "Tümünü temizle",
-          "copiedToast": "İşaretleme kopyalandı — aracınıza yapıştırın ({{value0}})",
+          "copiedToast": "İşaretleme kopyalandı — ajanınıza yapıştırın ({{value0}})",
           "copy": "İşaretlemeyi Kopyalayın",
           "drawButton": "Ekran görüntüsü üzerine çizin",
-          "drawHint": "Sayfa üzerine çizin, ardından aracınıza yapıştırmak için işaretlemeyi kopyalayın.",
+          "drawHint": "Sayfa üzerine çizin, ardından ajanınıza yapıştırmak için işaretlemeyi kopyalayın.",
           "drawHintBadge": "Yeni",
           "drawHintDismiss": "Anladım",
           "drawHintTry": "Deneyin",
@@ -15131,7 +15131,7 @@
           "errorCapture": "Üzerine çizilecek sayfa yakalanamadı.",
           "errorUnavailable": "Ekran görüntüsü işaretleme bu sayfada kullanılamıyor.",
           "fontSize": "Yazı tipi boyutu",
-          "hint": "Sayfa üzerine çizin, ardından aracınıza yapıştırmak için işaretlemeyi kopyalayın.",
+          "hint": "Sayfa üzerine çizin, ardından ajanınıza yapıştırmak için işaretlemeyi kopyalayın.",
           "redo": "Yineleyin",
           "style": "Renk ve kalınlık",
           "textInput": "Ek açıklama metni",
@@ -15185,7 +15185,7 @@
             "d37b4e2641": "Sunucu",
             "477b28c948": "Veritabanı",
             "787490e9bd": "Paket",
-            "07012dc113": "Aracı",
+            "07012dc113": "Ajan",
             "3eba7387ab": "Terminal",
             "65b437c381": "Kod",
             "bed2674f9d": "Klasör"
@@ -15605,7 +15605,7 @@
         "53e1559f99": "El ile Kurulum Gerekli",
         "a7ac6ec78b": "Orca sistem paketini indirdi. Güncellemeyi terminalden tamamlamadan önce Orca'dan çıkın.",
         "82c6dbea00": "Komutu kopyalayın, Orca'dan çıkın ve Orca'nın kurulu olduğu bilgisayarda bir sistem terminalinde çalıştırın. Bittikten sonra Orca'yı yeniden açın.",
-        "53c4b8e148": "Ayrıcalıklı kurulum isteğini kullanılabilir kimlik doğrulama aracısı yanıtlamadı.",
+        "53c4b8e148": "Ayrıcalıklı kurulum isteğini kullanılabilir kimlik doğrulama ajanı yanıtlamadı.",
         "c732bcbf8f": "Paket denetleniyor...",
         "aa57fa4f80": "Komut kopyalandı. {{value0}} öğesini kurmak için Orca'dan çıkın, sistem terminalinde çalıştırın, ardından Orca'yı yeniden açın.",
         "b7e7c5bc95": "Orca indirilen dosyayı bu komutu oluşturduğu anda sürüm verileriyle karşılaştırır. Sistem paketinin kendisi imza denetimli değildir ve Orca o noktadan sonra dosyaya kefil olamaz."
@@ -15660,7 +15660,7 @@
         "46e08bc5c8": "Bu dosyada kaydedilmemiş değişiklikler var.",
         "61ed600d29": "\"{{value0}}\" kaydedilmemiş değişiklikler içeriyor. Kapatmadan önce kaydetmek istiyor musunuz?",
         "e57db40c11": "{{value0}} için başlatma komutu oluşturulamadı.",
-        "5b2c1a9e44": "Aracı CLI'si algılanamadı — birini kurun veya Ayarlar'da varsayılan aracı seçin.",
+        "5b2c1a9e44": "Ajan CLI'si algılanamadı — birini kurun veya Ayarlar'da varsayılan ajan seçin.",
         "quitSnapshotSaveFailed": "Çıkış iptal edildi: oturum anlık görüntüsü kaydedilemedi ({{value0}})."
       },
       "star": {
@@ -15721,8 +15721,8 @@
           "a743da52ff": "Ayrıntıları genişletin",
           "a41fb5376e": "Ayrıntıları daraltın",
           "5ae84475cc": "Kapat",
-          "b06e13fcf7": "Aracıyı kapatın",
-          "0272969e28": "Bu aracıya gönderin",
+          "b06e13fcf7": "Ajanı kapatın",
+          "0272969e28": "Bu ajana gönderin",
           "92a7017987": "gönderiliyor",
           "019b74d93a": "uygun"
         },
@@ -15822,7 +15822,7 @@
       "setup": {
         "guide": {
           "SetupGuideModal": {
-            "3598a3ca0c": "Orca'yı paralel aracı çalışması için kullanışlı kılan çekirdek iş akışlarını tamamlayın.",
+            "3598a3ca0c": "Orca'yı paralel ajan çalışması için kullanışlı kılan çekirdek iş akışlarını tamamlayın.",
             "48a9e5ef2d": "Başlarken",
             "28cf59fcb4": "Bu, denetim listesini kenar çubuğundan gizler",
             "f3b5ffb2a6": "Denetim listesini kenar çubuğundan gizleyin"
@@ -15895,16 +15895,16 @@
       },
       "agent": {
         "AgentCombobox": {
-          "19522e25ee": "Aracıları yönetin",
+          "19522e25ee": "Ajanları yönetin",
           "986f946354": "Boş Terminal",
-          "579c768bde": "Aramanızla eşleşen aracı yok.",
-          "48c6a5a9b4": "Aracı arayın...",
+          "579c768bde": "Aramanızla eşleşen ajan yok.",
+          "48c6a5a9b4": "Ajan arayın...",
           "9c6b59fe58": "Varsayılan yap",
           "1b0d6965fa": "Mevcut varsayılan"
         },
         "AgentSettingsDialog": {
-          "50cdb57c03": "AI aracılarını yönetin, varsayılan ayarlayın ve komutları özelleştirin.",
-          "fc0268e4ed": "Aracılar"
+          "50cdb57c03": "AI ajanlarını yönetin, varsayılan ayarlayın ve komutları özelleştirin.",
+          "fc0268e4ed": "Ajanlar"
         }
       },
       "taskSourceContextSummary": {
@@ -15936,7 +15936,7 @@
       "NewWorkspaceComposerModal": {
         "createWorktree": "Çalışma ağacı oluşturun",
         "createWorkspace": "Çalışma alanı oluşturun",
-        "fa90f739a5": "Çalışma alanını oluşturmadan önce projeyi, çalışma alanı adını ve aracıyı seçin."
+        "fa90f739a5": "Çalışma alanını oluşturmadan önce projeyi, çalışma alanı adını ve ajanı seçin."
       },
       "TerminalSearch": {
         "db234b7519": "Kapat",
@@ -16010,7 +16010,7 @@
       "contextual": {
         "tours": {
           "ContextualTourControl": {
-            "186eecc34f": "Çalışma alanını ilk aracı iletisinden otomatik adlandırın",
+            "186eecc34f": "Çalışma alanını ilk ajan iletisinden otomatik adlandırın",
             "02e8373219": "Bu metin kutusunu boş bıraktığınızda otomatik olarak yeni ad oluşturur.",
             "731c5573df": "İlk iletiden otomatik adlandırın"
           },
@@ -16033,7 +16033,7 @@
                   "automations": {
                     "intro": {
                       "title": "Otomasyon nedir?",
-                      "body": "Otomasyonlar aracı işlerini zamanlamayla çalıştırır. Bu düğmeye tıklayarak otomasyon ekleyin."
+                      "body": "Otomasyonlar ajan işlerini zamanlamayla çalıştırır. Bu düğmeye tıklayarak otomasyon ekleyin."
                     },
                     "results": {
                       "title": "Sonuçları bulun",
