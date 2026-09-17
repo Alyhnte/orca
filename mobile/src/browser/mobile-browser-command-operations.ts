@@ -17,11 +17,8 @@ import {
  *
  * These are mutations against a live page, so a lost reply is unknown rather than failed: no call
  * site retries one, and the delivery-unknown mark on a transport rejection is left intact.
- *
- * The reader is a parameter rather than one shared reader, because `browser.goto` is the only one
- * whose body is read; the other twelve take the unread default and stay one line each.
  */
-function browserPageCommand<Method extends RpcMethodName, Variant extends string, Value>(
+function browserPageCommandReading<Method extends RpcMethodName, Variant extends string, Value>(
   name: string,
   method: Method,
   read: RpcCompatibleReader<unknown, Variant, Value>
@@ -42,68 +39,34 @@ const unreadBrowserCommandReader = rpcResultVariant(
   browserCommandUnreadReplySchema
 )
 
-export const browserNavigate = browserPageCommand(
+/** The twelve commands whose reply body nothing reads. */
+function browserPageCommand<Method extends RpcMethodName>(name: string, method: Method) {
+  return browserPageCommandReading(name, method, unreadBrowserCommandReader)
+}
+
+export const browserNavigate = browserPageCommandReading(
   'browser.navigate',
   'browser.goto',
   rpcResultVariant('browser-navigation-settled', browserNavigationSettledSchema)
 )
-export const browserGoBack = browserPageCommand(
-  'browser.go-back',
-  'browser.back',
-  unreadBrowserCommandReader
-)
-export const browserGoForward = browserPageCommand(
-  'browser.go-forward',
-  'browser.forward',
-  unreadBrowserCommandReader
-)
-export const browserReload = browserPageCommand(
-  'browser.reload-page',
-  'browser.reload',
-  unreadBrowserCommandReader
-)
-export const browserPointerClick = browserPageCommand(
-  'browser.pointer-click',
-  'browser.mouseClick',
-  unreadBrowserCommandReader
-)
-export const browserPointerMove = browserPageCommand(
-  'browser.pointer-move',
-  'browser.mouseMove',
-  unreadBrowserCommandReader
-)
-export const browserPointerDown = browserPageCommand(
-  'browser.pointer-down',
-  'browser.mouseDown',
-  unreadBrowserCommandReader
-)
-export const browserPointerUp = browserPageCommand(
-  'browser.pointer-up',
-  'browser.mouseUp',
-  unreadBrowserCommandReader
-)
-export const browserPointerWheel = browserPageCommand(
-  'browser.pointer-wheel',
-  'browser.mouseWheel',
-  unreadBrowserCommandReader
-)
+export const browserGoBack = browserPageCommand('browser.go-back', 'browser.back')
+export const browserGoForward = browserPageCommand('browser.go-forward', 'browser.forward')
+export const browserReload = browserPageCommand('browser.reload-page', 'browser.reload')
+export const browserPointerClick = browserPageCommand('browser.pointer-click', 'browser.mouseClick')
+export const browserPointerMove = browserPageCommand('browser.pointer-move', 'browser.mouseMove')
+export const browserPointerDown = browserPageCommand('browser.pointer-down', 'browser.mouseDown')
+export const browserPointerUp = browserPageCommand('browser.pointer-up', 'browser.mouseUp')
+export const browserPointerWheel = browserPageCommand('browser.pointer-wheel', 'browser.mouseWheel')
 export const browserInsertText = browserPageCommand(
   'browser.insert-text',
-  'browser.keyboardInsertText',
-  unreadBrowserCommandReader
+  'browser.keyboardInsertText'
 )
-export const browserKeypress = browserPageCommand(
-  'browser.keypress',
-  'browser.keypress',
-  unreadBrowserCommandReader
-)
+export const browserKeypress = browserPageCommand('browser.keypress', 'browser.keypress')
 export const browserDialogAccept = browserPageCommand(
   'browser.dialog-accept',
-  'browser.dialogAccept',
-  unreadBrowserCommandReader
+  'browser.dialogAccept'
 )
 export const browserDialogDismiss = browserPageCommand(
   'browser.dialog-dismiss',
-  'browser.dialogDismiss',
-  unreadBrowserCommandReader
+  'browser.dialogDismiss'
 )
