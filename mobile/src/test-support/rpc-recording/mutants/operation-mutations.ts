@@ -70,10 +70,11 @@ export const OPERATION_MUTATIONS = {
     after: 'const snapshot = decodeAccountsSnapshot(reply)'
   },
   // Reads the push test result one level above the envelope, so an accepted test reports failure.
+  // Re-anchored when step 7 deleted the cast the checked reader made unnecessary; same defect.
   'push-test-envelope': {
     file: 'notification-display-test.tsx',
-    before: 'const result = delivered.value as MobilePushTestResult',
-    after: 'const result = reply as unknown as MobilePushTestResult'
+    before: 'const result = delivered.value',
+    after: 'const result = reply as unknown as typeof delivered.value'
   },
   // Publishes the repo reply's payload instead of the member the reader took off it.
   'task-screen-repo-envelope': {

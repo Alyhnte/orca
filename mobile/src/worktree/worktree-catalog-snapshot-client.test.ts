@@ -126,7 +126,13 @@ describe('WorktreeCatalogSnapshotClient', () => {
   })
 
   it('preserves the last admitted token across transport failures', async () => {
-    const client = clientWithResults({ worktrees: [], snapshotId: 'snapshot-1' })
+    // The second reply is the conditional answer the host gives to the request under assertion.
+    // The fixture used to run dry and hand `fetch` an absent result, which is not a transport
+    // failure and is not a shape `worktree.ps` sends.
+    const client = clientWithResults(
+      { worktrees: [], snapshotId: 'snapshot-1' },
+      { unchanged: true, snapshotId: 'snapshot-1' }
+    )
     const snapshots = new WorktreeCatalogSnapshotClient()
 
     admitFetched(snapshots, await snapshots.fetch(client, 'host-1'))
@@ -173,7 +179,10 @@ describe('WorktreeCatalogSnapshotClient', () => {
 
   it('drops a superseded host response without invalidating the current token', async () => {
     const firstClient = clientWithResults({ worktrees: [], snapshotId: 'snapshot-1' })
-    const secondClient = clientWithResults({ worktrees: [], snapshotId: 'snapshot-2' })
+    const secondClient = clientWithResults(
+      { worktrees: [], snapshotId: 'snapshot-2' },
+      { unchanged: true, snapshotId: 'snapshot-2' }
+    )
     const snapshots = new WorktreeCatalogSnapshotClient()
 
     // Host A's response is still in flight when the screen switches to host B.

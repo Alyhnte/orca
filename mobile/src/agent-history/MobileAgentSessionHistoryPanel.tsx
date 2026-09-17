@@ -94,9 +94,8 @@ export function MobileAgentSessionHistoryPanel({
         }
         const catalog = worktreeCatalogRead.interpret(worktreeReply)
         if (catalog.accepted) {
-          // oxlint-disable-next-line typescript/consistent-type-assertions -- SAFETY: Preserve the established response shape at this boundary.
-          const result = catalog.value as { worktrees: Worktree[] }
-          setWorktrees(result.worktrees)
+          // oxlint-disable-next-line typescript/consistent-type-assertions -- SAFETY: the reader proves `worktrees` is an array and leaves the rows opaque; the panel reads only `path` off a row to seed `scopePaths`. The absent arm is main's: `worktree-home-catalog.inner-ok-missing` records a rows-less catalog reaching the screen, and this panel has always seated it as-is.
+          setWorktrees(catalog.value.worktrees as Worktree[])
         }
       } catch {
         // Why: worktree list is best-effort context; the session scan still runs

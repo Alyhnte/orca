@@ -1,6 +1,11 @@
 import { bindDeferredRpcOperation, defineRpcOperation } from '../transport/rpc-operation'
 import type { RpcMethodName } from '../transport/rpc-params-contract'
-import { rpcUncheckedPayloadReader } from '../transport/rpc-reader-payload'
+import { rpcResultVariant } from '../transport/rpc-operation-result-reader'
+import type { RpcCompatibleReader } from '../transport/rpc-operation-contract'
+import {
+  browserCommandUnreadReplySchema,
+  browserNavigationSettledSchema
+} from './browser-command-reply-schema'
 
 /**
  * Every command the phone sends to a hosted browser page.
@@ -12,38 +17,93 @@ import { rpcUncheckedPayloadReader } from '../transport/rpc-reader-payload'
  *
  * These are mutations against a live page, so a lost reply is unknown rather than failed: no call
  * site retries one, and the delivery-unknown mark on a transport rejection is left intact.
+ *
+ * The reader is a parameter rather than one shared reader, because `browser.goto` is the only one
+ * whose body is read; the other twelve take the unread default and stay one line each.
  */
-function browserPageCommand<Method extends RpcMethodName>(name: string, method: Method) {
+function browserPageCommand<Method extends RpcMethodName, Variant extends string, Value>(
+  name: string,
+  method: Method,
+  read: RpcCompatibleReader<unknown, Variant, Value>
+) {
   return bindDeferredRpcOperation(
     defineRpcOperation({
       name,
       method,
       acceptance: 'require-result-or-throw-message',
       barrier: 'after-caller-barrier',
-      read: rpcUncheckedPayloadReader('browser-command')
+      read
     })
   )
 }
 
-export const browserNavigate = browserPageCommand('browser.navigate', 'browser.goto')
-export const browserGoBack = browserPageCommand('browser.go-back', 'browser.back')
-export const browserGoForward = browserPageCommand('browser.go-forward', 'browser.forward')
-export const browserReload = browserPageCommand('browser.reload-page', 'browser.reload')
-export const browserPointerClick = browserPageCommand('browser.pointer-click', 'browser.mouseClick')
-export const browserPointerMove = browserPageCommand('browser.pointer-move', 'browser.mouseMove')
-export const browserPointerDown = browserPageCommand('browser.pointer-down', 'browser.mouseDown')
-export const browserPointerUp = browserPageCommand('browser.pointer-up', 'browser.mouseUp')
-export const browserPointerWheel = browserPageCommand('browser.pointer-wheel', 'browser.mouseWheel')
+const unreadBrowserCommandReader = rpcResultVariant(
+  'browser-command',
+  browserCommandUnreadReplySchema
+)
+
+export const browserNavigate = browserPageCommand(
+  'browser.navigate',
+  'browser.goto',
+  rpcResultVariant('browser-navigation-settled', browserNavigationSettledSchema)
+)
+export const browserGoBack = browserPageCommand(
+  'browser.go-back',
+  'browser.back',
+  unreadBrowserCommandReader
+)
+export const browserGoForward = browserPageCommand(
+  'browser.go-forward',
+  'browser.forward',
+  unreadBrowserCommandReader
+)
+export const browserReload = browserPageCommand(
+  'browser.reload-page',
+  'browser.reload',
+  unreadBrowserCommandReader
+)
+export const browserPointerClick = browserPageCommand(
+  'browser.pointer-click',
+  'browser.mouseClick',
+  unreadBrowserCommandReader
+)
+export const browserPointerMove = browserPageCommand(
+  'browser.pointer-move',
+  'browser.mouseMove',
+  unreadBrowserCommandReader
+)
+export const browserPointerDown = browserPageCommand(
+  'browser.pointer-down',
+  'browser.mouseDown',
+  unreadBrowserCommandReader
+)
+export const browserPointerUp = browserPageCommand(
+  'browser.pointer-up',
+  'browser.mouseUp',
+  unreadBrowserCommandReader
+)
+export const browserPointerWheel = browserPageCommand(
+  'browser.pointer-wheel',
+  'browser.mouseWheel',
+  unreadBrowserCommandReader
+)
 export const browserInsertText = browserPageCommand(
   'browser.insert-text',
-  'browser.keyboardInsertText'
+  'browser.keyboardInsertText',
+  unreadBrowserCommandReader
 )
-export const browserKeypress = browserPageCommand('browser.keypress', 'browser.keypress')
+export const browserKeypress = browserPageCommand(
+  'browser.keypress',
+  'browser.keypress',
+  unreadBrowserCommandReader
+)
 export const browserDialogAccept = browserPageCommand(
   'browser.dialog-accept',
-  'browser.dialogAccept'
+  'browser.dialogAccept',
+  unreadBrowserCommandReader
 )
 export const browserDialogDismiss = browserPageCommand(
   'browser.dialog-dismiss',
-  'browser.dialogDismiss'
+  'browser.dialogDismiss',
+  unreadBrowserCommandReader
 )

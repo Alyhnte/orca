@@ -13,8 +13,11 @@ export type HomeStatsSummary = {
  * Summing only `hostIds` keeps an unpaired desktop out of the total: replies are cached per host
  * for the life of the process, so an entry outlives the host it describes.
  */
+/** One host's row as the wire carries it: every field may be missing or the wrong type. */
+export type HomeStatsRow = Partial<HomeStatsSummary>
+
 export function totalHomeStats(
-  byHost: Record<string, HomeStatsSummary>,
+  byHost: Record<string, HomeStatsRow>,
   hostIds: readonly string[]
 ): HomeStatsSummary | null {
   const hosts = hostIds.filter((id) => id in byHost).map((id) => byHost[id])
@@ -46,6 +49,6 @@ export function totalHomeStats(
   return total
 }
 
-function finiteOrZero(value: number): number {
+function finiteOrZero(value: number | undefined): number {
   return typeof value === 'number' && Number.isFinite(value) ? value : 0
 }
