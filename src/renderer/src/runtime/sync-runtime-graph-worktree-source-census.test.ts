@@ -13,11 +13,16 @@ import {
 } from './sync-runtime-graph-worktree-source-gate.test-support'
 
 /**
- * The fingerprint is a claim that `buildMobileSessionWorktreeInputs` is pure over exactly what
- * `collectMobileSessionWorktreeSourceRefs` reads. Recording both sides' property reads turns that
- * claim into a test: a builder that starts reading a slice the collector does not is a silently
- * stale worktree, and the census names the slice instead of waiting for someone to write the
- * mutation that exposes it.
+ * The fingerprint is a claim that `buildMobileSessionWorktreeInputs` reads no *store or publication*
+ * value that `collectMobileSessionWorktreeSourceRefs` does not. Recording both sides' property reads
+ * turns that claim into a test: a builder that starts reading a slice the collector does not is a
+ * silently stale worktree, and the census names the slice instead of waiting for someone to write
+ * the mutation that exposes it.
+ *
+ * What this census cannot see, and must not be read as covering: `captureMountedTerminalSurfaces`
+ * reads the live terminal registry and PaneManager/DOM, which no proxy over `state` or `publication`
+ * observes. That input is fenced at the call site by `registeredTabIdsByWorktree`, not by the
+ * fingerprint — see `sync-runtime-graph-late-terminal-mount.test.ts`.
  *
  * The oracle is an absence assertion, so the read sets are pinned exactly rather than counted: a
  * builder that stops reading something has to be noticed too, because a field nothing reads is a

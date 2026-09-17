@@ -145,10 +145,13 @@ export type MobileSessionPublicationInputs = {
   terminalTheme: RuntimeMobileTerminalTheme | undefined
 }
 /**
- * Every store value one worktree's snapshot is derived from.
+ * Every store and publication value one worktree's snapshot is derived from.
  *
- * Why a flat record of references: `buildMobileSessionWorktreeInputs` is pure over exactly these,
- * so an unchanged set is a proof that rebuilding the worktree cannot change its snapshot.
+ * Why a flat record of references: these cover every `AppState` and `MobileSessionPublicationInputs`
+ * read in `buildMobileSessionWorktreeInputs`, so an unchanged set proves no store input moved. It is
+ * not on its own a proof the snapshot is unchanged — the builder also reads live PaneManager/DOM
+ * state, which the call site fences with its own `registeredTabIdsByWorktree` guard. See
+ * `collectMobileSessionWorktreeSourceRefs`.
  */
 export type MobileSessionWorktreeSourceRefs = {
   terminalTabs: AppState['tabsByWorktree'][string] | undefined

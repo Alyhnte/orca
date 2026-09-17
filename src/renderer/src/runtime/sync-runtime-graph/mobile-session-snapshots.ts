@@ -101,6 +101,10 @@ export function buildMobileSessionTabSnapshots(
     // A worktree with no mounted TerminalPane has no live input outside the store, so unchanged
     // sources prove the rebuild below would land on `canReuseMobileSessionSnapshot` anyway. Mounted
     // worktrees still rebuild: their PaneManager/DOM state can move with no store mutation at all.
+    // Both mount conditions are load-bearing, because the source refs deliberately do not
+    // fingerprint that live capture: drop the registry check and a late mount is never seen; drop
+    // the capture-size check and a late unmount is never seen. See
+    // `sync-runtime-graph-late-terminal-mount.test.ts`.
     if (
       cached &&
       cached.inputs.mountedSurfaceCaptureByTabId.size === 0 &&
