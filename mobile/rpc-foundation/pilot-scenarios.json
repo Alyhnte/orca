@@ -7856,6 +7856,37 @@
       ]
     },
     {
+      "id": "worktree-catalog-snapshot-unreadable",
+      "operation": "worktree.catalog-snapshot",
+      "version": 1,
+      "family": "worktree.catalog-snapshot",
+      "sites": ["mobile/src/worktree/worktree-catalog-snapshot-client.ts"],
+      "schedules": [],
+      "steps": [
+        {
+          "action": "fetch",
+          "id": "fetch"
+        },
+        {
+          "checkpoint": "catalog-pending"
+        },
+        {
+          "complete": "worktree.ps#1",
+          "params": {
+            "limit": 10000,
+            "supportsWorktreeVisibilitySourceDefaults": true,
+            "afterSnapshotId": null
+          },
+          "reply": {
+            "ok": true
+          }
+        },
+        {
+          "checkpoint": "settled"
+        }
+      ]
+    },
+    {
       "id": "worktree-retired-names",
       "operation": "worktree.retired-names",
       "version": 1,
