@@ -59,6 +59,10 @@ it.each(
         expect(result.stderr).toContain(
           present ? 'agent-stderr' : 'fresh OMP settings are unavailable'
         )
+        if (present) {
+          expect(result.stderr).toBe('agent-stderr')
+        }
+        expect(result.stderr).not.toContain('command substitutions not allowed')
         expect(await readFile(calls, 'utf8')).toBe('task with spaces\n')
       }
     } finally {
