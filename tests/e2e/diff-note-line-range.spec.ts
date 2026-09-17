@@ -103,37 +103,45 @@ async function seedDiffFile(page: Page, worktreeId: string, relative: string): P
     .toBe(true)
 }
 
-async function hasGutterLine(page: Page, lineNumber: number): Promise<boolean> {
+async function readGutterPoint(
+  page: Page,
+  lineNumber: number
+): Promise<{ x: number; y: number } | null> {
   return page.evaluate((target: number) => {
-    const editor = document.querySelector('.monaco-editor.modified-in-monaco-diff-editor')
-    if (!editor) {
-      return false
-    }
-    for (const cell of editor.querySelectorAll('.margin .line-numbers')) {
-      if (Number.parseInt(cell.textContent?.trim() ?? '', 10) === target) {
-        return true
-      }
-    }
-    return false
-  }, lineNumber)
-}
-
-// Centre of a line's number cell — the column the "+" lives in and the gesture starts from.
-async function gutterPoint(page: Page, lineNumber: number): Promise<{ x: number; y: number }> {
-  const point = await page.evaluate((lineNumber: number) => {
     const editor = document.querySelector('.monaco-editor.modified-in-monaco-diff-editor')
     if (!editor) {
       return null
     }
     for (const cell of editor.querySelectorAll('.margin .line-numbers')) {
-      if (Number.parseInt(cell.textContent?.trim() ?? '', 10) === lineNumber) {
+      if (Number.parseInt(cell.textContent?.trim() ?? '', 10) === target) {
         const rect = cell.getBoundingClientRect()
         return { x: Math.round(rect.x + rect.width / 2), y: Math.round(rect.y + rect.height / 2) }
       }
     }
     return null
   }, lineNumber)
-  if (!point) {
+}
+
+async function hasGutterLine(page: Page, lineNumber: number): Promise<boolean> {
+  return (await readGutterPoint(page, lineNumber)) !== null
+}
+
+// Centre of a line's number cell — the column the "+" lives in and the gesture starts from.
+async function gutterPoint(page: Page, lineNumber: number): Promise<{ x: number; y: number }> {
+  let point: { x: number; y: number } | null = null
+  await expect
+    .poll(
+      async () => {
+        point = await readGutterPoint(page, lineNumber)
+        return point
+      },
+      {
+        timeout: 20_000,
+        message: `line ${lineNumber} is not rendered in the modified gutter`
+      }
+    )
+    .not.toBeNull()
+  if (point == null) {
     throw new Error(`line ${lineNumber} is not rendered in the modified gutter`)
   }
   return point

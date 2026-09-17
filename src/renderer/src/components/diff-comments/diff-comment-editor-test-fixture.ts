@@ -72,6 +72,8 @@ export function createFakeDiffCommentEditor(
   const mouseMoveListeners: ((e: { target: { position: { lineNumber: number } } }) => void)[] = []
   const disposeListeners: (() => void)[] = []
   const noopDisposable: IDisposable = { dispose: () => {} }
+  // Monaco hands back the same model reference until the model is replaced.
+  const model = { getLineCount: () => lineCount }
 
   const clientYForLine = (lineNumber: number): number =>
     FAKE_EDITOR_TOP_PX + (lineNumber - 1) * FAKE_LINE_HEIGHT_PX - scrollTop + 1
@@ -88,7 +90,7 @@ export function createFakeDiffCommentEditor(
   const editor = {
     getDomNode: () => domNode,
     getContainerDomNode: () => domNode,
-    getModel: () => ({ getLineCount: () => lineCount }),
+    getModel: () => model,
     getOption: () => FAKE_LINE_HEIGHT_PX,
     getTopForLineNumber: (lineNumber: number) => (lineNumber - 1) * FAKE_LINE_HEIGHT_PX,
     getScrollTop: () => scrollTop,

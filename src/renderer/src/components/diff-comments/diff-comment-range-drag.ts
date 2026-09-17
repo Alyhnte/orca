@@ -161,6 +161,20 @@ export function installDiffCommentRangeDrag({
     return true
   }
 
+  // One hit-test against the coordinate the drag last saw, clamped into the editor so a pointer
+  // dragged past an edge keeps resolving to the edge line.
+  const resolveFocusLine = (active: NonNullable<typeof drag>, rect: DOMRect): void => {
+    const clampedY = Math.max(rect.top + 1, Math.min(rect.bottom - 1, active.clientY))
+    const probed = getLineAtViewportY(rect.left, clampedY)
+    if (probed !== null) {
+      const nextFocus = clampFocusLineToCommentable(active.anchorLine, probed, commentableLineSet)
+      if (nextFocus !== active.focusLine) {
+        active.focusLine = nextFocus
+        onDragChange?.({ dragging: true, focusLine: nextFocus })
+      }
+    }
+  }
+
   // One hit-test, one scroll step and at most one decoration write per frame, however many
   // pointermove events the OS delivered in between.
   const runFrame = (timestampMs: number): void => {
@@ -173,18 +187,7 @@ export function installDiffCommentRangeDrag({
     drag.lastFrameMs = timestampMs
     const rect = editorDomNode.getBoundingClientRect()
     const scrolling = autoScroll(rect, drag.clientY, frameDeltaMs)
-    // Clamp into the editor so a pointer dragged past an edge keeps resolving to the edge line.
-    const probedLine = getLineAtViewportY(
-      rect.left,
-      Math.max(rect.top + 1, Math.min(rect.bottom - 1, drag.clientY))
-    )
-    if (probedLine !== null) {
-      const nextFocus = clampFocusLineToCommentable(drag.anchorLine, probedLine, commentableLineSet)
-      if (nextFocus !== drag.focusLine) {
-        drag.focusLine = nextFocus
-        onDragChange?.({ dragging: true, focusLine: nextFocus })
-      }
-    }
+    resolveFocusLine(drag, rect)
     repaint()
     // Keep the loop alive only while the edge is still pulling; a held, still pointer costs zero.
     if (scrolling) {
@@ -215,12 +218,13 @@ export function installDiffCommentRangeDrag({
     if (!drag || event.pointerId !== drag.pointerId) {
       return
     }
-    // Pointerup can arrive before the coalesced animation frame. Resolve the latest coordinates
-    // once before committing so a fast drag cannot lose its final lines.
-    if (drag.frame != null) {
-      cancelFrame()
-      runFrame(performance.now())
-    }
+    // Pointerup can carry a position no pointermove reported, and can arrive before the coalesced
+    // animation frame. Resolve the release coordinate before committing so a fast drag cannot lose
+    // its final lines. No scroll step: the gesture is over, so pulling the view further would only
+    // drag the committed range past the line the user released on.
+    drag.clientY = event.clientY
+    cancelFrame()
+    resolveFocusLine(drag, editorDomNode.getBoundingClientRect())
     const range = orderLineRange(drag.anchorLine, drag.focusLine)
     endDrag()
     onCommit(range)

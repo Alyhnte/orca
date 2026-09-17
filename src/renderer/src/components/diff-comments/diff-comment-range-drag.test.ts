@@ -33,6 +33,7 @@ beforeEach(() => {
   frameCallbacks.length = 0
   nextFrameHandle = 0
   frameTimestampMs = 0
+  lastPointerClientY = 0
   vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback): number => {
     frameCallbacks.push(callback)
     return (nextFrameHandle += 1)
@@ -55,15 +56,21 @@ type PointerEventInit = {
   target?: EventTarget
 }
 
+// The position the last dispatched pointer event carried, so a release lands where the pointer
+// actually is — the browser puts real coordinates on pointerup too.
+let lastPointerClientY = 0
+
 // happy-dom has no PointerEvent constructor, so the fields the controller reads are grafted on.
 function firePointerEvent(
   node: EventTarget,
   type: string,
   { clientY, clientX = 30, button = 0, pointerType = 'mouse' }: PointerEventInit
-): void {
+): Event {
   const event = new Event(type, { bubbles: true, cancelable: true })
   Object.assign(event, { clientX, clientY, button, pointerType, pointerId: 1, ctrlKey: false })
+  lastPointerClientY = clientY
   node.dispatchEvent(event)
+  return event
 }
 
 type DragHarness = {
@@ -74,7 +81,8 @@ type DragHarness = {
   handle: ReturnType<typeof installDiffCommentRangeDrag>
   pressLine: (lineNumber: number, init?: Partial<PointerEventInit>) => void
   moveToLine: (lineNumber: number) => void
-  release: () => void
+  /** Releases where the pointer was left, or on an explicit line the moves never reported. */
+  release: (lineNumber?: number) => void
 }
 
 function mountDrag(
@@ -119,7 +127,11 @@ function mountDrag(
       }),
     moveToLine: (lineNumber) =>
       firePointerEvent(document, 'pointermove', { clientY: fake.clientYForLine(lineNumber) }),
-    release: () => firePointerEvent(document, 'pointerup', { clientY: 0 })
+    release: (lineNumber) => {
+      firePointerEvent(document, 'pointerup', {
+        clientY: lineNumber === undefined ? lastPointerClientY : fake.clientYForLine(lineNumber)
+      })
+    }
   }
 }
 
@@ -163,6 +175,18 @@ describe('diff comment gutter range drag', () => {
     drag.pressLine(12)
     drag.moveToLine(17)
     drag.release()
+
+    expect(drag.commits).toEqual([{ startLine: 12, endLine: 17 }])
+    drag.handle.dispose()
+  })
+
+  it('commits the line the release landed on when no pointermove reported it', () => {
+    const drag = mountDrag()
+
+    drag.pressLine(12)
+    // A press, then a release several lines down with nothing in between: the browser can deliver
+    // pointerup at a position no pointermove ever carried.
+    drag.release(17)
 
     expect(drag.commits).toEqual([{ startLine: 12, endLine: 17 }])
     drag.handle.dispose()
@@ -218,27 +242,15 @@ describe('diff comment gutter range drag', () => {
 
   it('takes the press away from Monaco only when it is ours', () => {
     const drag = mountDrag({ commentableLineSet: new Set([10, 11, 12]) })
-    const ours = new Event('pointerdown', { bubbles: true, cancelable: true })
-    Object.assign(ours, {
-      clientX: 30,
-      clientY: drag.fake.clientYForLine(11),
-      button: 0,
-      pointerType: 'mouse',
-      pointerId: 1
+    const ours = firePointerEvent(drag.fake.domNode, 'pointerdown', {
+      clientY: drag.fake.clientYForLine(11)
     })
-    drag.fake.domNode.dispatchEvent(ours)
     expect(ours.defaultPrevented).toBe(true)
     drag.release()
 
-    const theirs = new Event('pointerdown', { bubbles: true, cancelable: true })
-    Object.assign(theirs, {
-      clientX: 30,
-      clientY: drag.fake.clientYForLine(50),
-      button: 0,
-      pointerType: 'mouse',
-      pointerId: 1
+    const theirs = firePointerEvent(drag.fake.domNode, 'pointerdown', {
+      clientY: drag.fake.clientYForLine(50)
     })
-    drag.fake.domNode.dispatchEvent(theirs)
     expect(theirs.defaultPrevented).toBe(false)
     drag.handle.dispose()
   })
@@ -356,16 +368,9 @@ describe('diff comment gutter range drag target types', () => {
   // and the markdown annotations editor installs this drag with no commentable-line set — so
   // claiming anything but the line numbers would eat the fold press on every line there.
   function pressGutter(drag: DragHarness): Event {
-    const event = new Event('pointerdown', { bubbles: true, cancelable: true })
-    Object.assign(event, {
-      clientX: 30,
-      clientY: drag.fake.clientYForLine(11),
-      button: 0,
-      pointerType: 'mouse',
-      pointerId: 1
+    return firePointerEvent(drag.fake.domNode, 'pointerdown', {
+      clientY: drag.fake.clientYForLine(11)
     })
-    drag.fake.domNode.dispatchEvent(event)
-    return event
   }
 
   it('takes a press on the line numbers', () => {
