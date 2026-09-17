@@ -18,7 +18,8 @@ import { salvagedOptional, salvagingRecord } from '../../../src/shared/zod-salva
  * there for a binary or unparsable orca.yaml. `setupRunPolicy` is a closed enum with the call
  * site's `?? 'run-by-default'` still doing the defaulting: the only two comparisons against it are
  * `!== 'skip-by-default'` and `=== 'ask'`, so an arm this build does not know behaves exactly as
- * main's unrecognised string did. `setupTrust` is nullable as well as optional because the
+ * main's unrecognised string did. The arms are the host's `SetupRunPolicy`
+ * (src/shared/orca-yaml-hook-types.ts:1), which is what `getEffectiveSetupRunPolicy` answers. `setupTrust` is nullable as well as optional because the
  * `components-setup-ask` fixture sends an explicit `null` — salvaging that as a drop would move a
  * `normal` golden for a reply the host really sends.
  */

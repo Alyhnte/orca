@@ -27,7 +27,8 @@ export const notificationUnreadReplySchema = z.unknown()
  * notification-display-test.tsx:54 tests `result?.accepted` and :57/:61 branch on `result?.reason`.
  * `reason` is a closed enum because those two comparisons are the whole of what it decides — an arm
  * this build does not know degrades to the generic "Could not send" copy, which is the arm main took
- * for every unrecognised string too.
+ * for every unrecognised string too — pinned by the `notifications-display-test-unknown-reason`
+ * golden. The arms are the host's own (mobile-push-contract.ts:99).
  */
 export const pushDeliveryTestResultSchema = z
   .looseObject({
@@ -45,7 +46,8 @@ export const pushDeliveryTestResultSchema = z
  * `registered` is the only member read — push-registration.ts:118 compares it to `true` through
  * `?.` on a payload main already typed as nullable — so the reply stays nullish and every member
  * optional. `registrationId` and `reason` are declared because the host sends them
- * (MobilePushRegisterResult) and a future reader should find them here rather than re-assert them.
+ * (MobilePushRegisterResult, mobile-push-contract.ts:38-49, whose five reason arms these are) and a
+ * future reader should find them here rather than re-assert them.
  */
 export const pushRouteRegistrationSchema = z
   .looseObject({
