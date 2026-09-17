@@ -14,6 +14,12 @@ Generic detach/destroy keeps its existing behavior. Repeated destroy retains exp
 
 Paired-runtime handles, runtime-owned native hints, and unresolved owners never fall through to local kill. They are outside this IPC fix. A provider failure is logged by the existing retirement helper; requesting retirement is not confirmation of process death. No host inventory sweep, wire change, global tombstone, or remount-driven shutdown is introduced. A shared owner already present at close keeps its established retirement responsibility; this does not change all pending-fresh/shared-owner races.
 
+## Close-confirmation review correction
+
+The original tests called `executeClosePane` after a close decision. A separate review found that the public `handleRequestClosePane` callback skipped the running-work check while the transport was still unbound. Retirement now obtains the pending local/direct-SSH identity from the existing retirement plan and runs the existing confirmation flow first. An unverified pending probe asks for confirmation; Cancel preserves the process. Before a delayed decision or confirmation acts, the captured tab generation, pane, transport, binding, and execution owner must still match. A split that became the final pane cannot turn an old confirmation into a whole-tab close.
+
+`pending-pane-close-confirmation.test.ts` exercises the public callbacks, including live and unverified work, Cancel, confirmed close, completed attachment, ownership replacement, and direct SSH. These are separate regression controls added after the original comparative proof below; they do not change its historical case counts.
+
 ## Reproduce
 
 From the repository root with the existing dependencies installed:

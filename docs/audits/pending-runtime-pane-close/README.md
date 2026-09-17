@@ -12,6 +12,12 @@ The actual host fixture verifies that re-registering the same PTY ID with a new 
 
 Native host PTY hints, legacy handles without an explicit environment, and returned different handles are outside this fix. Current client snapshot registries retain freshness/frame identity rather than a live terminal-row incarnation. Inferring destructive authority from a late native-hint resolution could stop a replacement. The separate read-only native-hint and pending web-activation reproduction remains in `notes/paired-pending-split-close`; it establishes omitted requests, with no claim that these excluded cases are fixed. No parent-tab close, local fallback, new wire field, or capability is introduced. A request is not confirmation of process death; provider failures retain their existing handling.
 
+## Close-confirmation review correction
+
+The public split-close callback now probes the captured scoped handle before authorizing retirement, including while `terminal.resolvePane` remains pending. Live or unverified pending work opens the existing confirmation dialog. Cancel keeps the host terminal; Confirm rechecks the captured tab, pane, transport, handle, host, and pairing revision. A replacement or a split that became the only pane invalidates the old decision. The host's existing handle-incarnation fence and the compatibility-dispatch checks remain in force.
+
+`pending-pane-close-confirmation.test.ts` adds public-callback controls for both local/direct-SSH and paired pending panes. The comparative counts below remain the original proof snapshot, which called the post-confirmation `executeClosePane` callback directly.
+
 ## Reproduce
 
 Run in the repository root with existing dependencies:
